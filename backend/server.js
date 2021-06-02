@@ -8,6 +8,7 @@ const app = express();
 
 const roleRouter = require('./routers/routes/role')
 const createUserRouter = require("../backend/routers/routes/createUser")
+const loginRouter = require("./routers/routes/login")
 
 //built-in middlewares
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use(cors());
 
 app.use(roleRouter);
 app.use(createUserRouter);
+app.use(loginRouter)
 
 /////////////////////
 const PORT = process.env.PORT || 5000;
