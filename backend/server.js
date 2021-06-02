@@ -6,6 +6,9 @@ const app = express();
 
 //routers
 
+const roleRouter = require('./routers/routes/role')
+const createUserRouter = require("../backend/routers/routes/createUser")
+
 //built-in middlewares
 app.use(express.json());
 
@@ -14,7 +17,11 @@ app.use(cors());
 
 //app routers
 
+app.use(roleRouter);
+app.use(createUserRouter);
+
+/////////////////////
 const PORT = process.env.PORT || 5000;
-app.use(PORT, () => {
+app.listen(PORT, () => {
 	console.log(`Server On ${PORT}`);
 });
