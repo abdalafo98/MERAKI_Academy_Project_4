@@ -12,6 +12,7 @@ const createComment = (req, res) => {
         { _id: id }, 
         { $push: { comment: result._id } }
     );
+
     res.status(201)
     res.json(result)
   }).catch((err) => {
