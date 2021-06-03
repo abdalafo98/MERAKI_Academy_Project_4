@@ -11,6 +11,7 @@ const createUserRouter = require("../backend/routers/routes/createUser")
 const loginRouter = require("./routers/routes/login")
 const productsRouter = require("./routers/routes/product")
 const  createNewCommentRouter = require("./routers/routes/createComment")
+const  createRatingRouter = require("./routers/routes/rating")
 
 
 //built-in middlewares
@@ -26,6 +27,7 @@ app.use(createUserRouter);
 app.use(loginRouter);
 app.use('/products', productsRouter);
 app.use(createNewCommentRouter);
+app.use(createRatingRouter);
 
 
 /////////////////////
