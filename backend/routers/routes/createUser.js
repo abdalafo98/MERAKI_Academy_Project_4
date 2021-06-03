@@ -1,10 +1,15 @@
 const express = require('express');
 
 
-const createUserRouter = express.Router();
+const userRouter = express.Router();
 
-const {createNewUser} = require("../controllers/createNewUser")
+const {createNewUser,getUserInformation} = require("../controllers/createNewUser")
 
-createUserRouter.post("/createUser",createNewUser);
+userRouter.post("/createUser",createNewUser);
+userRouter.get("/id/:id",getUserInformation);
+// userRouter.delete("/",createNewUser);
+// userRouter.update("/",createNewUser);
+// userRouter.put("/",createNewUser);
 
-module.exports = createUserRouter;
+
+module.exports = userRouter;
