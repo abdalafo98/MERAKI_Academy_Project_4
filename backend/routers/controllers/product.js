@@ -74,7 +74,32 @@ const deleteProductById  = (req,res)=>{
   });
 }
 
+const getProductByName = (req,res)=>{
+  const name = req.params.name
+  productModel.find({name}).then((result)=>{
+    if (result.length === 0 ){
+      res.status(404).json("not found");
+      return
+    }
+    res.status(200).json(result);
+  }).catch((err) => {
+    res.status(404).json("not found");
+  });
+
+};       
+
+const getProductByPrice = (req,res)=>{
+ const price = req.params.price;
+const type = req.params.type;
+productModel.find({ $and: [{ type: type}, { price: { $lt: price } }] }).then((result)=>{
+  res.status(200).json(result);
+}).catch((err)=>{
+res.send(err);
+})
+};   
+
 
 module.exports = {
-  getAllProducts,createProduct,getProductById,getProductByType,updateProductById,deleteProductById
+  getAllProducts,createProduct,getProductById,getProductByType,updateProductById,deleteProductById,getProductByName,getProductByPrice
 };
+ 
