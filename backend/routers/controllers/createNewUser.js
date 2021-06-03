@@ -1,4 +1,6 @@
 const usersModel = require("../../db/models/user");
+const favoriteModel =  require("../../db/models/favorite");
+const cartModel =  require("../../db/models/cart");
 
 const createNewUser = (req, res) => {
   const {
@@ -27,7 +29,17 @@ const createNewUser = (req, res) => {
 
   user
     .save()
-    .then((result) => {
+    .then(async (result) => {
+const fav =  new favoriteModel({
+  user: result._id
+})
+ const aaaaa = await fav.save()
+
+ const cart = new cartModel({
+  user: result._id
+ })
+ const bbbbb = await cart.save()
+
       res.status(201).json(result);
     })
     .catch((err) => {

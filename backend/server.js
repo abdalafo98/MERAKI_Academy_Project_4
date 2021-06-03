@@ -12,7 +12,8 @@ const loginRouter = require("./routers/routes/login")
 const productsRouter = require("./routers/routes/product")
 const  createNewCommentRouter = require("./routers/routes/createComment")
 const  createRatingRouter = require("./routers/routes/rating")
-
+const favoritesRouter = require("./routers/routes/favoritesRouter")
+const cartRouter = require("./routers/routes/cartRouter")
 
 //built-in middlewares
 app.use(express.json());
@@ -28,6 +29,10 @@ app.use(loginRouter);
 app.use('/products', productsRouter);
 app.use(createNewCommentRouter);
 app.use(createRatingRouter);
+app.use("/favorites",favoritesRouter)
+app.use("/cart",cartRouter)
+
+
 
 
 /////////////////////
