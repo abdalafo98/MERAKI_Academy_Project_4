@@ -12,6 +12,7 @@ const loginRouter = require("./routers/routes/login")
 const createProductRouter = require("./routers/routes/createProduct")
 const  createNewCommentRouter = require("./routers/routes/createComment")
 
+
 //built-in middlewares
 app.use(express.json());
 
@@ -25,6 +26,7 @@ app.use(createUserRouter);
 app.use(loginRouter);
 app.use(createProductRouter);
 app.use(createNewCommentRouter);
+
 
 /////////////////////
 const PORT = process.env.PORT || 5000;
