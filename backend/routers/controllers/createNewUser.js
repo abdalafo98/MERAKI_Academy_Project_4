@@ -35,6 +35,20 @@ const createNewUser = (req, res) => {
     });
 };
 
+const getUserInformation =(req,res)=>{
+
+  const _id =req.params.id;
+  usersModel.findOne({_id}).then((result)=>{
+
+    res.status(200).json(result);
+
+  })
+  .catch((err) => {
+    res.status(404).json("not found");
+  });
+
+}
+
 module.exports = {
-  createNewUser,
+  createNewUser,getUserInformation
 };

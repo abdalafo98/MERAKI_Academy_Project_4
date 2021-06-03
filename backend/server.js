@@ -7,7 +7,7 @@ const app = express();
 //routers
 
 const roleRouter = require('./routers/routes/role')
-const createUserRouter = require("../backend/routers/routes/createUser")
+const userRouter = require("../backend/routers/routes/createUser")
 const loginRouter = require("./routers/routes/login")
 const productsRouter = require("./routers/routes/product")
 const  createNewCommentRouter = require("./routers/routes/createComment")
@@ -23,7 +23,7 @@ app.use(cors());
 //app routers
 
 app.use(roleRouter);
-app.use(createUserRouter);
+app.use('/user',userRouter);
 app.use(loginRouter);
 app.use('/products', productsRouter);
 app.use(createNewCommentRouter);
