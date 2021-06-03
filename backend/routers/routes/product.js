@@ -12,7 +12,7 @@ productsRouter.get("/type/:type",getProductByType)
 productsRouter.put("/id/:id",updateProductById)
 productsRouter.delete("/id/:id",deleteProductById)
 productsRouter.get("/name/:name",getProductByName)
-productsRouter.get("/:type/:price",getProductByPrice)
+productsRouter.get("/filter/:type/:price",getProductByPrice)
 
 
 

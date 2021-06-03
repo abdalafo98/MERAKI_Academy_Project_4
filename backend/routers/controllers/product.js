@@ -96,7 +96,7 @@ productModel.find({ $and: [{ type: type}, { price: { $lt: price } }] }).then((re
 }).catch((err)=>{
 res.send(err);
 })
-};   
+};
 
 
 module.exports = {
