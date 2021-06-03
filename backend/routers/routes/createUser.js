@@ -3,11 +3,11 @@ const express = require('express');
 
 const userRouter = express.Router();
 
-const {createNewUser,getUserInformation} = require("../controllers/createNewUser")
+const {createNewUser,getUserInformation,updateUserInformation} = require("../controllers/createNewUser")
 
 userRouter.post("/createUser",createNewUser);
 userRouter.get("/id/:id",getUserInformation);
-// userRouter.delete("/",createNewUser);
+userRouter.put("/:id",updateUserInformation);
 // userRouter.update("/",createNewUser);
 // userRouter.put("/",createNewUser);
 
