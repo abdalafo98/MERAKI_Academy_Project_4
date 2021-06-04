@@ -23,7 +23,7 @@ const createProduct = (req, res) => {
 const getProductById = (req,res)=>{
  
   const _id = req.params.id
-  productModel.findOne({_id}).then((result)=>{
+  productModel.findOne({_id}).populate("comment").populate("rating").exec().then((result)=>{
    
     res.status(200).json(result);
   }).catch((err) => {
@@ -35,7 +35,7 @@ const getProductById = (req,res)=>{
 const getProductByType = (req,res)=>{
  
   const type = req.params.type
-  productModel.find({type}).then((result)=>{
+  productModel.find({type}).populate("rating").exec().then((result)=>{
     if (result.length === 0 ){
       res.status(404).json("not found");
       return
