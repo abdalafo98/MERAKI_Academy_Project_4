@@ -1,7 +1,7 @@
 const favoritesModel = require("../../db/models/favorite");
 
 const addToFavorites  =async (req,res)=>{
-    const userId = req.params.id
+    const userId = req.token.userId
     const {productId} = req.body
     await favoritesModel.updateOne(
         { user: userId }, 
@@ -14,7 +14,16 @@ const addToFavorites  =async (req,res)=>{
         });
 }
 
+const getFavorites = (req,res)=>{
+    const userId = req.token.userId
+    favoritesModel.findOne({ user: userId }).populate("products").exec().then((result)=>{
+        res.status(200).json(result)
+    }).catch((err) => {
+        res.send(err);
+    });
+}
+
 
 module.exports = {
-    addToFavorites
+    addToFavorites,getFavorites
 }

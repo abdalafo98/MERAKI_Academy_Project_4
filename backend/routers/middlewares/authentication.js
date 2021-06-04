@@ -10,7 +10,6 @@ const authentication = (req, res, next) => {
     const parsedToken = jwt.verify(token, process.env.SECRET);
 
     req.token = parsedToken;
-    console.log(parsedToken);
     next();
   } catch (error) {
     res.status(403).json({ message: 'forbidden' });

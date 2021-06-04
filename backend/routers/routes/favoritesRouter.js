@@ -2,10 +2,11 @@ const express = require('express');
 
 const favoritesRouter = express.Router();
 
-const {addToFavorites}  = require("../controllers/favorites")
+const {addToFavorites,getFavorites}  = require("../controllers/favorites")
+const authentication = require("../../routers/middlewares/authentication")
 
-
-favoritesRouter.post("/:id",addToFavorites)
+favoritesRouter.post("/",authentication,addToFavorites)
+favoritesRouter.get("/",authentication,getFavorites)
 
 
 module.exports = favoritesRouter;
