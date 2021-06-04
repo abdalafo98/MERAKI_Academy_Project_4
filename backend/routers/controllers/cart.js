@@ -1,7 +1,7 @@
 const cartModel = require("../../db/models/cart");
 
 const addToCart  =async (req,res)=>{
-    const userId = req.params.id
+    const userId = req.token.userId
     const {productId} = req.body
     await cartModel.updateOne(
         { user: userId }, 
@@ -15,9 +15,9 @@ const addToCart  =async (req,res)=>{
 }
 
 const getProduct = (req,res)=>{
-    const userId = req.params.id
+    const userId = req.token.userId
     cartModel.findOne({ user: userId }).populate("products").exec().then((result)=>{
-        res.status(201).json(result)
+        res.status(200).json(result)
     }).catch((err) => {
         res.send(err);
     });
