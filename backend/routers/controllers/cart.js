@@ -20,7 +20,7 @@ const getProduct = (req, res) => {
     .populate("products")
     .exec()
     .then((result) => {
-      res.status(200).json(result);
+      res.status(200).json(result.products);
     })
     .catch((err) => {
       res.send(err);
