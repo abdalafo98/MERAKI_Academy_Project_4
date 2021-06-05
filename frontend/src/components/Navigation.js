@@ -7,6 +7,8 @@ export default function Navigation({token}) {
         <Link to="/">Home</Link>
       {!token ? <Link to="/register">Register</Link> : ""}
       {!token ? <Link to="/login">Login</Link> : ""}
+      {token ? <Link to="/signOut">Sign Out</Link> : ""}
+
     </div>
   );
 }
