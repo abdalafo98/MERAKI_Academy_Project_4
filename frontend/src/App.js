@@ -16,7 +16,7 @@ const App = () => {
     }, []);
 	
 	return <div className="App">
-<Navigation token = {token} />
+<Navigation token = {token} setToken={setToken} />
 <Route exact path="/register" component={Register}/>
 <Route exact path="/login" render={() => <Login setToken={setToken}  />} />
 
