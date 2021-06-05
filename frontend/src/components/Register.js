@@ -11,7 +11,7 @@ const [firstName, setFirstName] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [role, setRole] = useState("60bb9e1d3f6d965814f0739e")
+    const [role, setRole] = useState("60b78ed5f2ecb32d50219488")
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false)
     console.log({firstName,lastName,age,gender,country,phoneNumber,email,password,role});
