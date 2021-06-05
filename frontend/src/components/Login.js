@@ -1,24 +1,25 @@
 import { React, useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
-export default function Login() {
+export default function Login({ setToken }) {
+  const history = useHistory();
   const [email, setEmail] = useState("");
-const [password, setPassword] = useState("")  
-const [loginError, setLoginError] = useState(false);
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState(false);
 
   const chick = () => {
-      console.log({email,password})
-    axios.post("http://localhost:5000/login",{email,password}).then((result)=>{
-
-        if(!result.data.errors){
-            console.log("success ",result.data);
-        }else{
-            setLoginError(result.data.errors)
+    axios
+      .post("http://localhost:5000/login", { email, password })
+      .then((result) => {
+        if (result.status === 200) {
+          setToken(result.data.token);
+          history.push("/");
         }
-    }).catch(err=>{
-        console.log({email,password})
-        console.log(err)
-    })
+      })
+      .catch((err) => {
+        setLoginError(err.response.data.message);
+      });
   };
   return (
     <div className="containerDiv">
@@ -36,7 +37,7 @@ const [loginError, setLoginError] = useState(false);
         type="Password"
         placeholder="Password"
         onChange={(e) => {
-            setPassword(e.target.value);
+          setPassword(e.target.value);
         }}
       />
       <button className="registerBtn" onClick={chick}>

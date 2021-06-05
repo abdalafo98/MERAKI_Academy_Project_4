@@ -35,6 +35,7 @@ const login = async (req, res) => {
     });
     return;
   } catch (error) {
+    console.log(error)
     throw new Error(error.message);
   }
 };
