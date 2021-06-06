@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import Logo from "./../../src/logo.png";
 
 export default function Login({ setToken }) {
   const history = useHistory();
@@ -14,7 +15,7 @@ export default function Login({ setToken }) {
       .then((result) => {
         if (result.status === 200) {
           setToken(result.data.token);
-          localStorage.setItem("token",result.data.token)
+          localStorage.setItem("token", result.data.token);
           history.push("/");
         }
       })
@@ -23,28 +24,42 @@ export default function Login({ setToken }) {
       });
   };
   return (
-    <div className="containerDiv">
-      <div className="loginDiv"></div>
-      <input
-        className="registerInput"
-        type="email"
-        placeholder="Email"
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-      />
-      <input
-        className="registerInput"
-        type="Password"
-        placeholder="Password"
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-      />
-      <button className="registerBtn" onClick={chick}>
-        Register
-      </button>
-      <div>{loginError ? <p className="errCreated">{loginError}</p> : ""}</div>
+    <div className="containerDivLogin">
+      <img src={Logo} height={200}></img>
+      <div className="loginDiv">
+        <input
+          className="registerInput"
+          type="email"
+          placeholder="Email"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
+        <input
+          className="registerInput"
+          type="Password"
+          placeholder="Password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
+        <button className="registerBtn" onClick={chick}>
+          Login
+        </button>
+        <p>
+          Don't have account ?{" "}
+          <span
+            onClick={() => {
+              history.push("./register");
+            }}
+          >
+            Signup
+          </span>
+        </p>
+        <div>
+          {loginError ? <p className="errCreated">{loginError}</p> : ""}
+        </div>
+      </div>
     </div>
   );
 }

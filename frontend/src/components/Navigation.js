@@ -6,12 +6,20 @@ export default function Navigation({ token, setToken }) {
     setToken("");
     localStorage.clear();
   };
+
+  const ssds = () => {
+    return;
+  };
   return (
     <div className="Navigation">
-      <Link to="/">Home</Link>
-      {!token ? <Link to="/login">Login</Link> : ""}
-      {!token ? <Link to="/register">Register</Link> : ""}
-      {token ? <button onClick={signOut}>Sign Out</button> : ""}
+      <ul>
+        <li>
+          {" "}
+          <Link to="/">Home</Link>
+        </li>
+        <li> {!token ? <Link to="/login">Login</Link> : ""}</li>
+        <li> {token ? <a onClick={signOut}>Sign Out</a> : ""}</li>
+      </ul>
     </div>
   );
 }
