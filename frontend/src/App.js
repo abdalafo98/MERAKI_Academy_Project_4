@@ -7,6 +7,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Category from "./components/category";
 import Product from "./components/Product"
+import Home from "./components/Home"
 import "./App.css";
 
 
@@ -24,7 +25,7 @@ const App = () => {
   return (
     <div className="App">
       <Navigation token={token} setToken={setToken} />
-      <Route exact path="/" component={Register} />
+      <Route exact path="/" component={Home} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" render={() => <Login setToken={setToken} />} />
       <Route exact path="/:type" render={() => <Category setToken={token} />} />
