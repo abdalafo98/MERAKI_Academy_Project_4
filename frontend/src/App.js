@@ -3,6 +3,9 @@ import { Switch, Route, Link, useParams, useHistory } from 'react-router-dom';
 import Navigation from "./components/Navigation"
 import Register from './components/Register';
 import Login from "./components/Login"
+import Home from "./components/Home"
+
+
 import './App.css';
 
 
@@ -17,7 +20,7 @@ const App = () => {
 	
 	return <div className="App">
 <Navigation token = {token} setToken={setToken} />
-<Route exact path="/" component={Register}/>
+<Route exact path="/" component={Home}/>
 <Route exact path="/register" component={Register}/>
 <Route exact path="/login" render={() => <Login setToken={setToken}  />} />
 
