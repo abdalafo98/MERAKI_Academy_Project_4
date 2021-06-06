@@ -1,10 +1,10 @@
 import { React, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-
+import Logo from "./../../src/logo.png";
 
 export default function Register() {
-    const history = useHistory();
+  const history = useHistory();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -42,7 +42,7 @@ export default function Register() {
       })
       .then((result) => {
         if (!result.data.errors) {
-            history.push("/login");
+          history.push("/login");
         } else {
           setError(true);
           console.log(result.data.errors);
@@ -55,6 +55,9 @@ export default function Register() {
 
   return (
     <div className="containerDiv">
+      {/* <p>Register</p> */}
+      <img src={Logo} height={170}></img>
+
       <div className="registerDiv">
         <input
           className="registerInput"
@@ -80,14 +83,23 @@ export default function Register() {
             setAge(e.target.value);
           }}
         />
-        <input
+        <select
+          onChange={(e) => {
+            setGender(e.target.value);
+          }}
+        >
+          <option>select a gender...</option>
+          <option value="male">male</option>
+          <option value="female">female</option>
+        </select>
+        {/* <input
           className="registerInput"
           type="text"
           placeholder="Gender"
           onChange={(e) => {
             setGender(e.target.value);
           }}
-        />
+        /> */}
         <input
           className="registerInput"
           type="text"
@@ -123,7 +135,16 @@ export default function Register() {
         <button className="registerBtn" onClick={rigister}>
           Register
         </button>
-
+        <p>
+          Do you have account ?
+          <span
+            onClick={() => {
+              history.push("./login");
+            }}
+          >
+            Login
+          </span>
+        </p>
         {error ? (
           <div className="error">
             Error happened while register, please try again

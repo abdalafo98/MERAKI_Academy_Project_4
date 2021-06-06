@@ -5,6 +5,7 @@ import axios from "axios";
 export default function Category({ token }) {
   const [result, setResult] = useState([]);
   const { type } = useParams();
+  const history = useHistory();
   useEffect(() => {
     axios
       .get(`http://localhost:5000/products/type/${type}`)
@@ -19,16 +20,21 @@ export default function Category({ token }) {
 
   const products = result.map((element, i) => {
     return (
-      <div className="product">
-        <div>
+      <div
+        className="card"
+        onClick={() => {
+          history.push(`product/${element._id}`);
+        }}
+      >
+        <div className="card-image">
           <img src={element.img} />
         </div>
 
         <div className="rating"></div>
 
-        <div>
-          <p>{element.name}</p>
-          <p>{element.price}</p>
+        <div className="card-description">
+          <p className="nameProduct">Name:{element.name}</p>
+          <p className="PriceProduct">Price:{element.price}</p>
         </div>
       </div>
     );
