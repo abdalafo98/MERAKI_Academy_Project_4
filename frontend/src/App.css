@@ -49,3 +49,33 @@
   height: 40px;
   background-color: brown;
 }
+.img{
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  width: 40%;
+}
+.productHolder{
+  display: flex;
+  flex-direction: row;
+  border: 2px solid purple;
+  gap: 10%;
+}
+.productDes{
+  border: 2px solid blue;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.desHeader{
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+  border: brown;
+}
+.desFooter{
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+  border: white;
+}
