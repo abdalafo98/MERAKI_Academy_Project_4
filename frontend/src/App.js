@@ -28,8 +28,8 @@ const App = () => {
       <Route exact path="/" component={Home} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" render={() => <Login setToken={setToken} />} />
-      <Route exact path="/:type" render={() => <Category setToken={token} />} />
-      <Route exact path ="/product/:id" component={Product}/>
+      <Route exact path="/:type" render={() => <Category token={token} />} />
+	  <Route exact path ="/product/:id" render={() => <Product token={token} />}    />
     </div>
   );
 };
