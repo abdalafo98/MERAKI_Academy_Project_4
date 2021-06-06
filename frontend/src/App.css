@@ -6,6 +6,7 @@
 
 /* We are using this for all pages main container */
 .containerDiv{
+
   display: flex;
   flex-direction: column;
   background-color: aquamarine;
@@ -27,6 +28,7 @@
 
 .registerDiv{
   
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -34,21 +36,34 @@
   height: 100%;
   width: 50%;
   
+
 }
 
-.registerInput{
+.registerInput {
   width: 80%;
   height: 20px;
-  
 }
 
-.registerBtn{
-  
+
+.registerBtn {
   width: 80%;
   height: 40px;
 }
 
-.error{
+.category {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 150px 150px;
+}
+
+.product {
+  margin-bottom: 50px;
+}
+.product img {
+  width: 20%;
+  height: 200px;
+}
+.error {
   width: 80%;
   height: 40px;
   background-color: brown;
@@ -84,3 +99,33 @@ height: 70%;
 }
 
 /* ////////////////////////////////////////////////////////////////////////////////////// */
+.img{
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  width: 40%;
+}
+.productHolder{
+  display: flex;
+  flex-direction: row;
+  border: 2px solid purple;
+  gap: 10%;
+}
+.productDes{
+  border: 2px solid blue;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.desHeader{
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+  border: brown;
+}
+.desFooter{
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+  border: white;
+}
