@@ -3,6 +3,7 @@ import { Switch, Route, Link, useParams, useHistory } from 'react-router-dom';
 import Navigation from "./components/Navigation"
 import Register from './components/Register';
 import Login from "./components/Login"
+import Product from "./components/Product"
 import './App.css';
 
 
@@ -20,6 +21,7 @@ const App = () => {
 <Route exact path="/" component={Register}/>
 <Route exact path="/register" component={Register}/>
 <Route exact path="/login" render={() => <Login setToken={setToken}  />} />
+<Route exact path ="/product/:id" component={Product}/>
 
 	</div>;
 };
