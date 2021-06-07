@@ -48,7 +48,7 @@ export default function Home() {
   // end of slider show
 
   return (
-    <div className="containerDiv">
+    <div>
       <div className="homeHeader">
         <div className="sectionNav" onClick={moveToMen}>
           Men
