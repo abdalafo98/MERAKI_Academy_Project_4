@@ -16,17 +16,6 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("60b78ed5f2ecb32d50219488");
   const [error, setError] = useState(false);
-  console.log({
-    firstName,
-    lastName,
-    age,
-    gender,
-    country,
-    phoneNumber,
-    email,
-    password,
-    role,
-  });
   const rigister = () => {
     axios
       .post("http://localhost:5000/user/createUser", {

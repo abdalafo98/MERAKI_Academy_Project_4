@@ -2,40 +2,77 @@ import { React, useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 
-export default function Product({token}) {
+export default function Product({ token }) {
   const { id } = useParams();
   const [result, setResult] = useState([]);
   const [info, setInfo] = useState([]);
   const [comment, setComment] = useState("");
   const [message, setMessage] = useState("");
-  const addComment = ()=>{
-    axios.post(`http://localhost:5000/products/${id}/comments`,{
-      comment
-    },{
-    headers:{
-        authorization: "Bearer "+ token
-    }
-}).then(result=>{
-  setInfo(Math.random())
-}).catch((err)=>{
-  if (err){
-    setMessage("you need to login first")
-  }
-})
+  const idProduct = result._id;
+  const thisToken = localStorage.getItem("token");
+  const addComment = () => {
+    axios
+      .post(
+        `http://localhost:5000/products/${id}/comments`,
+        {
+          comment,
+        },
+        {
+          headers: {
+            authorization: "Bearer " + token,
+          },
+        }
+      )
+      .then((result) => {
+        setInfo(Math.random());
+      })
+      .catch((err) => {
+        if (err) {
+          setMessage("you need to login first");
+        }
+      });
   };
-  const addFavorite =()=>{
-    axios.post(`http://localhost:5000/favorites`,{
-      productId: result._id
-    },{
-      headers:{
-        authorization:"Bearer "+ token
-      }
-    }).then(result=>{
+  const addFavorite = () => {
+    axios
+      .post(
+        `http://localhost:5000/favorites`,
+        {
+          productId: result._id,
+        },
+        {
+          headers: {
+            authorization: "Bearer " + token,
+          },
+        }
+      )
+      .then((result) => {
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const deleteFav = () => {
+    axios
+      .put(
+        "http://localhost:5000/favorites",
 
-    }).catch((err)=>{
-      console.log(err);
-    })
-  }
+        {
+          productId: idProduct,
+        },
+        {
+          headers: {
+            authorization: "Bearer " + thisToken,
+          },
+        }
+      )
+      .then((result) => {
+       
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -69,6 +106,7 @@ export default function Product({token}) {
           <div className="productDes">
             <div className="desHeader">
               <button onClick={addFavorite}>Add to favorite</button>
+              <button onClick={deleteFav}>delete from favorite</button>
             </div>
             <p>Name Product :{result.name}</p>
             Description :{result.description}
@@ -82,11 +120,14 @@ export default function Product({token}) {
           <section>{arr}</section>
         </div>
         <div className="add-comment">
-          <input type="text" onChange={(e)=>{
-            setComment(e.target.value)
-          }}/>
-          <button onClick={addComment} >add comment</button>
-          {message ? <p >{message}</p> : ""}
+          <input
+            type="text"
+            onChange={(e) => {
+              setComment(e.target.value);
+            }}
+          />
+          <button onClick={addComment}>add comment</button>
+          {message ? <p>{message}</p> : ""}
         </div>
       </div>
     </>
