@@ -9,9 +9,8 @@ export default function Navigation({ token, setToken }) {
   };
 
   return (
-    <div className="Navigation">
-      <header>
-        {" "}
+    <div className="navBar">
+      <div className="logo">
         <h1
           class="logo"
           onClick={() => {
@@ -19,21 +18,58 @@ export default function Navigation({ token, setToken }) {
           }}
         >
           THE <span> MOUNTAIN</span>
-        </h1>
-        <input type="text" placeholder="Search.."></input>
-        <nav>
-          <ul className="nav">
-            <li>
-              {" "}
-              <Link to="/">Home</Link>
-            </li>
-            <li> {token ? <Link to="/cart">cart</Link> : ""}</li>
-            <li> {token ? <Link to="/favorites">favorites</Link> : ""}</li>
-            <li> {token ? <a onClick={signOut}>Sign Out</a> : ""}</li>{" "}
-            <li> {!token ? <Link to="/login">Login</Link> : ""}</li>
-          </ul>
-        </nav>
-      </header>
+        </h1>{" "}
+      </div>
+      <nav>
+        <ul>
+          <li>
+            {" "}
+            <Link className="link" to="/">
+              Home
+            </Link>
+          </li>
+          <li>
+            {" "}
+            {token ? (
+              <Link className="link" to="/cart">
+                cart
+              </Link>
+            ) : (
+              ""
+            )}
+          </li>
+          <li>
+            {" "}
+            {token ? (
+              <Link className="link" to="/favorites">
+                favorites
+              </Link>
+            ) : (
+              ""
+            )}
+          </li>
+          <li>
+            {" "}
+            {token ? (
+              <a className="link" onClick={signOut}>
+                Sign Out
+              </a>
+            ) : (
+              ""
+            )}
+          </li>{" "}
+          <li>
+            {" "}
+            {!token ? (
+              <Link className="link" to="/login">
+                Login
+              </Link>
+            ) : (
+              ""
+            )}
+          </li>{" "}
+        </ul>
+      </nav>
     </div>
   );
 }

@@ -2,41 +2,53 @@ import { React, useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 
-export default function Product({token}) {
-  console.log(token)
+export default function Product({ token }) {
+  console.log(token);
   const { id } = useParams();
   const [result, setResult] = useState([]);
   const [info, setInfo] = useState([]);
   const [comment, setComment] = useState("");
   const [message, setMessage] = useState("");
-  const addComment = ()=>{
-    axios.post(`http://localhost:5000/products/${id}/comments`,{
-      comment
-    },{
-    headers:{
-        authorization: "Bearer "+ token
-    }
-}).then(result=>{
-  setInfo(Math.random())
-}).catch((err)=>{
-  if (err){
-    setMessage("you need to login first")
-  }
-})
+  const addComment = () => {
+    axios
+      .post(
+        `http://localhost:5000/products/${id}/comments`,
+        {
+          comment,
+        },
+        {
+          headers: {
+            authorization: "Bearer " + token,
+          },
+        }
+      )
+      .then((result) => {
+        setInfo(Math.random());
+      })
+      .catch((err) => {
+        if (err) {
+          setMessage("you need to login first");
+        }
+      });
   };
-  const addFavorite =()=>{
-    axios.post(`http://localhost:5000/favorites`,{
-      productId: result._id
-    },{
-      headers:{
-        authorization:"Bearer "+ token.token
-      }
-    }).then(result=>{
-
-    }).catch((err)=>{
-      console.log(err);
-    })
-  }
+  const addFavorite = () => {
+    axios
+      .post(
+        `http://localhost:5000/favorites`,
+        {
+          productId: result._id,
+        },
+        {
+          headers: {
+            authorization: "Bearer " + token.token,
+          },
+        }
+      )
+      .then((result) => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -83,11 +95,14 @@ export default function Product({token}) {
           <section>{arr}</section>
         </div>
         <div className="add-comment">
-          <input type="text" onChange={(e)=>{
-            setComment(e.target.value)
-          }}/>
-          <button onClick={addComment} >add comment</button>
-          {message ? <p >{message}</p> : ""}
+          <input
+            type="text"
+            onChange={(e) => {
+              setComment(e.target.value);
+            }}
+          />
+          <button onClick={addComment}>add comment</button>
+          {message ? <p>{message}</p> : ""}
         </div>
       </div>
     </>
