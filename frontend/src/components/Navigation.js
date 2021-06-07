@@ -24,7 +24,7 @@ export default function Navigation({ token, setToken }) {
       <div className="navBar">
         <div className="logo">
           <h1
-            class="logo"
+            className="logo"
             onClick={() => {
               history.push("/");
             }}
@@ -42,7 +42,7 @@ export default function Navigation({ token, setToken }) {
             }}
           ></input>
           <button className="searchBtn" onClick={searchBtn}>
-            Ok
+            Search
           </button>
         </div>
       </div>

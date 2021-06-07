@@ -58,26 +58,30 @@ export default function Cart({ token }) {
       <h2>My Cart</h2>
       {
         <table>
-          <tr>
-            <th id="pr">Products</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-          </tr>
-          {cartUser}
+          <tbody>
+            <tr>
+              <th id="pr">Products</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+            </tr>
+            {cartUser}
+          </tbody>
         </table>
       }
       <div className="total-price">
         <table>
-          <tr>
-            <td>Total</td>
-            <td>{totalPrice} JD</td>
-          </tr>
-          <tr>
-            <td>Quantity</td>
-            <td>*{quantity}</td>
-          </tr>
-          <button>Checkout</button>
+          <tbody>
+            <tr>
+              <td>Total</td>
+              <td>{totalPrice} JD</td>
+            </tr>
+            <tr>
+              <td>Quantity</td>
+              <td>*{quantity}</td>
+            </tr>
+          </tbody>
         </table>
+        <button className="btn-checkout">Checkout</button>
       </div>
     </div>
   );
