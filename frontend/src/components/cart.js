@@ -3,6 +3,9 @@ import { Switch, Route, Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 export default function Cart({ token }) {
   const [result, setResult] = useState([]);
+  const [price, setPrice] = useState(0);
+  const [quantity, setQuantity] = useState(0);
+  const [totalprice, setTotalprice] = useState(0);
   let thisToken = localStorage.getItem("token");
   const history = useHistory();
   useEffect(() => {
@@ -19,27 +22,63 @@ export default function Cart({ token }) {
         console.log(err);
       });
   }, []);
-  const products = result.map((element, i) => {
+  const cartUser = result.map((element, i) => {
+    console.log(price);
     return (
-      <div
-        className="card"
-        onClick={() => {
-          history.push(`product/${element._id}`);
-        }}
-      >
-        <div className="card-image">
-          <img src={element.img} />
-        </div>
+      <tr>
+        <td>
+          <div className="cart-info">
+            <img src={element.img} />
+            <div>
+              <p>{element.name}</p>
+              <small> price: {element.price}JOD</small>
+            </div>
+          </div>
+        </td>
+        <td>
+          <input
+            type="number"
+            defaultValue="1"
+            id={i + 1}
+            onChange={(e) => {
+              setQuantity(e.target.value);
+            }}
+          />
+        </td>
 
-        <div className="rating"></div>
-
-        <div className="card-description">
-          <p className="nameProduct">Name:{element.name}</p>
-          <p className="PriceProduct">Price:{element.price}</p>
-        </div>
-      </div>
+        <td id={i + 1}>{element.price * quantity}JOD</td>
+      </tr>
     );
   });
 
-  return <div className="category">{products}</div>;
+  const totalPrice = result.reduce((acc, element) => acc + element.price, 0);
+
+  return (
+    <div className="small-container cart-page">
+      <h2>My Cart</h2>
+      {
+        <table>
+          <tr>
+            <th id="pr">Products</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+          </tr>
+          {cartUser}
+        </table>
+      }
+      <div className="total-price">
+        <table>
+          <tr>
+            <td>Total</td>
+            <td>{totalPrice}JOD</td>
+          </tr>
+          <tr>
+            <td>Quantity</td>
+            <td>*{quantity}</td>
+          </tr>
+          <button>Checkout</button>
+        </table>
+      </div>
+    </div>
+  );
 }
