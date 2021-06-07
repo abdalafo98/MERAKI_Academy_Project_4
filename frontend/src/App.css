@@ -435,7 +435,7 @@ div.card:hover {
   width: 100%;
 }
 
-/* Buttons */
+/* Slider Buttons */
 
 .slideshowDots {
   text-align: center;
@@ -458,3 +458,21 @@ div.card:hover {
 }
 
 /*////////////////////////////////////////////////////////////////////////////////////// */
+
+/* Search */
+.searchS{
+  display: flex;
+  border: 2px solid black;
+  flex-direction: row;
+  width: 170px;
+  justify-content: center;
+}
+.searchBtn{
+ width: 10%;
+ height: 100%;
+ justify-self: center;
+}
+.searchInput{
+  width: 90%;
+  height: 100%;
+}
