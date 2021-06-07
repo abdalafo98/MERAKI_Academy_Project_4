@@ -111,10 +111,11 @@ const getProductByName = (req, res) => {
   productModel
     .find({ name })
     .then((result) => {
+     
       if (result.length === 0) {
         res.status(404).json("not found");
         return;
-      }
+      }else
       res.status(200).json(result);
     })
     .catch((err) => {

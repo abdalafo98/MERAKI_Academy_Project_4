@@ -1,26 +1,42 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Link, Route, useHistory } from "react-router-dom";
 import Cart from "./../../src/cart.png";
 export default function Navigation({ token, setToken }) {
+  const [searched, setSearched] = useState("")
   const history = useHistory();
   const signOut = () => {
     setToken("");
     localStorage.clear();
   };
 
+  const searchBtn=()=>{
+
+    axios.get(`http://localhost:5000/products/name/${searched}`)
+    .then((result)=>{
+      console.log(result.data);
+      history.push(`/product/${result.data[0]._id}`)
+    })
+    .catch((err)=>{
+      
+    })
+
+
+  }
+
+
   return (
     <div className="Navigation">
       <header>
         {" "}
         <h1
-          class="logo"
+          className="logo"
           onClick={() => {
             history.push("/");
           }}
         >
           THE <span> MOUNTAIN</span>
         </h1>
-        <input type="text" placeholder="Search.."></input>
         <nav>
           <ul className="nav">
             <li>
@@ -34,6 +50,11 @@ export default function Navigation({ token, setToken }) {
           </ul>
         </nav>
       </header>
+       <div className="searchS">
+         <input className="searchInput" type="text" placeholder="Search.." onChange={(e)=>{
+            setSearched(e.target.value)
+          }}>
+         </input><button className="searchBtn" onClick={searchBtn}>Ok</button></div>
     </div>
   );
 }
