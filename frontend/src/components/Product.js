@@ -2,23 +2,22 @@ import { React, useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 
-export default function Product(token) {
+export default function Product({token}) {
+  console.log(token)
   const { id } = useParams();
   const [result, setResult] = useState([]);
   const [info, setInfo] = useState([]);
   const [comment, setComment] = useState("");
   const [message, setMessage] = useState("");
   const addComment = ()=>{
-    console.log(comment);
-    console.log(token);
     axios.post(`http://localhost:5000/products/${id}/comments`,{
       comment
     },{
     headers:{
-        authorization: "Bearer "+ token.token
+        authorization: "Bearer "+ token
     }
 }).then(result=>{
-  setInfo("added comment ")
+  setInfo(Math.random())
 }).catch((err)=>{
   if (err){
     setMessage("you need to login first")
