@@ -11,6 +11,6 @@ const authentication = require("../../routers/middlewares/authentication");
 
 favoritesRouter.post("/", authentication, addToFavorites);
 favoritesRouter.get("/", authentication, getFavorites);
-favoritesRouter.delete("/", authentication, deleteProduct);
+favoritesRouter.put("/", authentication, deleteProduct);
 
 module.exports = favoritesRouter;

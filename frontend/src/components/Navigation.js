@@ -14,7 +14,7 @@ export default function Navigation({ token, setToken }) {
 
     axios.get(`http://localhost:5000/products/name/${searched}`)
     .then((result)=>{
-      console.log(result.data);
+      
       history.push(`/product/${result.data[0]._id}`)
     })
     .catch((err)=>{
