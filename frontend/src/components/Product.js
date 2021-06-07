@@ -2,10 +2,29 @@ import { React, useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 
-export default function Product() {
+export default function Product(token) {
   const { id } = useParams();
   const [result, setResult] = useState([]);
   const [info, setInfo] = useState([]);
+  const [comment, setComment] = useState("");
+  const [message, setMessage] = useState("");
+  const addComment = ()=>{
+    console.log(comment);
+    console.log(token);
+    axios.post(`http://localhost:5000/products/${id}/comments`,{
+      comment
+    },{
+    headers:{
+        authorization: "Bearer "+ token.token
+    }
+}).then(result=>{
+  setInfo("added comment ")
+}).catch((err)=>{
+  if (err){
+    setMessage("you need to login first")
+  }
+})
+  };
   useEffect(() => {
     axios
       .get(`http://localhost:5000/products/id/${id}`)
@@ -15,7 +34,7 @@ export default function Product() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [info]);
   let arr = "";
   if (result.comment) {
     arr = result.comment.map((element, i) => {
@@ -47,8 +66,15 @@ export default function Product() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="all-comment">
           <section>{arr}</section>
+        </div>
+        <div className="add-comment">
+          <input type="text" onChange={(e)=>{
+            setComment(e.target.value)
+          }}/>
+          <button onClick={addComment} >add comment</button>
+          {message ? <p >{message}</p> : ""}
         </div>
       </div>
     </>
