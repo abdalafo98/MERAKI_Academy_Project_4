@@ -15,32 +15,29 @@ export default function Home() {
   const moveToWomen = () => {
     history.push("/women");
   };
- 
 
   const delay = 2500;
   const timeoutRef = useRef(null);
-  
+
   const [index, setIndex] = useState(0);
-  
+
   function resetTimeout() {
-      if (timeoutRef.current) {
-          clearTimeout(timeoutRef.current);
-        }
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
     }
-    
-    useEffect(() => {
+  }
 
-        axios
-          .get("http://localhost:5000/slider")
-          .then((result) => {
-            
-              setPics(result.data.picsAddress)
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/slider")
+      .then((result) => {
+        setPics(result.data.picsAddress);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-        resetTimeout();
+    resetTimeout();
     timeoutRef.current = setTimeout(
       () =>
         setIndex((prevIndex) =>
@@ -74,28 +71,32 @@ export default function Home() {
           style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
         >
           <div style={{ width: "100%", height: "300px" }}>
-            {pics?pics.map((backgroundColor, index) => (
-              <img
-                className="slide"
-                key={index}
-                src={backgroundColor}
-                style={{ width: "100%", height: "100%" }}
-              ></img>
-            )):[]}
+            {pics
+              ? pics.map((backgroundColor, index) => (
+                  <img
+                    className="slide"
+                    key={index}
+                    src={backgroundColor}
+                    style={{ width: "100%", height: "100%" }}
+                  ></img>
+                ))
+              : []}
           </div>
         </div>
         {/* this for slider show  */}
         <div className="slideshowDots">
-          {pics?pics.map((_, idx) => (
-            <div
-              key={idx}
-              className="slideshowDot"
-              className={`slideshowDot${index === idx ? " active" : ""}`}
-              onClick={() => {
-                setIndex(idx);
-              }}
-            ></div>
-          )):[]}
+          {pics
+            ? pics.map((_, idx) => (
+                <div
+                  key={idx}
+                  className="slideshowDot"
+                  className={`slideshowDot${index === idx ? " active" : ""}`}
+                  onClick={() => {
+                    setIndex(idx);
+                  }}
+                ></div>
+              ))
+            : []}
         </div>
         {/* end of slider show */}
       </div>
