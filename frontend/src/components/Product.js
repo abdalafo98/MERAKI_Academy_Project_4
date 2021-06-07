@@ -45,9 +45,7 @@ export default function Product({ token }) {
           },
         }
       )
-      .then((result) => {
-        
-      })
+      .then((result) => {})
       .catch((err) => {
         console.log(err);
       });
@@ -66,9 +64,26 @@ export default function Product({ token }) {
           },
         }
       )
-      .then((result) => {
-       
-      })
+      .then((result) => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const addCart = () => {
+    axios
+      .post(
+        `http://localhost:5000/cart`,
+        {
+          productId: result._id,
+        },
+        {
+          headers: {
+            authorization: "Bearer " + token,
+          },
+        }
+      )
+      .then((result) => {})
       .catch((err) => {
         console.log(err);
       });
@@ -112,7 +127,7 @@ export default function Product({ token }) {
             Description :{result.description}
             <div className="desFooter">
               {" "}
-              <button>Add To cart</button>
+              <button onClick={addCart}>Add To cart</button>
             </div>
           </div>
         </div>

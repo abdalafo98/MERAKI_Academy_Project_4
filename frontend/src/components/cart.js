@@ -31,7 +31,7 @@ export default function Cart({ token }) {
             <img src={element.img} />
             <div>
               <p>{element.name}</p>
-              <small> price: {element.price}JOD</small>
+              <small> price: {element.price} JD</small>
             </div>
           </div>
         </td>
@@ -46,7 +46,7 @@ export default function Cart({ token }) {
           />
         </td>
 
-        <td id={i + 1}>{element.price * quantity}JOD</td>
+        <td id={i + 1}>{element.price * quantity} JD</td>
       </tr>
     );
   });
@@ -70,7 +70,7 @@ export default function Cart({ token }) {
         <table>
           <tr>
             <td>Total</td>
-            <td>{totalPrice}JOD</td>
+            <td>{totalPrice} JD</td>
           </tr>
           <tr>
             <td>Quantity</td>
