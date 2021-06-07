@@ -3,7 +3,6 @@ import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 
 export default function Product({token}) {
-  console.log(token)
   const { id } = useParams();
   const [result, setResult] = useState([]);
   const [info, setInfo] = useState([]);
@@ -29,7 +28,7 @@ export default function Product({token}) {
       productId: result._id
     },{
       headers:{
-        authorization:"Bearer "+ token.token
+        authorization:"Bearer "+ token
       }
     }).then(result=>{
 
