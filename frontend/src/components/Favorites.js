@@ -6,23 +6,43 @@ import axios from "axios";
 export default function Favorites({token}) {
     const [result, setResult] = useState([]);
     let thisToken  = localStorage.getItem("token")
+    const history = useHistory();
+
     useEffect(() => {
         axios.get("http://localhost:5000/favorites",{
             headers:{
                 Authorization: "Bearer "+ thisToken
             }
         }).then((response)=>{
-            console.log(response)
+            
             setResult(response.data)
         }).catch((err)=>{
             console.log(err)
         })
-        console.log(result)
+        
       }, []);
-     
-    return (
-        <div>
-            
-        </div>
-    )
+      const products = result.map((element, i) => {
+        return (
+          <div
+            className="card"
+            onClick={() => {
+              history.push(`product/${element._id}`);
+            }}
+          >
+            <div className="card-image">
+              <img src={element.img} />
+            </div>
+    
+            <div className="rating"></div>
+    
+            <div className="card-description">
+              <p className="nameProduct">Name:{element.name}</p>
+              <p className="PriceProduct">Price:{element.price}</p>
+            </div>
+          </div>
+        );
+      });
+    
+      return <div className="category">{products}</div>;
+      
 }

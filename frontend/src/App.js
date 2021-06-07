@@ -7,6 +7,7 @@ import Category from "./components/category";
 import Product from "./components/Product";
 import Home from "./components/Home";
 import Favorites from "./components/Favorites"
+import Cart from "./components/cart"
 import "./App.css";
 
 const App = () => {
@@ -26,7 +27,7 @@ const App = () => {
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" render={() => <Login setToken={setToken} />} />
       <Route exact path="/favorites" render={() => <Favorites token={token} />} />
-      <Route exact path="/cart" render={() => <Login setToken={setToken} />} />
+      <Route exact path="/cart" render={() => <Cart token={token} />} />
       <Route exact path="/:type" render={() => <Category token={token} />} />
       <Route
         exact

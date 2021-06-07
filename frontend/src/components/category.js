@@ -11,7 +11,6 @@ export default function Category({ token }) {
       .get(`http://localhost:5000/products/type/${type}`)
       .then((result) => {
         setResult(result.data);
-        console.log(result.data);
       })
       .catch((err) => {
         console.log(err);
