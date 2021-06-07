@@ -24,6 +24,20 @@ export default function Product({token}) {
   }
 })
   };
+  const addFavorite =()=>{
+    axios.post(`http://localhost:5000/favorites`,{
+      productId: result._id
+    },{
+      headers:{
+        authorization:"Bearer "+ token.token
+      }
+    }).then(result=>{
+
+    }).catch((err)=>{
+      console.log(err);
+    })
+  }
+
   useEffect(() => {
     axios
       .get(`http://localhost:5000/products/id/${id}`)
@@ -55,7 +69,7 @@ export default function Product({token}) {
           </div>
           <div className="productDes">
             <div className="desHeader">
-              <button>Add to favorite</button>
+              <button onClick={addFavorite}>Add to favorite</button>
             </div>
             <p>Name Product :{result.name}</p>
             Description :{result.description}
