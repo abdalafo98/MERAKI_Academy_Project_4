@@ -8,6 +8,7 @@ export default function Product({ token }) {
   const [info, setInfo] = useState([]);
   const [comment, setComment] = useState("");
   const [message, setMessage] = useState("");
+  const [inFav, setInFav] = useState(false)
   const idProduct = result._id;
   const thisToken = localStorage.getItem("token");
   const addComment = () => {
@@ -91,17 +92,34 @@ export default function Product({ token }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/products/id/${id}`)
+      .get(`http://localhost:5000/products/id/${id}`,)
       .then((response) => {
         setResult(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
+      axios.get(`http://localhost:5000/favorites/${id}`,{
+        headers:{
+            Authorization: "Bearer "+ thisToken
+        }
+    }).then((result)=>{
+      console.log(result.data)
+      if(result.data === "found"){
+        setInFav(true)
+        setInfo(Math.random());
+      }else{
+        setInFav(false)
+        setInfo(Math.random());
+      }
+    }).catch((err)=>{
+      console.log(err)
+    })
   }, [info]);
-  let arr = "";
+
+  let allComment = "";
   if (result.comment) {
-    arr = result.comment.map((element, i) => {
+    allComment = result.comment.map((element, i) => {
       return (
         <div className="comment">
           <p>{element.commenter.firstName}</p>
@@ -120,8 +138,9 @@ export default function Product({ token }) {
           </div>
           <div className="productDes">
             <div className="desHeader">
-              <button onClick={addFavorite}>Add to favorite</button>
-              <button onClick={deleteFav}>delete from favorite</button>
+            { !inFav ? <button onClick={addFavorite}>Add to favorite</button> : ""}
+            { inFav ? <button onClick={deleteFav}>delete from favorite</button> : ""}
+              
             </div>
             <p>Name Product :{result.name}</p>
             Description :{result.description}
@@ -132,7 +151,7 @@ export default function Product({ token }) {
           </div>
         </div>
         <div className="all-comment">
-          <section>{arr}</section>
+          <section>{allComment}</section>
         </div>
         <div className="add-comment">
           <input
