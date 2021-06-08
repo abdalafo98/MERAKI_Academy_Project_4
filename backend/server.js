@@ -29,7 +29,7 @@ app.use("/user", userRouter);
 app.use(loginRouter);
 app.use("/products", productsRouter);
 app.use(createNewCommentRouter);
-app.use(createRatingRouter);
+app.use("/rating",createRatingRouter);
 app.use("/favorites", favoritesRouter);
 app.use("/cart", cartRouter);
 app.use("/slider", sliderRouter);
