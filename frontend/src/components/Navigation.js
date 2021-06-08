@@ -7,6 +7,8 @@ export default function Navigation({ token, setToken }) {
   const history = useHistory();
   const signOut = () => {
     setToken("");
+    history.push(`/login`);
+
     localStorage.clear();
   };
 
@@ -15,6 +17,7 @@ export default function Navigation({ token, setToken }) {
       .get(`http://localhost:5000/products/name/${searched}`)
       .then((result) => {
         history.push(`/product/${result.data[0]._id}`);
+        window.location.reload();
       })
       .catch((err) => {});
   };
@@ -24,7 +27,7 @@ export default function Navigation({ token, setToken }) {
       <div className="navBar">
         <div className="logo">
           <h1
-            className="logo"
+            class="logo"
             onClick={() => {
               history.push("/");
             }}
