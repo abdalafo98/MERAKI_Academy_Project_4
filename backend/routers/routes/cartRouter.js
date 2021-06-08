@@ -7,6 +7,6 @@ const authentication = require("../../routers/middlewares/authentication");
 
 cartRouter.post("/", authentication, addToCart);
 cartRouter.get("/", authentication, getProduct);
-cartRouter.delete("/", authentication, deleteProduct);
+cartRouter.put("/", authentication, deleteProduct);
 
 module.exports = cartRouter;
