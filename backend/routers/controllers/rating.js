@@ -20,7 +20,20 @@ const createRating = (req, res) => {
       res.send(err);
     });
 };
+const getRating = (req,res)=>{
+  const id = req.params.id;
+  productModel.findOne({ _id: id}).populate("rating").then((result)=>{
+    const arrayOfRating = result.rating
+    const totalRating = arrayOfRating.reduce((accumulator,element,i)=>{
+      return accumulator+element.rating
+    },0)
+    const averageRating= totalRating/ arrayOfRating.length;
+    res.status(200).json(averageRating)
+  }).catch((err)=>{
+    res.send(err)
+  });
+};
 
 module.exports = {
-  createRating,
+  createRating,getRating
 };
