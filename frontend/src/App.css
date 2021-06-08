@@ -589,6 +589,11 @@ div.card:hover {
   background-color: #6a0dad;
 }
 
+.all-comment {
+  height: 400px;
+  overflow: scroll;
+}
+
 /*////////////////////////////////////////////////////////////////////////////////////// */
 
 /* Search */
