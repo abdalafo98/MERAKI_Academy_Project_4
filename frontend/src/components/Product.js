@@ -10,6 +10,7 @@ export default function Product({ token }) {
   const [comment, setComment] = useState("");
   const [message, setMessage] = useState("");
   const [inFav, setInFav] = useState(false);
+  const [userRateThisProduct, setUserRateThisProduct] = useState(false);
   const idProduct = result._id;
   const thisToken = localStorage.getItem("token");
   const addComment = () => {
@@ -125,6 +126,17 @@ export default function Product({ token }) {
       .catch((err) => {
         console.log(err);
       });
+      axios.get(`http://localhost:5000/rating/products/${id}`,{
+        headers: {
+          Authorization: "Bearer " + thisToken,
+        },
+      }).then((result)=>{
+        if (result.data === "found"){
+          setUserRateThisProduct(true)
+        }
+      }).catch((err) => {
+        console.log(err);
+      });
   }, [info]);
 
   let allComment = "";
@@ -165,9 +177,9 @@ export default function Product({ token }) {
               {" "}
               <button onClick={addCart}>Add To cart</button>
             </div>
-            <div className ="rating ">
-              <Rating idProduct={idProduct}  thisToken = {thisToken} />
-            </div>
+            {!userRateThisProduct ? <div className ="rating ">
+              <Rating idProduct={idProduct}  thisToken = {thisToken} setInfo = {setInfo} />
+            </div>:""}
           </div>
         </div>
         <div className="all-comment">
