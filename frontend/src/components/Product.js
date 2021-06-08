@@ -47,7 +47,10 @@ export default function Product({ token }) {
           },
         }
       )
-      .then((result) => {})
+      .then((result) => {
+        setInfo(0)
+
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -66,7 +69,10 @@ export default function Product({ token }) {
           },
         }
       )
-      .then((result) => {})
+      .then((result) => {
+        setInfo(1)
+
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -107,13 +113,13 @@ export default function Product({ token }) {
         },
       })
       .then((result) => {
-        console.log(result.data);
         if (result.data === "found") {
           setInFav(true);
-          setInfo(Math.random());
+          setInfo(0)
+          
         } else {
           setInFav(false);
-          setInfo(Math.random());
+          setInfo(1)
         }
       })
       .catch((err) => {
@@ -160,7 +166,7 @@ export default function Product({ token }) {
               <button onClick={addCart}>Add To cart</button>
             </div>
             <div className ="rating ">
-              <Rating/>
+              <Rating idProduct={idProduct}  thisToken = {thisToken} />
             </div>
           </div>
         </div>
