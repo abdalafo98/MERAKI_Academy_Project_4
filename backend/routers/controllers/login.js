@@ -26,7 +26,7 @@ const login = async (req, res) => {
       const token = jwt.sign(payload, process.env.SECRET, options);
       res.status(200);
       res.json({ token,role: user.role.role });
-      return;
+      return ;
     }
     res.status(403);
     res.json({

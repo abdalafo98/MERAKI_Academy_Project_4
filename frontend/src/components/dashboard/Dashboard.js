@@ -26,7 +26,7 @@ export default function Dashboard() {
       })
       .then((result) => {
         if (!result.data.errors) {
-          history.push("/dashboard");
+          history.push("/products");
         } else {
           setError(true);
           console.log(result.data.errors);
