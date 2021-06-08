@@ -54,14 +54,20 @@ export default function Cart({ token }) {
       <tr>
         <td>
           <div className="cart-info-2">
-            <img id="deleteProduct" src={deleteIcon} onClick={deleteItems} />
+            <img
+              id="deleteProduct"
+              src={deleteIcon}
+              onClick={() => {
+                deleteItems();
+                setDeleteItem(element._id);
+              }}
+            />
             <div
               className="cart-info"
               key={element._id}
               onChange={(e) => {}}
               onClick={() => {
                 history.push(`product/${element._id}`);
-                setDeleteItem(element._id);
               }}
             >
               <img src={element.img} />
