@@ -30,20 +30,20 @@ const createRating = (req, res) => {
 };
 const getRating = (req, res) => {
   const id = req.params.id;
-  productModel
-    .findOne({ _id: id })
-    .populate("rating")
-    .then((result) => {
-      const arrayOfRating = result.rating;
-      const totalRating = arrayOfRating.reduce((accumulator, element, i) => {
-        return accumulator + element.rating;
-      }, 0);
-      const averageRating = totalRating / arrayOfRating.length;
-      res.status(200).json(averageRating);
-    })
-    .catch((err) => {
-      res.send(err);
-    });
+  const user = req.token.userId;
+  productModel.findOne({_id: id}).populate("rating").then((result)=>{
+    const arrayOfRating = result.rating
+    for (let i = 0; i < arrayOfRating.length; i++) {
+      if (arrayOfRating[i].user== user){
+        res.status(200).json("found")
+        return
+      }
+    }
+    res.status(200).json("not found")
+  }).catch((err)=>{
+    res.send(err)
+  })
+
 };
 
 module.exports = {

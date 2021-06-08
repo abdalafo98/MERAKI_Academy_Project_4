@@ -7,6 +7,6 @@ const {createRating,getRating} = require("../controllers/rating")
 const authentication = require("../../routers/middlewares/authentication")
 
 createRatingRouter.post("/products/:id",authentication,createRating);
-createRatingRouter.get("/products/:id",getRating)
+createRatingRouter.get("/products/:id",authentication,getRating)
 
 module.exports = createRatingRouter;

@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import axios from "axios";
 
-export default function Rating({idProduct,thisToken}) {
+export default function Rating({idProduct,thisToken,setInfo}) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const addRating = ()=>{
@@ -16,7 +16,7 @@ export default function Rating({idProduct,thisToken}) {
           authorization: "Bearer " + thisToken,
         },
       }).then((result)=>{
-          console.log(result.data)
+        setInfo(Math.random())
       }).catch((err)=>{
           console.log(err)
       })
