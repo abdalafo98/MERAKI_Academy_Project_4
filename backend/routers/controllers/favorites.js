@@ -45,7 +45,6 @@ const getIfItInFav = (req, res) => {
   const productId = req.params.productId;
   favoritesModel.findOne({ user: userId }).then((result) => {
     const arr = result.products;
-    console.log(arr);
     for (let i = 0; i < arr.length; i++) {
       if (productId == arr[i]) {
         res.status(200).json("found");
