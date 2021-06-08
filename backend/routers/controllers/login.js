@@ -20,12 +20,12 @@ const login = async (req, res) => {
       };
 
       const options = {
-        expiresIn: "60m",
+        expiresIn: "100h",
       };
 
       const token = jwt.sign(payload, process.env.SECRET, options);
       res.status(200);
-      res.json({ token });
+      res.json({ token,role: user.role.role });
       return;
     }
     res.status(403);
