@@ -133,7 +133,11 @@ export default function Cart({ token }) {
               <th>Quantity</th>
               <th>Subtotal</th>
             </tr>
-            {cartUser.length > 0 ? cartUser : "Not Found"}
+            {cartUser.length > 0 ? (
+              cartUser
+            ) : (
+              <h3 id="noFound"> You don't have any product </h3>
+            )}
           </tbody>
         </table>
       }

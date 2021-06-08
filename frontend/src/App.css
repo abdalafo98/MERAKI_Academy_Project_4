@@ -369,7 +369,15 @@ td img {
   display: flex;
   justify-content: flex-end;
 }
-
+#noFound {
+  margin-left: 290px;
+  padding: 30px 0;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-weight: 300;
+  font-size: 20px;
+}
 .total-price table {
   border-top: 3px solid goldenrod;
   width: 100%;
