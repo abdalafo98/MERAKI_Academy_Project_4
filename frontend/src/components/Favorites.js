@@ -2,47 +2,73 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route, Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 
+export default function Favorites({ token }) {
+  const [result, setResult] = useState([]);
+  let thisToken = localStorage.getItem("token");
+  const history = useHistory();
 
-export default function Favorites({token}) {
-    const [result, setResult] = useState([]);
-    let thisToken  = localStorage.getItem("token")
-    const history = useHistory();
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/favorites", {
+        headers: {
+          Authorization: "Bearer " + thisToken,
+        },
+      })
+      .then((response) => {
+        setResult(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-    useEffect(() => {
-        axios.get("http://localhost:5000/favorites",{
-            headers:{
-                Authorization: "Bearer "+ thisToken
-            }
-        }).then((response)=>{
-            
-            setResult(response.data)
-        }).catch((err)=>{
-            console.log(err)
-        })
-        
-      }, []);
-      const products = result.map((element, i) => {
-        return (
-          <div
-            className="card"
+  const products = result.map((element, i) => {
+    return (
+      <div
+        className="card"
+        onClick={() => {
+          history.push(`product/${element._id}`);
+        }}
+      >
+        <div className="card-image">
+          <button
             onClick={() => {
-              history.push(`product/${element._id}`);
+              axios
+                .put(
+                  "http://localhost:5000/favorites",
+                  {
+                    productId: element._id,
+                  },
+                  {
+                    headers: {
+                      authorization: "Bearer " + thisToken,
+                    },
+                  }
+                )
+                .then((result) => {
+                  if (result) {
+                    history.push("/favorites");
+                  }
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
             }}
           >
-            <div className="card-image">
-              <img src={element.img} />
-            </div>
-    
-            <div className="rating"></div>
-    
-            <div className="card-description">
-              <p className="nameProduct">Name:{element.name}</p>
-              <p className="PriceProduct">Price:{element.price}</p>
-            </div>
-          </div>
-        );
-      });
-    
-      return <div className="category">{products}</div>;
-      
+            remove from fav
+          </button>
+          <img src={element.img} />
+        </div>
+
+        <div className="rating"></div>
+
+        <div className="card-description">
+          <p className="nameProduct">Name:{element.name}</p>
+          <p className="PriceProduct">Price:{element.price}</p>
+        </div>
+      </div>
+    );
+  });
+
+  return <div className="category">{products}</div>;
 }
