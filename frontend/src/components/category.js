@@ -29,7 +29,7 @@ export default function Category({ token }) {
           <img src={element.img} />
         </div>
 
-        <div className="rating"></div>
+        <div className="rating">{element.averageRating}</div>
 
         <div className="card-description">
           <p className="nameProduct">Name:{element.name}</p>

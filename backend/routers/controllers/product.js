@@ -69,6 +69,7 @@ const getProductByType = (req, res) => {
         res.status(404).json("not found");
         return;
       }
+      
       res.status(200).json(result);
     })
     .catch((err) => {
