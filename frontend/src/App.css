@@ -98,7 +98,7 @@ header {
 }
 
 .logo span {
-  color: rgb(240, 212, 54);
+  color: rgb(214, 161, 27);
 }
 
 /* ////////////////////////////////////////////////////////////////////////////// */
@@ -277,7 +277,17 @@ header {
   width: 9%;
   color: #0d0d0d;
 }
+#deleteProduct {
+  width: 23px;
+  height: 23px;
+  box-shadow: none;
+  cursor: pointer;
+}
 
+#deleteProduct:hover {
+  width: 24px;
+  height: 24px;
+}
 .cart-page {
   margin: 80px auto;
   margin: 50px 125px;
@@ -294,6 +304,36 @@ table {
 .cart-info {
   display: flex;
   flex-wrap: wrap;
+  padding: 15px 10px;
+  width: 90%;
+}
+.cart-info-2 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cart-info p {
+  font-size: 20px;
+  border-bottom: 1px solid rgb(73, 72, 72);
+  font-size: 25px;
+  color: rgb(8, 43, 31);
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.cart-info small {
+  display: flex;
+}
+
+.cart-info small img {
+  box-shadow: none;
+  border: none;
+  width: 25px;
+  height: 25px;
+}
+.cart-info:hover {
+  box-shadow: 1px 1px 0px rgba(146, 146, 141, 0.986);
+  cursor: pointer;
 }
 th {
   text-align: justify;
@@ -335,7 +375,7 @@ td img {
   width: 100%;
   max-width: 400px;
 }
-.total-price table button {
+.total-price table small {
   margin-left: 20px;
   background-color: goldenrod;
   color: white;
@@ -346,12 +386,16 @@ td img {
 }
 
 .btn-checkout {
-  background-color: goldenrod;
+  background-color: rgb(235, 170, 5);
   color: white;
   border: none;
-  padding: 5px;
+  padding: 5px 10px;
+  margin-left: 15px;
   box-shadow: 1px 1px 1px rgba(185, 184, 184, 0.877);
   cursor: pointer;
+}
+.btn-checkout:hover {
+  background-color: rgb(255, 183, 0);
 }
 
 td:last-child {

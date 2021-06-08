@@ -74,7 +74,7 @@ export default function Product({ token }) {
   const addCart = () => {
     axios
       .post(
-        `http://localhost:5000/cart`,
+        `http://localhost:5000/favorites`,
         {
           productId: result._id,
         },

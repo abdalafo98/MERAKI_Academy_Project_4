@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
+import priceIcon from "./../../src/price.png";
+import deleteIcon from "./../../src/delete.png";
 export default function Cart({ token }) {
   const [result, setResult] = useState([]);
+  const [deleteItem, setDeleteItem] = useState(0);
+  const idProduct = result._id;
   const [price, setPrice] = useState(0);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [totalprice, setTotalprice] = useState(0);
   let thisToken = localStorage.getItem("token");
   const history = useHistory();
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/cart", {
@@ -22,16 +27,51 @@ export default function Cart({ token }) {
         console.log(err);
       });
   }, []);
+  const deleteItems = () => {
+    axios
+      .put(
+        "http://localhost:5000/cart",
+
+        {
+          productId: deleteItem,
+        },
+        {
+          headers: {
+            authorization: "Bearer " + thisToken,
+          },
+        }
+      )
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const cartUser = result.map((element, i) => {
     console.log(price);
     return (
       <tr>
         <td>
-          <div className="cart-info">
-            <img src={element.img} />
-            <div>
-              <p>{element.name}</p>
-              <small> price: {element.price} JD</small>
+          <div className="cart-info-2">
+            <img id="deleteProduct" src={deleteIcon} onClick={deleteItems} />
+            <div
+              className="cart-info"
+              key={element._id}
+              onChange={(e) => {}}
+              onClick={() => {
+                history.push(`product/${element._id}`);
+                setDeleteItem(element._id);
+              }}
+            >
+              <img src={element.img} />
+              <div>
+                <p>{element.name}</p>
+                <small>
+                  {" "}
+                  <img src={priceIcon} /> {element.price} JD
+                </small>
+              </div>
             </div>
           </div>
         </td>
@@ -39,7 +79,7 @@ export default function Cart({ token }) {
           <input
             type="number"
             defaultValue="1"
-            id={i + 1}
+            key={i + 1}
             onChange={(e) => {
               setQuantity(e.target.value);
             }}
@@ -79,9 +119,11 @@ export default function Cart({ token }) {
               <td>Quantity</td>
               <td>*{quantity}</td>
             </tr>
+            <tr>
+              <small className="btn-checkout">Checkout</small>
+            </tr>
           </tbody>
         </table>
-        <button className="btn-checkout">Checkout</button>
       </div>
     </div>
   );
