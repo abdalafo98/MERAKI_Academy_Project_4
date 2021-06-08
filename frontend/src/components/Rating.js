@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 
-export default function Rating() {
+export default function Rating({idProduct,thisToken}) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   return (
     <div>
-      <div className="App">
+      <div className="rating">
         {[...Array(5)].map((element, i) => {
           let ratingValue = i + 1;
           return (
@@ -34,6 +34,8 @@ export default function Rating() {
           );
         })}
       </div>
+      
+
     </div>
   );
 }
