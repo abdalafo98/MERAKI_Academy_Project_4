@@ -1,10 +1,26 @@
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
+import axios from "axios";
 
 export default function Rating({idProduct,thisToken}) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
+  const addRating = ()=>{
+      axios.post(`http://localhost:5000/rating/products/${idProduct}`,
+      {
+        rating:rating,
+      },
+      {
+        headers: {
+          authorization: "Bearer " + thisToken,
+        },
+      }).then((result)=>{
+          console.log(result.data)
+      }).catch((err)=>{
+          console.log(err)
+      })
+  };
   return (
     <div>
       <div className="rating">
@@ -33,6 +49,7 @@ export default function Rating({idProduct,thisToken}) {
             </label>
           );
         })}
+        <button onClick={addRating}>rating</button>
       </div>
       
 
