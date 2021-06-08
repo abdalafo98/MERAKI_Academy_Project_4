@@ -7,15 +7,8 @@ import 'react-slideshow-image/dist/styles.css';
 
 export default function Home() {
  
-  // const [images, setImages] = useState([]);
-  const slideImages = [
-    "https://media.istockphoto.com/photos/child-girl-cotton-bright-summer-clothes-set-collage-isolated-picture-id508756496?k=6&m=508756496&s=612x612&w=0&h=T-8F9hOu6yKeuR3ARBHXyI-j0LvWS1Mbc7rRBHPDtQg=",
-    'https://jade-media.jadeblue.com/media/wysiwyg/jadeblue/jadeblue-new.jpg',
-    'https://media.vertbaudet.co.uk/Medias/3-1-3/93/1/image-01-jpg_m-1186711880.jpg',
-    'https://jade-media.jadeblue.com/media/wysiwyg/jadeblue/jadeblue-new.jpg',
-    'https://jade-media.jadeblue.com/media/wysiwyg/jadeblue/jadeblue-new.jpg',
-  ];
-   
+  const [slideImages, setslideImages] = useState([]);
+ 
 
   const history = useHistory();
   const moveToMen = () => {
@@ -34,7 +27,7 @@ export default function Home() {
     axios
       .get("http://localhost:5000/slider")
       .then((result) => {
-        // setImages(result.data.picsAddress[0]);
+        setslideImages(result.data.picsAddress);
       })
       .catch((err) => {
         console.log(err);
