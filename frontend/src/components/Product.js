@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import Rating from "./Rating"
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 
@@ -157,6 +158,9 @@ export default function Product({ token }) {
             <div className="desFooter">
               {" "}
               <button onClick={addCart}>Add To cart</button>
+            </div>
+            <div className ="rating ">
+              <Rating/>
             </div>
           </div>
         </div>
