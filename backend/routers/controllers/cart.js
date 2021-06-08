@@ -28,6 +28,7 @@ const getProduct = (req, res) => {
 };
 
 const deleteProduct = (req, res) => {
+  console.log(req.body);
   const userId = req.token.userId;
   const { productId } = req.body;
   cartModel

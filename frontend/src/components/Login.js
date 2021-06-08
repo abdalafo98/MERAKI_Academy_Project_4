@@ -15,6 +15,7 @@ export default function Login({ setToken }) {
       .then((result) => {
         if (result.status === 200) {
           setToken(result.data.token);
+
           localStorage.setItem("token", result.data.token);
           history.push("/");
         }

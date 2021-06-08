@@ -8,7 +8,7 @@ export default function Product({ token }) {
   const [info, setInfo] = useState([]);
   const [comment, setComment] = useState("");
   const [message, setMessage] = useState("");
-  const [inFav, setInFav] = useState(false)
+  const [inFav, setInFav] = useState(false);
   const idProduct = result._id;
   const thisToken = localStorage.getItem("token");
   const addComment = () => {
@@ -74,7 +74,7 @@ export default function Product({ token }) {
   const addCart = () => {
     axios
       .post(
-        `http://localhost:5000/favorites`,
+        `http://localhost:5000/cart`,
         {
           productId: result._id,
         },
@@ -92,29 +92,32 @@ export default function Product({ token }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/products/id/${id}`,)
+      .get(`http://localhost:5000/products/id/${id}`)
       .then((response) => {
         setResult(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
-      axios.get(`http://localhost:5000/favorites/${id}`,{
-        headers:{
-            Authorization: "Bearer "+ thisToken
+    axios
+      .get(`http://localhost:5000/favorites/${id}`, {
+        headers: {
+          Authorization: "Bearer " + thisToken,
+        },
+      })
+      .then((result) => {
+        console.log(result.data);
+        if (result.data === "found") {
+          setInFav(true);
+          setInfo(Math.random());
+        } else {
+          setInFav(false);
+          setInfo(Math.random());
         }
-    }).then((result)=>{
-      console.log(result.data)
-      if(result.data === "found"){
-        setInFav(true)
-        setInfo(Math.random());
-      }else{
-        setInFav(false)
-        setInfo(Math.random());
-      }
-    }).catch((err)=>{
-      console.log(err)
-    })
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [info]);
 
   let allComment = "";
@@ -138,9 +141,16 @@ export default function Product({ token }) {
           </div>
           <div className="productDes">
             <div className="desHeader">
-            { !inFav ? <button onClick={addFavorite}>Add to favorite</button> : ""}
-            { inFav ? <button onClick={deleteFav}>delete from favorite</button> : ""}
-              
+              {!inFav ? (
+                <button onClick={addFavorite}>Add to favorite</button>
+              ) : (
+                ""
+              )}
+              {inFav ? (
+                <button onClick={deleteFav}>delete from favorite</button>
+              ) : (
+                ""
+              )}
             </div>
             <p>Name Product :{result.name}</p>
             Description :{result.description}
