@@ -35,7 +35,7 @@ const getRating = (req, res) => {
     const arrayOfRating = result.rating
     for (let i = 0; i < arrayOfRating.length; i++) {
       if (arrayOfRating[i].user== user){
-        res.status(200).json("found")
+        res.status(200).json({found :"found", rate :arrayOfRating[i].rating })
         return
       }
     }

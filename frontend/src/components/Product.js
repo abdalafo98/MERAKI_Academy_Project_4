@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import Rating from "./Rating"
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
-
+import ShowRating from "./ShowRating"
 export default function Product({ token }) {
   const { id } = useParams();
   const [result, setResult] = useState([]);
@@ -11,6 +11,7 @@ export default function Product({ token }) {
   const [message, setMessage] = useState("");
   const [inFav, setInFav] = useState(false);
   const [userRateThisProduct, setUserRateThisProduct] = useState(false);
+  const [userRate, setUserRate] = useState(null);
   const idProduct = result._id;
   const thisToken = localStorage.getItem("token");
   const addComment = () => {
@@ -131,7 +132,8 @@ export default function Product({ token }) {
           Authorization: "Bearer " + thisToken,
         },
       }).then((result)=>{
-        if (result.data === "found"){
+        if (result.data.found === "found"){
+          setUserRate(result.data.rate)
           setUserRateThisProduct(true)
         }
       }).catch((err) => {
@@ -179,7 +181,7 @@ export default function Product({ token }) {
             </div>
             {!userRateThisProduct ? <div className ="rating ">
               <Rating idProduct={idProduct}  thisToken = {thisToken} setInfo = {setInfo} />
-            </div>:""}
+            </div>:<ShowRating rate = {userRate} />}
           </div>
         </div>
         <div className="all-comment">
