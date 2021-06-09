@@ -658,6 +658,9 @@ div.card:hover {
   height: 300px;
   width: 100%;
 }
+input[type="radio"] {
+  display: none;
+}
 
 /* Slider Buttons */
 
