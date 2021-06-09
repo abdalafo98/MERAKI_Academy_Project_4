@@ -2,25 +2,19 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, Route, useHistory } from "react-router-dom";
 import Cart from "./../../src/cart.png";
+
 export default function Navigation({ token, setToken }) {
   const [searched, setSearched] = useState("");
   const history = useHistory();
   const signOut = () => {
     setToken("");
     history.push(`/login`);
-
     localStorage.clear();
   };
-
   const searchBtn = () => {
-    axios
-      .get(`http://localhost:5000/products/name/${searched}`)
-      .then((result) => {
-        history.push(`/product/${result.data[0]._id}`);
-        window.location.reload();
-      })
-      .catch((err) => {});
+    history.push(`/searched/${searched}`);
   };
+
 
   return (
     <div className="Navigation">
@@ -32,7 +26,7 @@ export default function Navigation({ token, setToken }) {
               history.push("/");
             }}
           >
-            THE <span> MOUNTAIN</span>
+          We <span> Buy</span>
           </h1>{" "}
         </div>
         <div className="searchS">
