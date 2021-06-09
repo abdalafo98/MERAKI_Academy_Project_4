@@ -601,11 +601,39 @@ div.card:hover {
   margin-bottom: 50px;
 }
 .homefotter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: space-around;
   border: 2px solid black;
   width: 100%;
   height: 150px;
   margin-top: 50px;
+  align-items: center;
+  gap: 15px;
+  font-size: large;
+  font-weight: bolder;
+  
 }
+.homefooter{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: space-around;
+  border: 2px solid black;
+  width: 100%;
+  height: 150px;
+  margin-top: 50px;
+  align-items: center;
+  gap: 15px;
+  font-size: large;
+  font-weight: bolder;
+  }
+  
+.homefooter h3 {
+  text-align: justify;
+  }
+  
 
 /* ////////////////////////////////////////////////////////////////////////////////////// */
 /* This section is for product page by id */
@@ -774,5 +802,61 @@ height: 14.2%;
   opacity: 1;
   font-weight: bolder;
   color:red;
+}
+/* footer styling */
+
+/* aboutUs */
+
+.aboutUs{
+ 
+  padding: 3rem 0;
+  margin: 0 auto;
+  text-align: center;
+
+
+}
+
+.contactUs{
+display: flex;
+flex-direction: column;
+border: 2px solid black;
+padding: 3rem 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+
+font-size: 54px;
+line-height: 1em;
+font-weight: 700;
+}
+
+.cole {
+display: flex;
+flex-direction: row;
+text-align: center;
+padding: 3rem 0;
+width: 100%;
+margin-bottom: 1rem;
+}
+.col{
+padding: 4rem 0;
+width: 33%;
+margin: 1rem;
+}
+.col p {
+color: rgba(0,0,0,.6);
+}
+.subtitle {
+font-size: 20px;
+font-weight: 700;
+line-height: 1.5em;
+text-transform: uppercase;
+letter-spacing: .2em;
+max-width: 275px;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 1rem;
 }
 

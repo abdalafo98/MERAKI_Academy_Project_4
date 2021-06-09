@@ -36,7 +36,22 @@ export default function Home() {
   
   }, []);
   // end of slider show
-
+//Fotter section//
+const moveToAboutUs  =()=>{
+  history.push("/aboutUs")
+ }
+  const moveToReturnP  =()=>{
+    history.push("/returnPolicy")
+  }
+  const moveToOurStaff  =()=>{
+    history.push("/ourStaff")
+  }
+  const moveToPrivacy     =()=>{
+    history.push("/privacyandPolicy")
+  }
+  const moveToContactUs   =()=>{
+    history.push("/contactUs")
+  }
   return (
     <div>
       <div className="homeHeader">
@@ -90,11 +105,15 @@ export default function Home() {
          
         </div>
       </div>
-      <div className="homefotter">
-      <h3>  <span>about us</span></h3>
-       <h3> <span>contact us</span></h3>
+      <div>
+      <div className="homefooter">
+        <div style={{ cursor: "pointer" }}onClick={moveToAboutUs}>About Us</div>
+        <div style={{ cursor: "pointer" }}onClick={moveToReturnP}>Return Policy</div>
+        <div style={{ cursor: "pointer" }}onClick={moveToOurStaff}>Our Staff</div>
+        <div style={{ cursor: "pointer" }}onClick={moveToPrivacy}>Privacy & Policys</div>
+        <div style={{ cursor: "pointer" }}onClick={moveToContactUs}>Contact Us</div>
       </div>
-
+    </div>
      
     </div>
   );
