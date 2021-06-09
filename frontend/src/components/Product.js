@@ -1,16 +1,20 @@
 import { React, useState, useEffect } from "react";
+import Rating from "./Rating"
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
-
+import ShowRating from "./ShowRating"
 export default function Product({ token }) {
   const { id } = useParams();
   const [result, setResult] = useState([]);
   const [info, setInfo] = useState([]);
   const [comment, setComment] = useState("");
   const [message, setMessage] = useState("");
-  const [inFav, setInFav] = useState(false)
+  const [inFav, setInFav] = useState(false);
+  const [userRateThisProduct, setUserRateThisProduct] = useState(false);
+  const [userRate, setUserRate] = useState(null);
   const idProduct = result._id;
   const thisToken = localStorage.getItem("token");
+  const thisRole = localStorage.getItem("role");
   const addComment = () => {
     axios
       .post(
@@ -46,7 +50,10 @@ export default function Product({ token }) {
           },
         }
       )
-      .then((result) => {})
+      .then((result) => {
+        setInfo(0)
+
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -65,7 +72,10 @@ export default function Product({ token }) {
           },
         }
       )
-      .then((result) => {})
+      .then((result) => {
+        setInfo(1)
+
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -74,7 +84,7 @@ export default function Product({ token }) {
   const addCart = () => {
     axios
       .post(
-        `http://localhost:5000/favorites`,
+        `http://localhost:5000/cart`,
         {
           productId: result._id,
         },
@@ -92,29 +102,44 @@ export default function Product({ token }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/products/id/${id}`,)
+      .get(`http://localhost:5000/products/id/${id}`)
       .then((response) => {
         setResult(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
-      axios.get(`http://localhost:5000/favorites/${id}`,{
-        headers:{
-            Authorization: "Bearer "+ thisToken
+    axios
+      .get(`http://localhost:5000/favorites/${id}`, {
+        headers: {
+          Authorization: "Bearer " + thisToken,
+        },
+      })
+      .then((result) => {
+        if (result.data === "found") {
+          setInFav(true);
+          setInfo(0)
+          
+        } else {
+          setInFav(false);
+          setInfo(1)
         }
-    }).then((result)=>{
-      console.log(result.data)
-      if(result.data === "found"){
-        setInFav(true)
-        setInfo(Math.random());
-      }else{
-        setInFav(false)
-        setInfo(Math.random());
-      }
-    }).catch((err)=>{
-      console.log(err)
-    })
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      axios.get(`http://localhost:5000/rating/products/${id}`,{
+        headers: {
+          Authorization: "Bearer " + thisToken,
+        },
+      }).then((result)=>{
+        if (result.data.found === "found"){
+          setUserRate(result.data.rate)
+          setUserRateThisProduct(true)
+        }
+      }).catch((err) => {
+        console.log(err);
+      });
   }, [info]);
 
   let allComment = "";
@@ -128,25 +153,36 @@ export default function Product({ token }) {
       );
     });
   }
-
   return (
     <>
       <div className="containerDiv">
         <div className="productHolder">
           <div className="img">
             <img src={result.img} style={{ width: "400px" }} />
-          </div>
-          <div className="productDes">
+            <div>
+             <div className="productDes">
             <div className="desHeader">
-            { !inFav ? <button onClick={addFavorite}>Add to favorite</button> : ""}
-            { inFav ? <button onClick={deleteFav}>delete from favorite</button> : ""}
-              
+              {!inFav ? (
+                <button onClick={addFavorite}>Add to favorite</button>
+              ) : (
+                ""
+              )}
+              {inFav ? (
+                <button onClick={deleteFav}>delete from favorite</button>
+              ) : (
+                ""
+              )}
             </div>
             <p>Name Product :{result.name}</p>
             Description :{result.description}
             <div className="desFooter">
               {" "}
-              <button onClick={addCart}>Add To cart</button>
+              <button onClick={addCart}>add to Cart</button>
+            </div>
+            {!userRateThisProduct ? <div className ="rating ">
+              <Rating idProduct={idProduct}  thisToken = {thisToken} setInfo = {setInfo} />
+            </div>:<ShowRating rate = {userRate} />}
+          </div>
             </div>
           </div>
         </div>

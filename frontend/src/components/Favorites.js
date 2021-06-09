@@ -21,7 +21,6 @@ export default function Favorites({ token }) {
         console.log(err);
       });
   }, []);
-
   const products = result.map((element, i) => {
     return (
       <div
@@ -31,32 +30,6 @@ export default function Favorites({ token }) {
         }}
       >
         <div className="card-image">
-          <button
-            onClick={() => {
-              axios
-                .put(
-                  "http://localhost:5000/favorites",
-                  {
-                    productId: element._id,
-                  },
-                  {
-                    headers: {
-                      authorization: "Bearer " + thisToken,
-                    },
-                  }
-                )
-                .then((result) => {
-                  if (result) {
-                    history.push("/favorites");
-                  }
-                })
-                .catch((err) => {
-                  console.log(err);
-                });
-            }}
-          >
-            remove from fav
-          </button>
           <img src={element.img} />
         </div>
 

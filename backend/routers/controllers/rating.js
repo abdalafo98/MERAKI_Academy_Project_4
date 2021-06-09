@@ -9,9 +9,17 @@ const createRating = (req, res) => {
   newRating
     .save()
     .then(async (result) => {
+      const product = await productModel.findOne({ _id: id });
+      const newNum = product.totalRating + 1;
+      const newAverage =
+        (product.averageRating * product.totalRating + rating) / newNum;
       await productModel.updateOne(
         { _id: id },
-        { $push: { rating: result._id } }
+        {
+          $push: { rating: result._id },
+          averageRating: newAverage,
+          totalRating: newNum,
+        }
       );
       res.status(201);
       res.json(result);
@@ -20,20 +28,25 @@ const createRating = (req, res) => {
       res.send(err);
     });
 };
-const getRating = (req,res)=>{
+const getRating = (req, res) => {
   const id = req.params.id;
-  productModel.findOne({ _id: id}).populate("rating").then((result)=>{
+  const user = req.token.userId;
+  productModel.findOne({_id: id}).populate("rating").then((result)=>{
     const arrayOfRating = result.rating
-    const totalRating = arrayOfRating.reduce((accumulator,element,i)=>{
-      return accumulator+element.rating
-    },0)
-    const averageRating= totalRating/ arrayOfRating.length;
-    res.status(200).json(averageRating)
+    for (let i = 0; i < arrayOfRating.length; i++) {
+      if (arrayOfRating[i].user== user){
+        res.status(200).json({found :"found", rate :arrayOfRating[i].rating })
+        return
+      }
+    }
+    res.status(200).json("not found")
   }).catch((err)=>{
     res.send(err)
-  });
+  })
+
 };
 
 module.exports = {
-  createRating,getRating
+  createRating,
+  getRating,
 };
