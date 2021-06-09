@@ -14,7 +14,16 @@ const getAllProducts = (req, res) => {
 };
 ///////////////////////////
 const createProduct = (req, res) => {
-  const { type, name, price, img, description, quantity } = req.body;
+  const {
+    type,
+    name,
+    price,
+    img,
+    description,
+    quantity,
+    totalRating,
+    averageRating,
+  } = req.body;
   const newProduct = new productModel({
     type,
     name,
@@ -22,6 +31,8 @@ const createProduct = (req, res) => {
     img,
     description,
     quantity,
+    totalRating,
+    averageRating,
   });
   newProduct
     .save()
@@ -69,7 +80,7 @@ const getProductByType = (req, res) => {
         res.status(404).json("not found");
         return;
       }
-      
+
       res.status(200).json(result);
     })
     .catch((err) => {
@@ -112,12 +123,10 @@ const getProductByName = (req, res) => {
   productModel
     .find({ name })
     .then((result) => {
-     
       if (result.length === 0) {
         res.status(404).json("not found");
         return;
-      }else
-      res.status(200).json(result);
+      } else res.status(200).json(result);
     })
     .catch((err) => {
       res.status(404).json("not found");

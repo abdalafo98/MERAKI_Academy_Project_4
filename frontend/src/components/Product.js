@@ -177,7 +177,7 @@ export default function Product({ token }) {
             Description :{result.description}
             <div className="desFooter">
               {" "}
-              <button onClick={addCart}></button>
+              <button onClick={addCart}>add to Cart</button>
             </div>
             {!userRateThisProduct ? <div className ="rating ">
               <Rating idProduct={idProduct}  thisToken = {thisToken} setInfo = {setInfo} />
