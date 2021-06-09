@@ -9,15 +9,10 @@ export default function Cart({ token }) {
   const [total, setTotal] = useState(0);
   let [totalQuantity, setTotalQuantity] = useState(tot);
   let thisToken = localStorage.getItem("token");
-  localStorage.setItem("totalPriceP", tot);
-  localStorage.setItem("totalQuantity", totalQuantity);
   const history = useHistory();
-  console.log(tot);
-  localStorage.getItem("totalPriceP");
-  localStorage.getItem("totalQuantity");
-  localStorage.getItem("quantity");
-  localStorage.getItem("subTotal");
-  localStorage.getItem("counter");
+  const arr = [];
+
+
 
   useEffect(() => {
     axios
@@ -34,14 +29,48 @@ export default function Cart({ token }) {
       });
   }, []);
 
+  const createOrder = ()=>{
+    const date = "9-6-2021"
+  
+    
+    console.log("arr",arr)
+    const newArr = []
+    for (let i = 0; i < arr.length; i++) {
+    let found = false
+    for (let b = 0; b < newArr.length; b++) {
+      if (arr[i].product === newArr[b].product ){
+        found = true
+      }
+      
+    }
+    if (!found){
+      newArr.push({product:arr[i].product,Quantity:1})
+    }
+    
+    }
+     axios.post("http://localhost:5000/order",{
+      date , products:newArr , totalPrice : 120 
+    },{
+       headers: {
+      authorization: "Bearer " + token,
+     },
+     }).then((result)=>{
+       console.log(result);
+     }).catch((err)=>{
+       console.log(err);
+     })
+  }
+
+
   const Product = (element) => {
     const [price, setPrice] = useState(0);
     let [quantity, setQuantity] = useState(1);
     let [subTotal, setSubTotal] = useState(element.props.price * quantity);
     const [counter, setCounter] = useState(1);
-    localStorage.setItem("quantity", quantity);
-    localStorage.setItem("subTotal", subTotal);
-    localStorage.setItem("counter", counter);
+    
+      arr.push({product:element.props._id,Quantity: quantity })
+    
+    
 
     return (
       <tr className="product">
@@ -115,7 +144,6 @@ export default function Cart({ token }) {
               setTot(element.props.price * quantity + tot);
               setTotalQuantity((totalQuantity += quantity));
               setSubTotal(element.props.price * quantity);
-              console.log(e.target.value);
             }}
             readOnly
           />
@@ -176,7 +204,7 @@ export default function Cart({ token }) {
               <td>*{totalQuantity < 0 ? 0 : totalQuantity}</td>
             </tr>
             <tr>
-              <small className="btn-checkout">Checkout</small>
+              <small onClick = {createOrder} className="btn-checkout">Checkout</small>
             </tr>
           </tbody>
         </table>
