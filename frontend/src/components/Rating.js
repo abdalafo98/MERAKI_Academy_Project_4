@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Route } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import axios from "axios";
 

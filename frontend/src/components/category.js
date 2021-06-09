@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
+import ShowRating from "./ShowRating";
 
 export default function Category({ token }) {
   const [result, setResult] = useState([]);
@@ -28,10 +29,8 @@ export default function Category({ token }) {
         <div className="card-image">
           <img src={element.img} />
         </div>
-
-        <div className="rating">{element.averageRating}</div>
-
         <div className="card-description">
+          <ShowRating rate={Math.round(element.averageRating)} />
           <p className="nameProduct">Name:{element.name}</p>
           <p className="PriceProduct">Price:{element.price}</p>
         </div>
