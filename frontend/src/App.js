@@ -8,7 +8,9 @@ import Product from "./components/Product";
 import Home from "./components/Home";
 import Favorites from "./components/Favorites"
 import Cart from "./components/cart"
-import Dashboard from "./components/dashboard/Dashboard"
+import AddProduct from "./components/dashboard/AddProduct"
+import EditProduct from "./components/dashboard/EditProduct"
+import Dashboard from "./components/Dashboard"
 import "./App.css";
 
 const App = () => {
@@ -22,8 +24,12 @@ const App = () => {
   }, []);
   return (
     <>
-      {role==="admin" ? <Route exact path="/dashboard" component={Dashboard} /> 
-     :<div className="App">
+      {role==="admin" ? <Switch><Route exact path="/dashboard" component={Dashboard} />
+    <Route exact path="/dashboard/add" component={AddProduct} />
+    <Route exact path="/dashboard/edit" render={()=><EditProduct token={token}/>} />
+    </Switch>
+       
+    :<div className="App">
      <Navigation token={token} setToken={setToken} />
      <Switch>
      <Route exact path="/" component={Home} />

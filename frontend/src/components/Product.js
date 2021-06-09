@@ -14,6 +14,7 @@ export default function Product({ token }) {
   const [userRate, setUserRate] = useState(null);
   const idProduct = result._id;
   const thisToken = localStorage.getItem("token");
+  const thisRole = localStorage.getItem("role");
   const addComment = () => {
     axios
       .post(
@@ -152,15 +153,14 @@ export default function Product({ token }) {
       );
     });
   }
-
   return (
     <>
       <div className="containerDiv">
         <div className="productHolder">
           <div className="img">
             <img src={result.img} style={{ width: "400px" }} />
-          </div>
-          <div className="productDes">
+            <div>
+             <div className="productDes">
             <div className="desHeader">
               {!inFav ? (
                 <button onClick={addFavorite}>Add to favorite</button>
@@ -182,6 +182,8 @@ export default function Product({ token }) {
             {!userRateThisProduct ? <div className ="rating ">
               <Rating idProduct={idProduct}  thisToken = {thisToken} setInfo = {setInfo} />
             </div>:<ShowRating rate = {userRate} />}
+          </div>
+            </div>
           </div>
         </div>
         <div className="all-comment">

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 export default function Dashboard() {
@@ -12,6 +12,10 @@ export default function Dashboard() {
   const [quantity, setQuantity] = useState(0);
   const [role, setRole] = useState("");
   const [error, setError] = useState(false);
+  const [result, setResult] = useState([]);
+  const [totalRating, setTotalRating] = useState(0);
+  const [averageRating, setAverageRating] = useState(0);
+  const [rating, setRating] = useState(0);
 
   const addProduct = () => {
     axios
@@ -23,6 +27,9 @@ export default function Dashboard() {
         description,
         quantity,
         role,
+        rating,
+        totalRating,
+        averageRating,
       })
       .then((result) => {
         if (!result.data.errors) {
@@ -37,53 +44,76 @@ export default function Dashboard() {
       });
   };
 
+  //   const updateProduct = ()=>{
+  // 	  axios.put("http://localhost:5000/products",{
+  // 		type,
+  //         name,
+  //         price,
+  //         img,
+  //         description,
+  //         quantity,
+  // 	  }).then((result) => {
+  //         if (!result.data.errors) {
+  //           history.push("/products");
+  //         } else {
+  //           setError(true);
+  //           console.log(result.data.errors);
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+
   return (
     <>
-      <div className="dashboard">Dashboard component</div>
-      <input
+      <div className="dashAdd">Dashboard</div>
+      <div className="addCont">
+      <input className="dashInput"
         type="text"
         placeholder="type"
         onChange={(e) => {
           setType(e.target.value);
         }}
       />
-      <input
+      <input className="dashInput"
         type="text"
         placeholder="name"
         onChange={(e) => {
           setName(e.target.value);
         }}
       />
-      <input
+      <input className="dashInput"
         type="text"
         placeholder="price"
         onChange={(e) => {
           setPrice(e.target.value);
         }}
       />
-      <input
+      <input className="dashInput"
         type="text"
         placeholder="img"
         onChange={(e) => {
           setImg(e.target.value);
         }}
       />
-      <input
+      <input className="dashInput"
         type="text"
         placeholder="description"
         onChange={(e) => {
           setDescription(e.target.value);
         }}
       />
-      <input
+      <input className="dashInput"
         type="text"
         placeholder="Quantity"
         onChange={(e) => {
           setQuantity(e.target.value);
         }}
       />
-      <button onClick={addProduct}>add product</button>
-      <input placeholder="Add product" />
+      <button className="dashInput" onClick={addProduct}>add product</button>
+      {/* <button onClick={updateProduct} >update product</button> */}
+      </div>
     </>
   );
 }
