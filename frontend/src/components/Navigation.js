@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, Route, useHistory } from "react-router-dom";
 import Cart from "./../../src/cart.png";
+import {BsSearch} from "react-icons/bs"
 
 export default function Navigation({ token, setToken }) {
   const [searched, setSearched] = useState("");
@@ -33,13 +34,13 @@ export default function Navigation({ token, setToken }) {
           <input
             className="searchInput"
             type="text"
-            placeholder="Search.."
+            placeholder="Search.. "
             onChange={(e) => {
               setSearched(e.target.value);
             }}
           ></input>
           <button className="searchBtn" onClick={searchBtn}>
-            Search
+            <BsSearch  size={20}/>
           </button>
         </div>
       </div>
