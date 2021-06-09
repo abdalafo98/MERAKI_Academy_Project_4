@@ -12,6 +12,7 @@ export default function Product({ token }) {
   const [inFav, setInFav] = useState(false);
   const idProduct = result._id;
   const thisToken = localStorage.getItem("token");
+  const thisRole = localStorage.getItem("role");
   const addComment = () => {
     axios
       .post(
@@ -138,15 +139,14 @@ export default function Product({ token }) {
       );
     });
   }
-
   return (
     <>
       <div className="containerDiv">
         <div className="productHolder">
           <div className="img">
             <img src={result.img} style={{ width: "400px" }} />
-          </div>
-          <div className="productDes">
+            <div>
+             <div className="productDes">
             <div className="desHeader">
               {!inFav ? (
                 <button onClick={addFavorite}>Add to favorite</button>
@@ -167,6 +167,8 @@ export default function Product({ token }) {
             </div>
             <div className ="rating ">
               <Rating idProduct={idProduct}  thisToken = {thisToken} />
+            </div>
+          </div>
             </div>
           </div>
         </div>

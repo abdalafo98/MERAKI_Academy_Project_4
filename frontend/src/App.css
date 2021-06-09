@@ -709,3 +709,54 @@ input[type="radio"] {
 searchInput:active {
   border-color: goldenrod;
 }
+/* dashboard admin */
+.dashCon{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+    margin-top: 100px;
+}
+
+.dashSwitch{
+  width: 500px;
+  height: 500px;
+  border: 2px solid black;
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 110px;
+}
+
+.dahsBtn{
+  background-color: burlywood;
+  width: 100%;
+    height: 15%;
+    font-size: large;
+    font-weight: bolder;
+}
+.dashAdd{
+border: green;
+display: flex;
+flex-direction: column;
+justify-content: center;
+margin-top: 15%;
+}
+.dashInput{
+text-align: center;
+border: 1px solid red;
+height: 14.2%;
+}
+.addCont{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 500px;
+}
+
+.textEdit::placeholder{
+  opacity: 1;
+  font-weight: bolder;
+  color:red;
+}
+

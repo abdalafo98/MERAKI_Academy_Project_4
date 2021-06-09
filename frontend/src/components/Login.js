@@ -3,7 +3,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Logo from "./../../src/logo.png";
 
-export default function Login({ setToken,setRole }) {
+export default function Login({ setToken, setRole }) {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,16 +18,16 @@ export default function Login({ setToken,setRole }) {
           setRole(result.data.role);
 
           localStorage.setItem("token", result.data.token);
-          if(result.data.role==="admin"){
+          if (result.data.role === "admin") {
+            localStorage.setItem("role", result.data.role);
             history.push("/dashboard");
-          }else{
-
+          } else {
             history.push("/");
           }
         }
       })
       .catch((err) => {
-        setLoginError(err.response.data.message);
+        //setLoginError(err.response.data.message);
       });
   };
   return (
