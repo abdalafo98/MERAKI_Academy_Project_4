@@ -16,7 +16,6 @@ export default function Login({ setToken,setRole }) {
         if (result.status === 200) {
           setToken(result.data.token);
           setRole(result.data.role);
-
           localStorage.setItem("token", result.data.token);
           if(result.data.role==="admin"){
             history.push("/dashboard");

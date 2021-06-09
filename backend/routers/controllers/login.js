@@ -16,6 +16,7 @@ const login = async (req, res) => {
     if (valid) {
       const payload = {
         userId: user._id,
+        role: user.role,
       };
 
       const options = {
@@ -24,7 +25,7 @@ const login = async (req, res) => {
 
       const token = jwt.sign(payload, process.env.SECRET, options);
       res.status(200);
-      res.json({ token });
+      res.json({ token,role: user.role.role });
       return;
     }
     res.status(403);
@@ -34,7 +35,7 @@ const login = async (req, res) => {
     });
     return;
   } catch (error) {
-    console.log(error);
+    console.log(error)
     throw new Error(error.message);
   }
 };

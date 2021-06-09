@@ -15,6 +15,8 @@ const createRatingRouter = require("./routers/routes/rating");
 const favoritesRouter = require("./routers/routes/favoritesRouter");
 const cartRouter = require("./routers/routes/cartRouter");
 const sliderRouter = require("./routers/routes/sliderRouter");
+const orderRouter = require("./routers/routes/order");
+
 
 //built-in middlewares
 app.use(express.json());
@@ -33,6 +35,7 @@ app.use("/rating",createRatingRouter);
 app.use("/favorites", favoritesRouter);
 app.use("/cart", cartRouter);
 app.use("/slider", sliderRouter);
+app.use("/order",orderRouter)
 
 /////////////////////
 const PORT = process.env.PORT || 5000;
