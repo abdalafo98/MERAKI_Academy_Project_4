@@ -5,11 +5,19 @@ import priceIcon from "./../../src/price.png";
 import deleteIcon from "./../../src/delete.png";
 export default function Cart({ token }) {
   const [result, setResult] = useState([]);
-  const [deleteItem, setDeleteItem] = useState(0);
-  const idProduct = result._id;
-
+  const [tot, setTot] = useState(0);
+  const [total, setTotal] = useState(0);
+  let [totalQuantity, setTotalQuantity] = useState(tot);
   let thisToken = localStorage.getItem("token");
+  localStorage.setItem("totalPriceP", tot);
+  localStorage.setItem("totalQuantity", totalQuantity);
   const history = useHistory();
+  console.log(tot);
+  localStorage.getItem("totalPriceP");
+  localStorage.getItem("totalQuantity");
+  localStorage.getItem("quantity");
+  localStorage.getItem("subTotal");
+  localStorage.getItem("counter");
 
   useEffect(() => {
     axios
@@ -25,35 +33,18 @@ export default function Cart({ token }) {
         console.log(err);
       });
   }, []);
-  const deleteItems = () => {
-    axios
-      .put(
-        "http://localhost:5000/cart",
-
-        {
-          productId: deleteItem,
-        },
-        {
-          headers: {
-            authorization: "Bearer " + thisToken,
-          },
-        }
-      )
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   const Product = (element) => {
     const [price, setPrice] = useState(0);
-    const [quantity, setQuantity] = useState(1);
-    const [totalprice, setTotalprice] = useState(0);
-    console.log(element.props.price);
+    let [quantity, setQuantity] = useState(1);
+    let [subTotal, setSubTotal] = useState(element.props.price * quantity);
+    const [counter, setCounter] = useState(1);
+    localStorage.setItem("quantity", quantity);
+    localStorage.setItem("subTotal", subTotal);
+    localStorage.setItem("counter", counter);
+
     return (
-      <tr>
+      <tr className="product">
         <td>
           <div className="cart-info-2">
             <img
@@ -87,7 +78,6 @@ export default function Cart({ token }) {
               onChange={(e) => {}}
               onClick={() => {
                 history.push(`product/${element.props._id}`);
-                setDeleteItem(element._id);
               }}
             >
               <img src={element.props.img} />
@@ -101,17 +91,49 @@ export default function Cart({ token }) {
             </div>
           </div>
         </td>
-        <td>
+        <td id="quantity-counter">
+          <p
+            class="counter"
+            onClick={() => {
+              setCounter(quantity + 1);
+              setQuantity(counter);
+              setTot(element.props.price * quantity + tot);
+              setTotalQuantity((totalQuantity += quantity));
+              setSubTotal(element.props.price * quantity);
+            }}
+          >
+            +
+          </p>
           <input
             type="number"
             defaultValue="1"
+            min="1"
+            value={counter > 0 ? counter : 1}
+            max={`${element.props.quantity}`}
             onChange={(e) => {
-              setQuantity(e.target.value);
+              setQuantity(counter);
+              setTot(element.props.price * quantity + tot);
+              setTotalQuantity((totalQuantity += quantity));
+              setSubTotal(element.props.price * quantity);
+              console.log(e.target.value);
             }}
+            readOnly
           />
+          <p
+            class="counter"
+            onClick={() => {
+              setCounter(quantity - 1);
+              setQuantity(counter);
+              setTot(element.props.price * quantity - tot);
+              setTotalQuantity((totalQuantity -= quantity));
+              setSubTotal(element.props.price * quantity);
+            }}
+          >
+            -
+          </p>
         </td>
 
-        <td>{element.props.price * quantity} JD</td>
+        <td>{subTotal} JD</td>
       </tr>
     );
   };
@@ -121,6 +143,7 @@ export default function Cart({ token }) {
   });
 
   const totalPrice = result.reduce((acc, element) => acc + element.price, 0);
+  console.log(totalPrice);
 
   return (
     <div className="small-container cart-page">
@@ -133,7 +156,11 @@ export default function Cart({ token }) {
               <th>Quantity</th>
               <th>Subtotal</th>
             </tr>
-            {cartUser.length > 0 ? cartUser : "Not Found"}
+            {cartUser.length > 0 ? (
+              cartUser
+            ) : (
+              <h3 id="not-found"> You don't have any product</h3>
+            )}
           </tbody>
         </table>
       }
@@ -142,11 +169,11 @@ export default function Cart({ token }) {
           <tbody>
             <tr>
               <td>Total</td>
-              <td>{totalPrice} JD</td>
+              <td>{tot + totalPrice} JD</td>
             </tr>
             <tr>
               <td>Quantity</td>
-              <td>*{}</td>
+              <td>*{totalQuantity < 0 ? 0 : totalQuantity}</td>
             </tr>
             <tr>
               <small className="btn-checkout">Checkout</small>
