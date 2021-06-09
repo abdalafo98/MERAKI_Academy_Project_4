@@ -1,8 +1,7 @@
-
+import axios from "axios";
 import React, { useState } from "react";
 import { Link, Route, useHistory } from "react-router-dom";
 import Cart from "./../../src/cart.png";
-import { BiSearch } from "react-icons/bi";
 export default function Navigation({ token, setToken }) {
   const [searched, setSearched] = useState("");
   const history = useHistory();
@@ -14,7 +13,13 @@ export default function Navigation({ token, setToken }) {
   };
 
   const searchBtn = () => {
-    history.push(`/searched/${searched}`);
+    axios
+      .get(`http://localhost:5000/products/name/${searched}`)
+      .then((result) => {
+        history.push(`/product/${result.data[0]._id}`);
+        window.location.reload();
+      })
+      .catch((err) => {});
   };
 
   return (
@@ -27,7 +32,7 @@ export default function Navigation({ token, setToken }) {
               history.push("/");
             }}
           >
-            We <span> Buy</span>
+            THE <span> MOUNTAIN</span>
           </h1>{" "}
         </div>
         <div className="searchS">
@@ -40,7 +45,7 @@ export default function Navigation({ token, setToken }) {
             }}
           ></input>
           <button className="searchBtn" onClick={searchBtn}>
-          <BiSearch/>
+            Search
           </button>
         </div>
       </div>
