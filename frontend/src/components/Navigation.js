@@ -4,6 +4,10 @@ import { Link, Route, useHistory } from "react-router-dom";
 import Cart from "./../../src/cart.png";
 import { BsSearch } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
+import { FiShoppingCart } from "react-icons/fi";
+import { IoMdLogOut } from "react-icons/io";
+import { MdFavoriteBorder } from "react-icons/md";
+import { AiOutlineHome } from "react-icons/ai";
 
 export default function Navigation({ token, setToken }) {
   const [searched, setSearched] = useState("");
@@ -49,14 +53,14 @@ export default function Navigation({ token, setToken }) {
           <li>
             {" "}
             <Link className="link" to="/">
-              Home
+              <AiOutlineHome size={27} />
             </Link>
           </li>
           <li>
             {" "}
             {token ? (
-              <Link className="link" to="/cart">
-                cart
+              <Link className="link" to="/favorites">
+                <MdFavoriteBorder size={27} />
               </Link>
             ) : (
               ""
@@ -65,8 +69,8 @@ export default function Navigation({ token, setToken }) {
           <li>
             {" "}
             {token ? (
-              <Link className="link" to="/favorites">
-                favorites
+              <Link className="link" to="/cart">
+                <FiShoppingCart size={27} />
               </Link>
             ) : (
               ""
@@ -75,9 +79,7 @@ export default function Navigation({ token, setToken }) {
           <li>
             {token ? (
               <Link className="link" to="/profile">
-                <CgProfile
-                  style={{ height: "20px", width: "20px", cursor: "pointer" }}
-                />{" "}
+                <CgProfile size={27} />{" "}
               </Link>
             ) : (
               ""
@@ -87,7 +89,7 @@ export default function Navigation({ token, setToken }) {
             {" "}
             {token ? (
               <a className="link" onClick={signOut}>
-                Sign Out
+                <IoMdLogOut size={27} />
               </a>
             ) : (
               ""
