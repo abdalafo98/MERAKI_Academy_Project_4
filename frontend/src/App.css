@@ -54,8 +54,7 @@ nav ul li {
 .link:hover {
   cursor: pointer;
   text-decoration: none;
-  color: white;
-  background-color: goldenrod;
+
   padding: 8px 9px;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
@@ -506,6 +505,14 @@ div.card:hover {
   transform: scale(1.03);
   box-shadow: 0 10px 30px -5px #0d0d0d;
 }
+.radioStyle {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
 /* .error {
   margin: auto;
   width: 80%;
@@ -969,7 +976,7 @@ searchInput:active {
 
 #textArea-comment {
   width: 100%;
-  height: 20%;
+  height: 100px;
   margin-bottom: 10px;
   cursor: text;
   padding: 10px 0px 0px 10px;
