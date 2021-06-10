@@ -14,7 +14,7 @@ export default function Register() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("60bdd4e30480c613f821e12f");
+  const [role, setRole] = useState("60c08b2a4dd6a41a580328ad");
   const [error, setError] = useState(false);
   const rigister = () => {
     axios

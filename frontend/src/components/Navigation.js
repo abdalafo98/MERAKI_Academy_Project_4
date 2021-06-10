@@ -73,12 +73,15 @@ export default function Navigation({ token, setToken }) {
             )}
           </li>
           <li>
-            {" "}
-            <Link className="link" to="/profile">
-              <CgProfile
-                style={{ height: "20px", width: "20px", cursor: "pointer" }}
-              />{" "}
-            </Link>
+            {token ? (
+              <Link className="link" to="/profile">
+                <CgProfile
+                  style={{ height: "20px", width: "20px", cursor: "pointer" }}
+                />{" "}
+              </Link>
+            ) : (
+              ""
+            )}
           </li>
           <li>
             {" "}

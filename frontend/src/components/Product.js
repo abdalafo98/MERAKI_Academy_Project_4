@@ -1,14 +1,18 @@
 import { React, useState, useEffect } from "react";
-import Rating from "./Rating"
+import Rating from "./Rating";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
-import ShowRating from "./ShowRating"
+import ShowRating from "./ShowRating";
+import { AiFillHeart } from "react-icons/ai";
+import { AiOutlineHeart } from "react-icons/ai";
+
 export default function Product({ token }) {
   const { id } = useParams();
   const [result, setResult] = useState([]);
   const [info, setInfo] = useState([]);
   const [comment, setComment] = useState("");
   const [message, setMessage] = useState("");
+
   const [inFav, setInFav] = useState(false);
   const [userRateThisProduct, setUserRateThisProduct] = useState(false);
   const [userRate, setUserRate] = useState(null);
@@ -51,8 +55,7 @@ export default function Product({ token }) {
         }
       )
       .then((result) => {
-        setInfo(0)
-
+        setInfo(0);
       })
       .catch((err) => {
         console.log(err);
@@ -73,8 +76,7 @@ export default function Product({ token }) {
         }
       )
       .then((result) => {
-        setInfo(1)
-
+        setInfo(1);
       })
       .catch((err) => {
         console.log(err);
@@ -118,26 +120,28 @@ export default function Product({ token }) {
       .then((result) => {
         if (result.data === "found") {
           setInFav(true);
-          setInfo(0)
-          
+          setInfo(0);
         } else {
           setInFav(false);
-          setInfo(1)
+          setInfo(1);
         }
       })
       .catch((err) => {
         console.log(err);
       });
-      axios.get(`http://localhost:5000/rating/products/${id}`,{
+    axios
+      .get(`http://localhost:5000/rating/products/${id}`, {
         headers: {
           Authorization: "Bearer " + thisToken,
         },
-      }).then((result)=>{
-        if (result.data.found === "found"){
-          setUserRate(result.data.rate)
-          setUserRateThisProduct(true)
+      })
+      .then((result) => {
+        if (result.data.found === "found") {
+          setUserRate(result.data.rate);
+          setUserRateThisProduct(true);
         }
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
       });
   }, [info]);
@@ -146,8 +150,8 @@ export default function Product({ token }) {
   if (result.comment) {
     allComment = result.comment.map((element, i) => {
       return (
-        <div className="comment">
-          <p>{element.commenter.firstName}</p>
+        <div className="bottom-section-comment">
+          <p id="first-name">{element.commenter.firstName}</p>
           <p>{element.comment}</p>
         </div>
       );
@@ -155,50 +159,57 @@ export default function Product({ token }) {
   }
   return (
     <>
-    
-      <div className="containerDiv">
-        <div className="productHolder">
-          <div className="img">
-            <img src={result.img} style={{ width: "400px" }} />
+
+      <div className="product-view">
+        <div className="top-section">
+          <div className="top-img">
+            <img src={result.img} />
+          </div>
+          <div className="top-info">
             <div>
-             <div className="productDes">
-            <div className="desHeader">
-              {!inFav ? (
-                <button onClick={addFavorite}>Add to favorite</button>
+              <p>{result.name}</p>
+              Details{result.description}
+              {!userRateThisProduct ? (
+                <Rating
+                  idProduct={idProduct}
+                  thisToken={thisToken}
+                  setInfo={setInfo}
+                />
               ) : (
-                ""
-              )}
-              {inFav ? (
-                <button onClick={deleteFav}>delete from favorite</button>
-              ) : (
-                ""
+                <ShowRating rate={userRate} />
               )}
             </div>
-            <p>Name Product :{result.name}</p>
-            Description :{result.description}
-            <div className="desFooter">
-              {" "}
-              <button onClick={addCart}>add to Cart</button>
-            </div>
-            {!userRateThisProduct ? <div className ="rating ">
-              <Rating idProduct={idProduct}  thisToken = {thisToken} setInfo = {setInfo} />
-            </div>:<ShowRating rate = {userRate} />}
-          </div>
+            {!inFav ? (
+              <small id="add-favorite" onClick={addFavorite}>
+                <AiFillHeart icon="heart" />
+              </small>
+            ) : (
+              ""
+            )}
+            {inFav ? (
+              <small id="delete-fav" onClick={deleteFav}>
+                <AiOutlineHeart icon="heart" />
+              </small>
+            ) : (
+              ""
+            )}
+            <div className="top-section-button">
+              <button id="add-cart" onClick={addCart}>
+                Add Cart{" "}
+              </button>
             </div>
           </div>
         </div>
-        <div className="all-comment">
-          <section>{allComment}</section>
-        </div>
-        <div className="add-comment">
-          <input
+        <div className="bottom-section">
+          <textarea
             type="text"
             onChange={(e) => {
               setComment(e.target.value);
             }}
           />
-          <button onClick={addComment}>add comment</button>
+          <button onClick={addComment}>Comment</button>
           {message ? <p>{message}</p> : ""}
+          <div id="comment"> {allComment}</div>
         </div>
       </div>
     </>
