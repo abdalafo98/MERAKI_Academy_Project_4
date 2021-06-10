@@ -137,7 +137,7 @@ const getProductByPrice = (req, res) => {
   const price = req.params.price;
   const type = req.params.type;
   productModel
-    .find({ $and: [{ type: type }, { price: { $lt: price } }] })
+    .find({ $and: [{ type: type }, { price: { $lte: price } }] })
     .then((result) => {
       res.status(200).json(result);
     })

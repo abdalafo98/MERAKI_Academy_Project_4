@@ -49,7 +49,7 @@ const fav =  new favoriteModel({
 
 const getUserInformation =(req,res)=>{
 
-  const _id =req.params.id;
+  const _id =req.token.userId;
   usersModel.findOne({_id}).then((result)=>{
     
     res.status(200).json(result);
