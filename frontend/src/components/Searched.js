@@ -24,7 +24,7 @@ export default function Searched() {
       <div
         className="card"
         onClick={() => {
-          history.push(`product/${element._id}`);
+          history.push(`/product/${element._id}`);
         }}
       >
         <div className="card-image">
