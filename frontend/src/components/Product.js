@@ -202,6 +202,7 @@ export default function Product({ token }) {
         <div className="bottom-section">
           <textarea
             id="textArea-comment"
+            placeholder="Add Your Comment"
             type="text"
             onChange={(e) => {
               setComment(e.target.value);

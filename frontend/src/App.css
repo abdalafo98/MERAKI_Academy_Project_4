@@ -752,6 +752,9 @@ input[type="radio"] {
 searchInput:active {
   border-color: goldenrod;
 }
+
+/* ////////////////////////////////////////////////////////////////////////// */
+
 /* dashboard admin */
 .dashCon {
   display: flex;
@@ -760,35 +763,70 @@ searchInput:active {
   justify-content: center;
   margin-top: 100px;
 }
-
+.inputFind {
+  border-radius: 5px;
+  border: 1px solid rgb(90, 90, 90);
+  margin: auto;
+  padding: 0 5px;
+  margin-left: 150px;
+  width: 300px;
+  height: 35px;
+}
 .dashSwitch {
-  width: 500px;
+  width: 300px;
   height: 500px;
-  border: 2px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 110px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
-
 .dahsBtn {
-  background-color: burlywood;
-  width: 100%;
-  height: 15%;
-  font-size: large;
-  font-weight: bolder;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  margin: 20px;
+  width: 50%;
+  height: 30px;
+  background-color: goldenrod;
+  border-radius: 7px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  margin: auto;
+  margin-top: 35px;
 }
 .dashAdd {
-  border: green;
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  height: 100%;
   justify-content: center;
-  margin-top: 15%;
+  margin-top: 100px;
 }
 .dashInput {
   text-align: center;
-  border: 1px solid red;
-  height: 14.2%;
+  width: 30%;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  justify-content: center;
+  box-shadow: black;
+  height: 450px;
+  display: flex;
+  margin: auto;
+}
+.dahsBtnAdd {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  margin: 20px;
+  width: 15%;
+  height: 30px;
+  background-color: goldenrod;
+  border-radius: 7px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  margin: auto;
+  margin-top: 35px;
 }
 .addCont {
   display: flex;
@@ -796,82 +834,54 @@ searchInput:active {
   width: 100%;
   height: 500px;
 }
-
+.updateCont {
+  border: 10px solid red;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  text-align: center;
+  width: 600px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  margin-top: 150px;
+}
 .textEdit::placeholder {
   opacity: 1;
   font-weight: bolder;
   color: red;
 }
-/* footer styling */
-
-/* aboutUs */
-
-.aboutUs {
-  padding: 3rem 0;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.contactUs {
+.areaUpdate {
+  border: 5px solid blue;
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
-  padding: 3rem 0;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.title {
-  font-size: 54px;
-  line-height: 1em;
-  font-weight: 700;
-}
-
-.cole {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  padding: 3rem 0;
-  width: 100%;
-  margin-bottom: 1rem;
-}
-.col {
-  padding: 4rem 0;
-  width: 33%;
-  margin: 1rem;
-}
-.col p {
-  color: rgba(0, 0, 0, 0.6);
-}
-.subtitle {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.5em;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  max-width: 275px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1rem;
-}
-
-/* ////////////////////////////////////////////////////////////////////////////// */
-
-/* This section is for our Navigation  styling */
-.user-info {
-  margin-top: 40px;
-  margin-left: 500px;
   justify-content: center;
-  align-items: center;
+  width: 50%;
+  height: 450px;
+  margin: auto;
 }
-
-.user-info p {
-  margin-bottom: 5px;
+.textEdit {
+  padding: 20px;
 }
-.user-info p span {
-  font-weight: bold;
+.findBtn {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  margin: 20px;
+  width: 20%;
+  height: 35px;
+  background-color: goldenrod;
+  border-radius: 7px;
+  border: none;
+  color: white;
+  font-size: 17px;
+  text-align: center;
+  cursor: pointer;
+  margin: auto;
+  margin-top: 20px;
 }
-
+.findId {
+  border: 5px solid green;
+  padding: 10px;
+}
 /* ////////////////////////////////////////////////////////////////////////////////////// */
 /* This section is for our product page styling */
 
