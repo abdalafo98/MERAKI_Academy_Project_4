@@ -39,9 +39,9 @@ export default function Category({ token }) {
     );
   });
 
-  const searchFilter = () => {
+  const searchFilter = (price) => {
     axios
-      .get(`http://localhost:5000/products/filter/${type}/${filterVal}`)
+      .get(`http://localhost:5000/products/filter/${type}/${price}`)
       .then((result) => {
         setResult(result.data);
       })
@@ -54,9 +54,13 @@ export default function Category({ token }) {
     <div className="CategoryContainer">
       <div className="searchFilter">
         <div className="radioStyle">
-          <select onChange={searchFilter}>
+          <select
+            onChange={(e) => {
+              searchFilter(e.target.value);
+            }}
+          >
             <option
-              value="10"
+              value={10}
               // style={{ display: "initial" }}
               onSelect={() => {
                 setFilterVal(10);
@@ -65,7 +69,7 @@ export default function Category({ token }) {
               Under 10 JD
             </option>
             <option
-              value="20"
+              value={20}
               // style={{ display: "initial" }}
               onSelect={() => {
                 setFilterVal(20);
@@ -74,7 +78,7 @@ export default function Category({ token }) {
               Under 20 JD
             </option>
             <option
-              value="50"
+              value={50}
               // style={{ display: "initial" }}
               onSelect={() => {
                 setFilterVal(50);
@@ -83,14 +87,14 @@ export default function Category({ token }) {
               Under 50 JD
             </option>
             <option
-              value="All"
+              value={10000}
               // style={{ display: "initial" }}
               onSelect={() => {
                 setFilterVal(10000);
               }}
               selected
             >
-              All
+              All Price
             </option>
           </select>
 

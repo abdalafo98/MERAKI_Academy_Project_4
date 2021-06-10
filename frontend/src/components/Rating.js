@@ -5,26 +5,6 @@ import axios from "axios";
 export default function Rating({ idProduct, thisToken, setInfo }) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
-  const addRating = () => {
-    axios
-      .post(
-        `http://localhost:5000/rating/products/${idProduct}`,
-        {
-          rating: rating,
-        },
-        {
-          headers: {
-            authorization: "Bearer " + thisToken,
-          },
-        }
-      )
-      .then((result) => {
-        setInfo(Math.random());
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
   return (
     <div>
       <div className="rating">
@@ -38,6 +18,24 @@ export default function Rating({ idProduct, thisToken, setInfo }) {
                 value={ratingValue}
                 onClick={() => {
                   setRating(ratingValue);
+                  axios
+                    .post(
+                      `http://localhost:5000/rating/products/${idProduct}`,
+                      {
+                        rating: ratingValue,
+                      },
+                      {
+                        headers: {
+                          authorization: "Bearer " + thisToken,
+                        },
+                      }
+                    )
+                    .then((result) => {
+                      setInfo(Math.random());
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                    });
                 }}
               />
               <FaStar
@@ -55,7 +53,7 @@ export default function Rating({ idProduct, thisToken, setInfo }) {
             </label>
           );
         })}
-        <button onClick={addRating}>rating</button>
+        <button>rating</button>
       </div>
     </div>
   );

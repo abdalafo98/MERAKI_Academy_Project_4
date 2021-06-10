@@ -563,10 +563,11 @@ div.card:hover {
 }
 .radioStyle {
   margin: auto;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
-  width: 100%;
-  justify-content: center;
+  width: 80%;
+  justify-content: flex-start;
 }
 
 /* .error {
