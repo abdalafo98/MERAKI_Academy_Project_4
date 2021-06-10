@@ -3,6 +3,7 @@ import { Switch, Route, Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import priceIcon from "./../../src/price.png";
 import deleteIcon from "./../../src/delete.png";
+
 export default function Cart({ token }) {
   const [result, setResult] = useState([]);
   const [tot, setTot] = useState(0);
@@ -30,10 +31,13 @@ export default function Cart({ token }) {
   }, []);
 
   const createOrder = ()=>{
-    const date = Date().split(" GMT+0300 (Eastern European Summer Time)")[0].replaceAll(" ","-")
+    history.push('/payment')
+
+    
+    
   
     
-    console.log("arr",arr)
+    
     const newArr = []
     for (let i = 0; i < arr.length; i++) {
     let found = false
@@ -48,17 +52,10 @@ export default function Cart({ token }) {
     }
     
     }
-     axios.post("http://localhost:5000/order",{
-      date , products:newArr , totalPrice : 120 
-    },{
-       headers: {
-      authorization: "Bearer " + token,
-     },
-     }).then((result)=>{
-       console.log(result);
-     }).catch((err)=>{
-       console.log(err);
-     })
+
+    localStorage.setItem("newArr", JSON.stringify(newArr));     
+
+    
   }
 
 
@@ -172,8 +169,10 @@ export default function Cart({ token }) {
 
   const totalPrice = result.reduce((acc, element) => acc + element.price, 0);
   console.log(totalPrice);
+  localStorage.setItem("totalPrice",totalPrice+tot)
 
   return (
+    
     <div className="small-container cart-page">
       <h2>My Cart</h2>
       {
@@ -210,5 +209,8 @@ export default function Cart({ token }) {
         </table>
       </div>
     </div>
+    
+    
+    
   );
 }
