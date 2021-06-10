@@ -18,6 +18,7 @@ import PrivacyandPolicy from "./components/footer/footerPages/PrivacyandPolicy";
 import OurStaff from "./components/footer/footerPages/OurStaff";
 import Searched from "./components/Searched";
 import Profile from "./components/Profile";
+import  Payment from  "./components/Payment"
 import "./App.css";
 
 const App = () => {
@@ -69,7 +70,7 @@ const App = () => {
             />
             <Route exact path="/cart" render={() => <Cart token={token} />} />
             <Route exact path="/profile" render={() => <Profile />} />
-
+            <Route exact path="/payment" component={Payment} />
             <Route
               exact
               path="/:type"
