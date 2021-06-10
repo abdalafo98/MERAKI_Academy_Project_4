@@ -20,93 +20,114 @@ export default function Navigation({ token, setToken }) {
   const searchBtn = () => {
     history.push(`/searched/${searched}`);
   };
+  const moveToMen = () => {
+    history.push("/men");
+    window.location.reload();
+  };
+  const moveToKids = () => {
+    history.push("/kid");
+    window.location.reload();
+  };
+  const moveToWomen = () => {
+    history.push("/women");
+    window.location.reload();
+  };
 
   return (
-    <div className="Navigation">
-      <div className="navBar">
-        <div className="logo">
-          <h1
-            class="logo"
-            onClick={() => {
-              history.push("/");
-            }}
-          >
-            We <span> Buy</span>
-          </h1>{" "}
+    <div className="">
+      <div className="Navigation-child-top">
+        <div className="navBar">
+          <div className="logo">
+            <h1
+              class="logo"
+              onClick={() => {
+                history.push("/");
+              }}
+            >
+              We <span> Buy</span>
+            </h1>{" "}
+          </div>
+          <div className="searchS">
+            <input
+              className="searchInput"
+              type="text"
+              placeholder="Search.. "
+              onChange={(e) => {
+                setSearched(e.target.value);
+              }}
+            ></input>
+            <button className="searchBtn" onClick={searchBtn}>
+              <BsSearch size={15} />
+            </button>
+          </div>
         </div>
-        <div className="searchS">
-          <input
-            className="searchInput"
-            type="text"
-            placeholder="Search.. "
-            onChange={(e) => {
-              setSearched(e.target.value);
-            }}
-          ></input>
-          <button className="searchBtn" onClick={searchBtn}>
-            <BsSearch size={20} />
-          </button>
-        </div>
+        <nav>
+          <ul>
+            <li>
+              {" "}
+              <Link className="link icon-plus-name-navbar" to="/">
+                <AiOutlineHome size={27} />
+                <p>Home</p>
+              </Link>
+            </li>
+            <li>
+              {" "}
+              {token ? (
+                <Link className="link icon-plus-name-navbar" to="/favorites">
+                  <MdFavoriteBorder size={27} />
+                  <p>WishList</p>
+                </Link>
+              ) : (
+                ""
+              )}
+            </li>
+            <li>
+              {" "}
+              {token ? (
+                <Link className="link icon-plus-name-navbar" to="/cart">
+                  <FiShoppingCart size={27} />
+                  <p>Cart</p>
+                </Link>
+              ) : (
+                ""
+              )}
+            </li>
+            <li>
+              {token ? (
+                <Link className="link icon-plus-name-navbar" to="/profile">
+                  <CgProfile size={27} /> <p>profile</p>
+                </Link>
+              ) : (
+                ""
+              )}
+            </li>
+            <li>
+              {" "}
+              {token ? (
+                <a
+                  className="link icon-plus-name-navbar icon-plus-name-navbar"
+                  onClick={signOut}
+                >
+                  <IoMdLogOut size={27} />
+                  <p>signout</p>
+                </a>
+              ) : (
+                ""
+              )}
+            </li>{" "}
+            <li>
+              {" "}
+              {!token ? (
+                <Link className="link icon-plus-name-navbar" to="/login">
+                  Login
+                </Link>
+              ) : (
+                ""
+              )}
+            </li>{" "}
+          </ul>
+        </nav>
       </div>
-      <nav>
-        <ul>
-          <li>
-            {" "}
-            <Link className="link" to="/">
-              <AiOutlineHome size={27} />
-            </Link>
-          </li>
-          <li>
-            {" "}
-            {token ? (
-              <Link className="link" to="/favorites">
-                <MdFavoriteBorder size={27} />
-              </Link>
-            ) : (
-              ""
-            )}
-          </li>
-          <li>
-            {" "}
-            {token ? (
-              <Link className="link" to="/cart">
-                <FiShoppingCart size={27} />
-              </Link>
-            ) : (
-              ""
-            )}
-          </li>
-          <li>
-            {token ? (
-              <Link className="link" to="/profile">
-                <CgProfile size={27} />{" "}
-              </Link>
-            ) : (
-              ""
-            )}
-          </li>
-          <li>
-            {" "}
-            {token ? (
-              <a className="link" onClick={signOut}>
-                <IoMdLogOut size={27} />
-              </a>
-            ) : (
-              ""
-            )}
-          </li>{" "}
-          <li>
-            {" "}
-            {!token ? (
-              <Link className="link" to="/login">
-                Login
-              </Link>
-            ) : (
-              ""
-            )}
-          </li>{" "}
-        </ul>
-      </nav>
     </div>
   );
 }

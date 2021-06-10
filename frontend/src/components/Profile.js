@@ -3,6 +3,8 @@ import { Switch, Route, Link, useParams, useHistory } from "react-router-dom";
 
 import axios from "axios";
 import { CgInsertAfterO } from "react-icons/cg";
+import profileFemale from "./../../src/profile-female.png";
+import profileMen from "./../../src/profile-men.png";
 
 const Profile = () => {
   const [result, setResult] = useState([]);
@@ -30,11 +32,7 @@ const Profile = () => {
       <div className="user-info">
         <div>
           <img
-            src={
-              result.gender === "male"
-                ? "https://www.pngitem.com/pimgs/m/78-786293_1240-x-1240-0-avatar-profile-icon-png.png"
-                : "https://image.freepik.com/free-vector/people-profile-icon_24877-40756.jpg"
-            }
+            src={result.gender == "male" ? profileMen : profileFemale}
             height={200}
             width={200}
           />
