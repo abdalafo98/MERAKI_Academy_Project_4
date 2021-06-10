@@ -159,6 +159,7 @@ export default function Product({ token }) {
   }
   return (
     <>
+
       <div className="product-view">
         <div className="top-section">
           <div className="top-img">
