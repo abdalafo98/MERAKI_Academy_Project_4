@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, Route, useHistory } from "react-router-dom";
 import Cart from "./../../src/cart.png";
-import {BsSearch} from "react-icons/bs"
+import { BsSearch } from "react-icons/bs";
+import { CgProfile } from "react-icons/cg";
 
 export default function Navigation({ token, setToken }) {
   const [searched, setSearched] = useState("");
@@ -16,7 +17,6 @@ export default function Navigation({ token, setToken }) {
     history.push(`/searched/${searched}`);
   };
 
-
   return (
     <div className="Navigation">
       <div className="navBar">
@@ -27,7 +27,7 @@ export default function Navigation({ token, setToken }) {
               history.push("/");
             }}
           >
-          We <span> Buy</span>
+            We <span> Buy</span>
           </h1>{" "}
         </div>
         <div className="searchS">
@@ -40,7 +40,7 @@ export default function Navigation({ token, setToken }) {
             }}
           ></input>
           <button className="searchBtn" onClick={searchBtn}>
-            <BsSearch  size={20}/>
+            <BsSearch size={20} />
           </button>
         </div>
       </div>
@@ -71,6 +71,14 @@ export default function Navigation({ token, setToken }) {
             ) : (
               ""
             )}
+          </li>
+          <li>
+            {" "}
+            <Link className="link" to="/profile">
+              <CgProfile
+                style={{ height: "20px", width: "20px", cursor: "pointer" }}
+              />{" "}
+            </Link>
           </li>
           <li>
             {" "}
