@@ -30,7 +30,7 @@ export default function Cart({ token }) {
   }, []);
 
   const createOrder = ()=>{
-    const date = "9-6-2021"
+    const date = Date().split(" GMT+0300 (Eastern European Summer Time)")[0].replaceAll(" ","-")
   
     
     console.log("arr",arr)
