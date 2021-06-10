@@ -437,13 +437,48 @@ th:last-child {
 /* ////////////////////////////////////////////////////////////////////////////////////// */
 /* This section is for our category page styling */
 
+.CategoryContainer{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  
+}
+.categoryAds{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 15%;
+  border: 1px solid black;
+
+}
+
+.ads{
+
+
+}
+
+.searchFilter{
+
+  height: 100vh;
+  width: 15%;
+  justify-content: center;
+  justify-items: center;
+  border: 1px solid black;
+}
+
+.radioStyle{
+  display: flex;
+  flex-direction: column;
+}
+
 .category {
   align-items: center;
   justify-content: center;
-  max-width: 1000x;
-  margin-left: 110px;
-  margin-right: 15px;
+  width: 70%;
+  
 }
+
+
 
 div.card {
   width: 250px;

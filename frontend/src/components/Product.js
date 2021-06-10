@@ -155,6 +155,7 @@ export default function Product({ token }) {
   }
   return (
     <>
+    
       <div className="containerDiv">
         <div className="productHolder">
           <div className="img">
