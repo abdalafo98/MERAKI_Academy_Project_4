@@ -34,6 +34,7 @@ export default function Product({ token }) {
       )
       .then((result) => {
         setInfo(Math.random());
+        document.getElementById("textArea-comment").value = "";
       })
       .catch((err) => {
         if (err) {
@@ -159,55 +160,57 @@ export default function Product({ token }) {
   }
   return (
     <>
-
       <div className="product-view">
-        <div className="top-section">
+        <div className="top-section bottom-margin">
           <div className="top-img">
             <img src={result.img} />
           </div>
           <div className="top-info">
-            <div>
-              <p>{result.name}</p>
-              Details{result.description}
-              {!userRateThisProduct ? (
-                <Rating
-                  idProduct={idProduct}
-                  thisToken={thisToken}
-                  setInfo={setInfo}
-                />
-              ) : (
-                <ShowRating rate={userRate} />
-              )}
-            </div>
-            {!inFav ? (
-              <small id="add-favorite" onClick={addFavorite}>
-                <AiFillHeart icon="heart" />
-              </small>
+            <p id="name-product">{result.name}</p>
+            <span style={{ fontWeight: "bold" }}>Details </span>
+            {result.description}
+            {!userRateThisProduct ? (
+              <Rating
+                idProduct={idProduct}
+                thisToken={thisToken}
+                setInfo={setInfo}
+              />
             ) : (
-              ""
+              <ShowRating rate={userRate} />
             )}
-            {inFav ? (
-              <small id="delete-fav" onClick={deleteFav}>
-                <AiOutlineHeart icon="heart" />
-              </small>
-            ) : (
-              ""
-            )}
-            <div className="top-section-button">
-              <button id="add-cart" onClick={addCart}>
-                Add Cart{" "}
-              </button>
-            </div>
+
+            <button id="add-cart" onClick={addCart}>
+              Add Cart{" "}
+            </button>
           </div>
+          {!inFav ? (
+            <AiOutlineHeart
+              icon="heart"
+              id="add-favorite"
+              onClick={addFavorite}
+            />
+          ) : (
+            ""
+          )}
+          {inFav ? (
+            <AiFillHeart icon="heart" id="delete-fav" onClick={deleteFav} />
+          ) : (
+            ""
+          )}
         </div>
+
         <div className="bottom-section">
           <textarea
+            id="textArea-comment"
             type="text"
             onChange={(e) => {
               setComment(e.target.value);
             }}
           />
-          <button onClick={addComment}>Comment</button>
+
+          <button id="add-comment" onClick={addComment}>
+            Comment
+          </button>
           {message ? <p>{message}</p> : ""}
           <div id="comment"> {allComment}</div>
         </div>
