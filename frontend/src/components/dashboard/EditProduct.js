@@ -65,14 +65,14 @@ const edit = ()=>{
   }
   //jxs html +javascript
     return (
-        <div>
-       <div>
-           <input placeholder="Product ID" onChange={(e)=>{
+      <div className="updateCont">
+        <div className="findId">
+        <input  className ="inputFind"placeholder="Product ID" onChange={(e)=>{
              setIdValue(e.target.value) 
            }}></input>
-           <button onClick={findId}>find product</button>
-           </div>
-           <div>
+           <button className="findBtn" onClick={findId}>find product</button>
+        </div>
+             <div className="areaUpdate">
            <textarea className="textEdit" name="quantity" placeholder={description} onChange={(e)=>{
                    setDescription(e.target.value)
                }}></textarea>
@@ -89,10 +89,11 @@ const edit = ()=>{
                    setPrice(e.target.value)}}></textarea>
                <textarea className="textEdit" name=""placeholder= {img} onChange={(e)=>{
                    setImg(e.target.value)}}></textarea>
-               <button onClick={edit}>Edit</button>
-               <button onClick={deletBtn}>Delete</button>
+                   </div>
+               <button className="dahsBtnAdd" onClick={edit}>Edit</button>
+               <button className="dahsBtnAdd" onClick={deletBtn}>Delete</button>
            </div>
    
-        </div>
+        
     )
 }

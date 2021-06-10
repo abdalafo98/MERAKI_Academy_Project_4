@@ -82,7 +82,7 @@ export default function Dashboard() {
           setQuantity(e.target.value);
         }}
       />
-      <button onClick={addProduct}>add product</button>
+      <button className="dahsBtn" onClick={addProduct}>add product</button>
       <input placeholder="Add product" />
     </>
   );

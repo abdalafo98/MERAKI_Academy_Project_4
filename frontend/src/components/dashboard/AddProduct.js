@@ -111,7 +111,7 @@ export default function Dashboard() {
           setQuantity(e.target.value);
         }}
       />
-      <button className="dashInput" onClick={addProduct}>add product</button>
+      <button className="dahsBtnAdd" onClick={addProduct}>add product</button>
       {/* <button onClick={updateProduct} >update product</button> */}
       </div>
     </>
