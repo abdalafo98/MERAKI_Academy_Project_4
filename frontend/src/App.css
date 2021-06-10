@@ -437,48 +437,13 @@ th:last-child {
 /* ////////////////////////////////////////////////////////////////////////////////////// */
 /* This section is for our category page styling */
 
-.CategoryContainer{
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  
-}
-.categoryAds{
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 15%;
-  border: 1px solid black;
-
-}
-
-.ads{
-
-
-}
-
-.searchFilter{
-
-  height: 100vh;
-  width: 15%;
-  justify-content: center;
-  justify-items: center;
-  border: 1px solid black;
-}
-
-.radioStyle{
-  display: flex;
-  flex-direction: column;
-}
-
 .category {
   align-items: center;
   justify-content: center;
-  width: 70%;
-  
+  max-width: 1000x;
+  margin-left: 110px;
+  margin-right: 15px;
 }
-
-
 
 div.card {
   width: 250px;
@@ -916,11 +881,15 @@ searchInput:active {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 50%;
+  height: 100%;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px, rgba(0, 0, 0, 0.24) 0px 1px 1px;
   margin-bottom: 20px;
+  gap: 20px;
+  padding-bottom: 10px;
 }
 
+.bottom-margin {
+}
 .top-section-button {
   width: 80%;
   display: flex;
@@ -939,51 +908,90 @@ searchInput:active {
   cursor: pointer;
 }
 #add-favorite {
+  color: rgb(219, 14, 14);
+
+  width: 50px;
+  height: 50px;
+  margin-right: 30px;
+  margin-top: 10px;
+
+  cursor: pointer;
+}
+#delete-fav {
+  width: 50px;
+  height: 50px;
+  margin-right: 30px;
+  margin-top: 10px;
+  color: rgb(219, 14, 14);
+  cursor: pointer;
+}
+#add-cart {
+  height: 20%;
+  width: 40%;
+  color: white;
+  border-radius: 15px;
   background-color: goldenrod;
   box-shadow: rgba(0, 0, 0, 0.12) 1px 1px 1px 1px,
     rgba(0, 0, 0, 0.24) 1px 1px 1px 1px;
+  cursor: pointer;
 }
-#delete-fav {
-  background-color: rgb(160, 12, 12);
+.top-img img {
+  width: 400px;
+  height: 475px;
   box-shadow: rgba(0, 0, 0, 0.12) 1px 1px 1px 1px,
     rgba(0, 0, 0, 0.24) 1px 1px 1px 1px;
-}
-#add-cart {
-  height: 100%;
-
-  background-color: white;
-  color: black;
-  box-shadow: rgba(0, 0, 0, 0.12) 1px 1px 1px 1px,
-    rgba(0, 0, 0, 0.24) 1px 1px 1px 1px;
-}
-.top-img {
-  width: 30%;
 }
 
 .top-info {
   width: 50%;
+  height: 50%;
+  margin-left: 20px;
   padding: 0px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.top-info button {
+  margin: 10px 0;
+  margin-bottom: 40px;
+  background-color: rgb(71, 70, 70);
+  color: white;
+  padding: 10px 15px;
+  border: none;
 }
 
 .bottom-section {
   height: 100%;
   width: 100%;
-
   margin: auto;
+  justify-content: space-between;
 }
-.bottom-section textarea {
+
+#textArea-comment {
   width: 100%;
-  height: 30%;
+  height: 20%;
+  margin-bottom: 10px;
   cursor: text;
   padding: 10px 0px 0px 10px;
   resize: none;
 }
 .bottom-section button {
   margin: 10px 0;
-  background-color: rgb(71, 70, 70);
+  margin-bottom: 40px;
+  border-radius: 10px;
+  background-color: goldenrod;
   color: white;
   padding: 10px 15px;
   border: none;
+}
+
+#add-comment {
+  margin: 0px 0 10px 0;
+  background-color: goldenrod;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  width: 15%;
 }
 
 .bottom-section-comment {
@@ -992,11 +1000,18 @@ searchInput:active {
     rgba(0, 0, 0, 0.24) 1px 1px 1px 1px;
 }
 
+.bottom-section button {
+  cursor: pointer;
+}
 #first-name {
   font-size: 20px;
   font-weight: bold;
 }
 
-.comment {
-  overflow: scroll;
+#name-product {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
 }

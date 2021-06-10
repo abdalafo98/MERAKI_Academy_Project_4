@@ -2,23 +2,28 @@ import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import axios from "axios";
 
-export default function Rating({idProduct,thisToken,setInfo}) {
+export default function Rating({ idProduct, thisToken, setInfo }) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
-  const addRating = ()=>{
-      axios.post(`http://localhost:5000/rating/products/${idProduct}`,
-      {
-        rating:rating,
-      },
-      {
-        headers: {
-          authorization: "Bearer " + thisToken,
+  const addRating = () => {
+    axios
+      .post(
+        `http://localhost:5000/rating/products/${idProduct}`,
+        {
+          rating: rating,
         },
-      }).then((result)=>{
-        setInfo(Math.random())
-      }).catch((err)=>{
-          console.log(err)
+        {
+          headers: {
+            authorization: "Bearer " + thisToken,
+          },
+        }
+      )
+      .then((result) => {
+        setInfo(Math.random());
       })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div>
@@ -37,7 +42,9 @@ export default function Rating({idProduct,thisToken,setInfo}) {
               />
               <FaStar
                 size={30}
-                color={ratingValue <= (hover || rating) ? "yellow" : "gray"}
+                color={
+                  ratingValue <= (hover || rating) ? "rgb(231, 231, 9)" : "gray"
+                }
                 onMouseEnter={() => {
                   setHover(ratingValue);
                 }}
@@ -50,8 +57,6 @@ export default function Rating({idProduct,thisToken,setInfo}) {
         })}
         <button onClick={addRating}>rating</button>
       </div>
-      
-
     </div>
   );
 }
