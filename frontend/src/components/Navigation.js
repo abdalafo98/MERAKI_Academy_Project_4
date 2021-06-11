@@ -36,7 +36,7 @@ export default function Navigation({ token, setToken }) {
   };
 
   return (
-    <div className="">
+    <div className="Navigation">
       <div className="Navigation-child-top">
         <div className="navBar">
           <div className="logo">
@@ -68,7 +68,7 @@ export default function Navigation({ token, setToken }) {
             <li>
               {" "}
               <Link className="link icon-plus-name-navbar" to="/">
-                <AiOutlineHome size={27} />
+                <AiOutlineHome size={27} color={"white"} />
                 <p>Home</p>
               </Link>
             </li>
@@ -76,7 +76,7 @@ export default function Navigation({ token, setToken }) {
               {" "}
               {token ? (
                 <Link className="link icon-plus-name-navbar" to="/favorites">
-                  <MdFavoriteBorder size={27} />
+                  <MdFavoriteBorder size={27} color={"white"} />
                   <p>WishList</p>
                 </Link>
               ) : (
@@ -87,7 +87,7 @@ export default function Navigation({ token, setToken }) {
               {" "}
               {token ? (
                 <Link className="link icon-plus-name-navbar" to="/cart">
-                  <FiShoppingCart size={27} />
+                  <FiShoppingCart size={27} color={"white"} />
                   <p>Cart</p>
                 </Link>
               ) : (
@@ -97,7 +97,7 @@ export default function Navigation({ token, setToken }) {
             <li>
               {token ? (
                 <Link className="link icon-plus-name-navbar" to="/profile">
-                  <CgProfile size={27} /> <p>profile</p>
+                  <CgProfile size={27} color={"white"} /> <p>profile</p>
                 </Link>
               ) : (
                 ""
@@ -110,8 +110,8 @@ export default function Navigation({ token, setToken }) {
                   className="link icon-plus-name-navbar icon-plus-name-navbar"
                   onClick={signOut}
                 >
-                  <IoMdLogOut size={27} />
-                  <p>signout</p>
+                  <IoMdLogOut size={27} color={"white"} />
+                  <p>sign out</p>
                 </a>
               ) : (
                 ""

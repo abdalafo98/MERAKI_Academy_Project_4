@@ -46,39 +46,45 @@ const Profile = () => {
     console.log("order", element);
 
     return (
-      <div className="user-info">
-        <p># {i + 1} Order</p>
-        <p>
-          {" "}
-          <span> date: </span>
-          {element.date}{" "}
-        </p>
+      <div>
+        <p id="order-number"># {i + 1} Order</p>
+        <div className="user-info">
+          <div id="order">
+            <div class="inf">
+              <p>
+                {" "}
+                <span> date: </span>
+                {element.date}{" "}
+              </p>
 
-        <p>
-          {" "}
-          <span> Total Price: </span>
-          {element.totalPrice}{" "}
-        </p>
-
-        <p class="product-info">
-          {" "}
-          <span> Order Info: </span>
-        </p>
-        {element.products.map((ele, i) => {
-          return (
-            <div class="info-order">
-              <div class="img-order">
-                <p>#{i + 1}</p>
-                <img src={ele.product.img} height={50} width={50} />
-              </div>
-
-              <div class="product-information">
-                <p>Name Product: {ele.product.name}</p>
-                <p>price: {ele.product.price} </p>
-              </div>
+              <p>
+                {" "}
+                <span> Total Price: </span>
+                {element.totalPrice}{" "}
+              </p>
             </div>
-          );
-        })}
+
+            <p class="product-info">
+              {" "}
+              <span> Order Info: </span>
+            </p>
+            {element.products.map((ele, i) => {
+              return (
+                <div class="info-order">
+                  <div class="img-order">
+                    <p>#{i + 1}</p>
+                    <img src={ele.product.img} height={50} width={50} />
+                  </div>
+
+                  <div class="product-information">
+                    <p>Name Product: {ele.product.name}</p>
+                    <p>price: {ele.product.price} </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     );
   });

@@ -9,17 +9,7 @@
 /* This section is for our Navigation  styling */
 
 .Navigation {
-  box-shadow: 2px 2px #a8a7a791;
-  background-color: #ffffff3a;
-  box-shadow: 30px;
-  width: 100%;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  transition: 0.9s;
-  padding-right: 60px;
+  background-color: #131921;
 }
 
 .icon-plus-name-navbar {
@@ -35,6 +25,7 @@
 nav ul li {
   display: inline-block;
   margin-right: 20px;
+  color: white;
 }
 .nav ul {
   margin-right: 0;
@@ -42,7 +33,7 @@ nav ul li {
 
 .Navigation-child-top {
   box-shadow: 2px 2px #a8a7a791;
-  background-color: #ffffff3a;
+
   box-shadow: 30px;
   width: 100%;
   height: 100px;
@@ -52,6 +43,7 @@ nav ul li {
   justify-content: space-between;
   transition: 0.9s;
   padding-right: 60px;
+  color: white;
 }
 
 .Navigation-child-bottom {
@@ -77,12 +69,19 @@ nav ul li {
 .Navigation-child-bottom ul {
   display: inline-block;
   list-style-type: none;
+  color: white;
 }
 
+.icon-plus-name-navbar p {
+  color: white;
+}
 .Navigation-child-bottom ul li {
   display: inline-block;
   margin-right: 20px;
   cursor: pointer;
+}
+.Navigation-child-bottom ul li p {
+  color: white;
 }
 .navBar {
   display: flex;
@@ -1086,6 +1085,9 @@ searchInput:active {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  margin: 20px 20px;
 }
 .order {
   padding-left: 40px;
@@ -1103,8 +1105,6 @@ searchInput:active {
 }
 
 .information {
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px 1px,
-    rgba(0, 0, 0, 0.24) 0px 1px 1px 1px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -1117,6 +1117,9 @@ searchInput:active {
   margin-bottom: 10px;
   font-weight: bold;
   font-size: 30px;
+  border: 2px solid black;
+  margin: 10px 20px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 .your-order {
@@ -1128,16 +1131,35 @@ searchInput:active {
   width: 70%;
   margin-top: 40px;
 }
-.scroll {
-  overflow: scroll;
-}
 
 .product-info {
   margin: auto;
+  text-align: center;
 }
 
 .info-order {
   display: flex;
   flex-direction: row;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  border: 0.5px solid black;
+  margin: 20px;
+}
+
+#order-number {
+  margin: auto;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+hr {
+  color: #2e5d73;
+}
+#order {
+  margin-top: 20px;
+}
+
+.inf {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
