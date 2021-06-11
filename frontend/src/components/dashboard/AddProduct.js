@@ -44,75 +44,65 @@ export default function Dashboard() {
       });
   };
 
-  //   const updateProduct = ()=>{
-  // 	  axios.put("http://localhost:5000/products",{
-  // 		type,
-  //         name,
-  //         price,
-  //         img,
-  //         description,
-  //         quantity,
-  // 	  }).then((result) => {
-  //         if (!result.data.errors) {
-  //           history.push("/products");
-  //         } else {
-  //           setError(true);
-  //           console.log(result.data.errors);
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-
   return (
     <>
-      <div className="dashAdd">Dashboard</div>
-      <div className="addCont">
-      <input className="dashInput"
-        type="text"
-        placeholder="type"
-        onChange={(e) => {
-          setType(e.target.value);
-        }}
-      />
-      <input className="dashInput"
-        type="text"
-        placeholder="name"
-        onChange={(e) => {
-          setName(e.target.value);
-        }}
-      />
-      <input className="dashInput"
-        type="text"
-        placeholder="price"
-        onChange={(e) => {
-          setPrice(e.target.value);
-        }}
-      />
-      <input className="dashInput"
-        type="text"
-        placeholder="img"
-        onChange={(e) => {
-          setImg(e.target.value);
-        }}
-      />
-      <input className="dashInput"
-        type="text"
-        placeholder="description"
-        onChange={(e) => {
-          setDescription(e.target.value);
-        }}
-      />
-      <input className="dashInput"
-        type="text"
-        placeholder="Quantity"
-        onChange={(e) => {
-          setQuantity(e.target.value);
-        }}
-      />
-      <button className="dahsBtnAdd" onClick={addProduct}>add product</button>
-      {/* <button onClick={updateProduct} >update product</button> */}
+      <div className="dashAdd">
+        <label>Product Information</label>
+        <div className="addCont">
+          <input
+            className="dashInput"
+            type="text"
+            placeholder="type"
+            onChange={(e) => {
+              setType(e.target.value);
+            }}
+          />
+          <input
+            className="dashInput"
+            type="text"
+            placeholder="name"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+          <input
+            className="dashInput"
+            type="text"
+            placeholder="price"
+            onChange={(e) => {
+              setPrice(e.target.value);
+            }}
+          />
+          <input
+            className="dashInput"
+            type="text"
+            placeholder="img"
+            onChange={(e) => {
+              setImg(e.target.value);
+            }}
+          />
+          <input
+            className="dashInput"
+            type="text"
+            placeholder="description"
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+          />
+          <input
+            className="dashInput"
+            type="text"
+            placeholder="Quantity"
+            onChange={(e) => {
+              setQuantity(e.target.value);
+            }}
+          />
+        </div>
+        <div>
+          <button className="dahsBtnAdd" onClick={addProduct}>
+            add product
+          </button>
+        </div>
       </div>
     </>
   );

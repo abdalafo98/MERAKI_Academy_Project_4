@@ -1,6 +1,6 @@
 const usersModel = require("../../db/models/user");
-const favoriteModel =  require("../../db/models/favorite");
-const cartModel =  require("../../db/models/cart");
+const favoriteModel = require("../../db/models/favorite");
+const cartModel = require("../../db/models/cart");
 
 const createNewUser = (req, res) => {
   const {
@@ -30,15 +30,15 @@ const createNewUser = (req, res) => {
   user
     .save()
     .then(async (result) => {
-const fav =  new favoriteModel({
-  user: result._id
-})
- const aaaaa = await fav.save()
+      const fav = new favoriteModel({
+        user: result._id,
+      });
+      const aaaaa = await fav.save();
 
- const cart = new cartModel({
-  user: result._id
- })
- const bbbbb = await cart.save()
+      const cart = new cartModel({
+        user: result._id,
+      });
+      const bbbbb = await cart.save();
 
       res.status(201).json(result);
     })
@@ -47,33 +47,32 @@ const fav =  new favoriteModel({
     });
 };
 
-const getUserInformation =(req,res)=>{
+const getUserInformation = (req, res) => {
+  const _id = req.token.userId;
+  usersModel
+    .findOne({ _id })
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(404).json("not found");
+    });
+};
 
-  const _id =req.token.userId;
-  usersModel.findOne({_id}).then((result)=>{
-    
-    res.status(200).json(result);
-    
-  })
-  .catch((err) => {
-    res.status(404).json("not found");
-  });
-  
-}
-
-const updateUserInformation= (req,res)=>{
-  
-  const _id =req.params.id;
-  usersModel.findOneAndUpdate({_id},req.body,{new:true})
-  .then((result)=>{
-    res.status(200).json(result);
-  })
-  .catch((err)=>{
-    res.status(404).json("not found");
-  })
-
-}
+const updateUserInformation = (req, res) => {
+  const _id = req.token.userId;
+  usersModel
+    .findOneAndUpdate({ _id }, req.body, { new: true })
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(404).json("not found");
+    });
+};
 
 module.exports = {
-  createNewUser,getUserInformation,updateUserInformation
+  createNewUser,
+  getUserInformation,
+  updateUserInformation,
 };
