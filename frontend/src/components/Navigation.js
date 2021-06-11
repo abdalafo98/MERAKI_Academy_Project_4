@@ -8,6 +8,8 @@ import { FiShoppingCart } from "react-icons/fi";
 import { IoMdLogOut } from "react-icons/io";
 import { MdFavoriteBorder } from "react-icons/md";
 import { AiOutlineHome } from "react-icons/ai";
+import Clock from "react-live-clock";
+import "moment-timezone";
 
 export default function Navigation({ token, setToken }) {
   const [searched, setSearched] = useState("");
@@ -125,6 +127,13 @@ export default function Navigation({ token, setToken }) {
                 ""
               )}
             </li>{" "}
+            <li>
+              <Clock
+                format={"h:mm:ssa"}
+                style={{ fontSize: "1em" }}
+                ticking={true}
+              />
+            </li>
           </ul>
         </nav>
       </div>
