@@ -10,7 +10,7 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { AiOutlineHome } from "react-icons/ai";
 import Clock from "react-live-clock";
 import "moment-timezone";
-
+import Logo from "./../../src/logoyalla.png";
 export default function Navigation({ token, setToken }) {
   const [searched, setSearched] = useState("");
   const history = useHistory();
@@ -39,16 +39,15 @@ export default function Navigation({ token, setToken }) {
     <div className="Navigation">
       <div className="Navigation-child-top">
         <div className="navBar">
-          <div className="logo">
-            <h1
-              class="logo"
-              onClick={() => {
-                history.push("/");
-              }}
-            >
-              We <span> Buy</span>
-            </h1>{" "}
-          </div>
+          <div
+            class="logo"
+            onClick={() => {
+              history.push("/");
+            }}
+          >
+            <img src={Logo} style={{ width: "120px", height: "100px" }} />
+            <h1>YALLA SOUQ</h1>
+          </div>{" "}
           <div className="searchS">
             <input
               className="searchInput"
