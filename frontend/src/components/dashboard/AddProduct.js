@@ -45,7 +45,7 @@ export default function Dashboard() {
   };
 
   return (
-    <>
+    <> <button onClick={()=>{  history.goBack()}} > go back</button>
       <div className="dashAdd">
         <label>Product Information</label>
         <div className="addCont">

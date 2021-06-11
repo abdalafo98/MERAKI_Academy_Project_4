@@ -66,7 +66,8 @@ const edit = ()=>{
       
   }
   //jxs html +javascript
-    return (
+    return ( <>
+    <button onClick={()=>{  history.goBack()}} > go back</button>
       <div className="updateCont">
         <div className="findId">
         <input  className ="inputFind"placeholder="Product ID" onChange={(e)=>{
@@ -105,5 +106,5 @@ const edit = ()=>{
            </div>
    
         
-    )
+    </>)
 }
