@@ -53,23 +53,24 @@ nav ul li {
   height: 50px;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
+
   font-size: 10px;
   font-weight: bold;
   margin-bottom: 10px;
-  margin-top: 10px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px, rgba(0, 0, 0, 0.24) 0px 1px;
+  background-color: #232f3e;
 }
 
 .Navigation-child-bottom ul li:hover {
   color: #4c9bbf;
 }
+
 .Navigation-child-bottom ul {
   display: inline-block;
   list-style-type: none;
   color: white;
+  margin-left: 180px;
+  margin-top: 15px;
 }
 
 .icon-plus-name-navbar p {
@@ -79,6 +80,7 @@ nav ul li {
   display: inline-block;
   margin-right: 20px;
   cursor: pointer;
+  font-size: large;
 }
 .Navigation-child-bottom ul li p {
   color: white;
@@ -149,6 +151,14 @@ header {
   text-shadow: 2px 2px 2px rgba(99, 98, 98, 0.37);
   transition: 0.9s;
   margin-left: 40px;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: center;
+  text-align: center;
+}
+.logo h1 {
+  margin: auto;
 }
 
 .logo span {
@@ -681,14 +691,15 @@ div.card:hover {
   flex-direction: row;
   justify-content: center;
   align-content: space-around;
-  border: 2px solid black;
+  color: white;
   width: 100%;
   height: 150px;
   margin-top: 50px;
   align-items: center;
   gap: 15px;
-  font-size: large;
+  font-size: 20px;
   font-weight: bolder;
+  background-color: #131921;
 }
 
 .homefooter h3 {
