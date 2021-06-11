@@ -20,6 +20,7 @@ export default function Favorites({ token }) {
       })
       .then((response) => {
         setResult(response.data);
+        console.log(result);
       })
       .catch((err) => {
         console.log(err);
@@ -72,5 +73,9 @@ axios
     );
   });
 
-  return <div className="category">{products}</div>;
+  return(  <div> 
+    <div> My WishList </div>
+        {result.length !=0 ?  <div className="category">{products}</div>  : <div>You don't have any product </div>}
+        
+  </div>   )
 }
