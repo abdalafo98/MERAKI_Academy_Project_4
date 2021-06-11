@@ -59,7 +59,7 @@ const edit = ()=>{
   const deletBtn = ()=>{
       axios.delete(`http://localhost:5000/products/id/${idValue}`)
       .then((result)=>{
-        console.log("deleted");
+        history.push("/dashboard")
       }).catch((err)=>{
           console.log(err);
       })

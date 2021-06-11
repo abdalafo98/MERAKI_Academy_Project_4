@@ -33,7 +33,7 @@ export default function Dashboard() {
       })
       .then((result) => {
         if (!result.data.errors) {
-          history.push("/products");
+          history.push("/dashboard");
         } else {
           setError(true);
           console.log(result.data.errors);

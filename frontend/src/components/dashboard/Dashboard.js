@@ -39,6 +39,9 @@ export default function Dashboard() {
 
   return (
     <>
+    <div className="admin-logout">
+      
+    </div>
       <div className="dashboard">Dashboard component</div>
       <input
         type="text"

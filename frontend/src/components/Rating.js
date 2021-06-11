@@ -53,7 +53,7 @@ export default function Rating({ idProduct, thisToken, setInfo }) {
             </label>
           );
         })}
-        <button>rating</button>
+        
       </div>
     </div>
   );
