@@ -1087,6 +1087,14 @@ searchInput:active {
   flex-direction: column;
   justify-content: flex-start;
 }
+.order {
+  padding-left: 40px;
+  padding-bottom: 40px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 
 .user-info span {
   font-weight: bold;
@@ -1122,4 +1130,14 @@ searchInput:active {
 }
 .scroll {
   overflow: scroll;
+}
+
+.product-info {
+  margin: auto;
+}
+
+.info-order {
+  display: flex;
+  flex-direction: row;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }

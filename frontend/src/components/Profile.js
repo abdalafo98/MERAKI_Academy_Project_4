@@ -38,30 +38,12 @@ const Profile = () => {
       })
       .then((result) => {
         setMyOrder(result.data);
-        // console.log(result);
       })
-      .catch((err) => {
-        // console.log(err);
-      });
+      .catch((err) => {});
   }, []);
 
   const a = myOrder.map((element, i) => {
-    // console.log(element.Quantity);
-    // const productss = element.products[i].product;
-    // console.log(productss.price);
-
-    const modifyMyInfo = () => {
-      axios
-        .put(`http://localhost:5000/order`, {
-          headers: {
-            authorization: "Bearer " + thisToken,
-          },
-        })
-        .then((result) => {})
-        .catch((err) => {
-          // console.log(err);
-        });
-    };
+    console.log("order", element);
 
     return (
       <div className="user-info">
@@ -78,28 +60,29 @@ const Profile = () => {
           {element.totalPrice}{" "}
         </p>
 
-        <p>
+        <p class="product-info">
           {" "}
-          <span> Quantity: </span>
-          {/* {element.map((ele, index) => {
-            return ele.products[i].product.name;
-          })} */}
+          <span> Order Info: </span>
         </p>
+        {element.products.map((ele, i) => {
+          return (
+            <div class="info-order">
+              <div class="img-order">
+                <p>#{i + 1}</p>
+                <img src={ele.product.img} height={50} width={50} />
+              </div>
+
+              <div class="product-information">
+                <p>Name Product: {ele.product.name}</p>
+                <p>price: {ele.product.price} </p>
+              </div>
+            </div>
+          );
+        })}
       </div>
     );
   });
 
-  const ModifyUserInfo = () => {};
-
-  // let b = myOrder.map((element, i) => {
-  //   const product = element.products[i];
-  //   console.log(element.products[i]._id);
-  //   return (
-  //     <div>
-  //       <p>{element.products[i]._id}</p>
-  //     </div>
-  //   );
-  // });
   return (
     <div className="profile">
       <div>
