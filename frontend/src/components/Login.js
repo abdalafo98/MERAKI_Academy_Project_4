@@ -38,7 +38,7 @@ export default function Login({ setToken, setRole }) {
           type="email"
           placeholder="Email"
           onChange={(e) => {
-            setEmail(e.target.value);
+            setEmail(e.target.value.toLocaleLowerCase());
           }}
         />
         <input
