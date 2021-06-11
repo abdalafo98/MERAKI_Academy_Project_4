@@ -36,13 +36,18 @@ const App = () => {
     <>
       {role === "admin" ? (
         <Switch>
-          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/dashboard"  render={() => <Dashboard setToken={setToken} />}   />
           <Route exact path="/dashboard/add" component={AddProduct} />
           <Route
             exact
             path="/dashboard/edit"
             render={() => <EditProduct token={token} />}
           />
+          <Route
+              exact
+              path="/login"
+              render={() => <Login setToken={setToken} setRole={setRole} />}
+            />
         </Switch>
       ) : (
         <div className="App">
