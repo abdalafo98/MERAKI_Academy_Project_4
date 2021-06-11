@@ -11,6 +11,7 @@ const [name, setName] = useState("")
 const [price, setPrice] = useState("")
 const [img, setImg] = useState("")
 const thisToken = localStorage.getItem("token");
+const history = useHistory();
 
 const findId = ()=>{
    axios.get(`http://localhost:5000/products/id/${idValue}`)
@@ -47,6 +48,7 @@ const edit = ()=>{
       }
     )
     .then((result) => {
+      history.push("/dashboard")
         console.log(result);
     })
     .catch((err) => {
@@ -73,25 +75,33 @@ const edit = ()=>{
            <button className="findBtn" onClick={findId}>find product</button>
         </div>
              <div className="areaUpdate">
-           <textarea className="textEdit" name="quantity" placeholder={description} onChange={(e)=>{
+           <label style={{fontWeight:"bold"}}>Description:</label>
+           <textarea className="textEdit"  placeholder={description} onChange={(e)=>{
                    setDescription(e.target.value)
                }}></textarea>
-               <textarea className="textEdit" name="quantity" placeholder={quantity} onChange={(e)=>{
+               <label style={{fontWeight:"bold"}}>Quantity:</label>
+               <textarea className="textEdit" placeholder={quantity} onChange={(e)=>{
                    setQuantity(e.target.value)
                }}></textarea>
-               <textarea className="textEdit" name="type"  placeholder={type} onChange={(e)=>{
+               <label style={{fontWeight:"bold"}}>Type:</label>
+               <textarea className="textEdit"   placeholder={type} onChange={(e)=>{
                    setType(e.target.value)}}></textarea>
 
-               <textarea className="textEdit" name=""  placeholder={name} onChange={(e)=>{
+               <label style={{fontWeight:"bold"}}>Name:</label>
+               <textarea className="textEdit" placeholder={name} onChange={(e)=>{
                    setName(e.target.value)}}></textarea>
 
-               <textarea className="textEdit" name="" placeholder={price} onChange={(e)=>{
+               <label style={{fontWeight:"bold"}}>Price:</label>
+               <textarea className="textEdit" placeholder={price} onChange={(e)=>{
                    setPrice(e.target.value)}}></textarea>
-               <textarea className="textEdit" name=""placeholder= {img} onChange={(e)=>{
+               <label style={{fontWeight:"bold"}}>Img:</label>
+               <textarea className="textEdit"placeholder= {img} onChange={(e)=>{
                    setImg(e.target.value)}}></textarea>
                    </div>
-               <button className="dahsBtnAdd" onClick={edit}>Edit</button>
-               <button className="dahsBtnAdd" onClick={deletBtn}>Delete</button>
+                   <div className="editBtns">
+               <button onClick={edit}>Edit</button>
+               <button onClick={deletBtn}>Delete</button>
+               </div>
            </div>
    
         

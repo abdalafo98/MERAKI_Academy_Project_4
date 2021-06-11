@@ -820,33 +820,18 @@ searchInput:active {
   justify-content: center;
   margin-top: 100px;
 }
-.inputFind {
-  border-radius: 5px;
-  border: 1px solid rgb(90, 90, 90);
-  margin: auto;
-  padding: 0 5px;
-  margin-left: 150px;
-  width: 300px;
-  height: 35px;
-}
 .dashSwitch {
   width: 300px;
   height: 500px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  background-color: rgb(233, 220, 220);
 }
 .dahsBtn {
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   margin: 20px;
   width: 50%;
   height: 30px;
-  background-color: #2e5d73;
-  border-radius: 7px;
-  border: none;
-  color: white;
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
   cursor: pointer;
   margin: auto;
@@ -854,54 +839,50 @@ searchInput:active {
 }
 .dashAdd {
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   justify-content: center;
-  margin-top: 100px;
+  align-items: center;
+  background-color: rgb(233, 220, 220);
 }
 .dashInput {
   text-align: center;
   width: 30%;
-  border: none;
+  border: 1px solid black;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   justify-content: center;
   box-shadow: black;
-  height: 450px;
+  height: 500px;
   display: flex;
-  margin: auto;
+  margin: 15px;
+  align-items: center;
 }
 .dahsBtnAdd {
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-  margin: 20px;
-  width: 15%;
-  height: 30px;
-  background-color: #2e5d73;
-  border-radius: 7px;
-  border: none;
-  color: white;
-  font-size: 20px;
   text-align: center;
-  cursor: pointer;
-  margin: auto;
-  margin-top: 35px;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-top: 1px solid black;
+  margin-top: 11px;
+  writing-mode: vertical-rl;
+  padding: 6px;
 }
 .addCont {
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 500px;
+  align-items: center;
 }
 .updateCont {
-  border: 10px solid red;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-  text-align: center;
-  width: 600px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: auto;
-  margin-top: 150px;
+  align-items: center;
+  background-color: rgb(233, 220, 220);
 }
 .textEdit::placeholder {
   opacity: 1;
@@ -909,35 +890,30 @@ searchInput:active {
   color: red;
 }
 .areaUpdate {
-  border: 5px solid blue;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 50%;
-  height: 450px;
-  margin: auto;
+  margin-top: 35px;
 }
 .textEdit {
-  padding: 20px;
-}
-.findBtn {
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-  margin: 20px;
-  width: 20%;
-  height: 35px;
-  background-color: #2e5d73;
-  border-radius: 7px;
-  border: none;
-  color: white;
-  font-size: 17px;
-  text-align: center;
-  cursor: pointer;
-  margin: auto;
-  margin-top: 20px;
+  border: 1px solid;
+  margin-bottom: 15px;
+  margin-top: 22px;
 }
 .findId {
-  border: 5px solid green;
-  padding: 10px;
+  width: 50%;
+  text-align: center;
+  margin-top: 30px;
+  border-bottom: 1px solid black;
+  padding-bottom: 22px;
+}
+.editBtns {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  border-top: 1px solid black;
+  margin-top: 11px;
+  writing-mode: vertical-rl;
 }
 /* ////////////////////////////////////////////////////////////////////////////////////// */
 /* This section is for our product page styling */
@@ -1093,9 +1069,57 @@ searchInput:active {
 /* ////////////////////////////////////////////////////////////////////////// */
 
 /* profile*/
-.user-info {
+.profile {
   margin: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 50%;
+  height: 100%;
+}
+.user-info {
+  padding-left: 40px;
+  padding-bottom: 40px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.user-info span {
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.information {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px 1px,
+    rgba(0, 0, 0, 0.24) 0px 1px 1px 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 40px;
+}
+#your-information {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.your-order {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px 1px,
+    rgba(0, 0, 0, 0.24) 0px 1px 1px 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 70%;
+  margin-top: 40px;
+}
+.scroll {
+  overflow: scroll;
 }
