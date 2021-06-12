@@ -31,9 +31,9 @@ export default function Category({ token }) {
           <img src={element.img} />
         </div>
         <div className="card-description">
-          <p className="nameProduct">{element.name}</p>
           <ShowRating rate={Math.round(element.averageRating)} />
-          <p className="PriceProduct">{element.price} JD</p>
+          <p className="nameProduct">Name:{element.name}</p>
+          <p className="PriceProduct">Price:{element.price}</p>
         </div>
       </div>
     );

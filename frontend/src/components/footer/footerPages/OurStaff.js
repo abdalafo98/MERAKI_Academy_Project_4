@@ -1,11 +1,18 @@
 
+
 import React from "react";
 import "./OurStaff.css";
 import React from 'react'
 export default function OurStaff() {
-    return (
-        <div>
-            
+  return (
+    <>
+      <div className="our-staff-con">
+        <div className="our-staff-info">
+          <img
+            src="https://scontent.famm3-3.fna.fbcdn.net/v/t1.6435-9/30441617_1824784334250802_1734354716642508800_n.jpg?_nc_cat=106&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeFBqhkzq1ASjfgJjlh7hEHpLXL7JfXS5ywtcvsl9dLnLJ5hyLMw1q9Jyl9zw8rdDr_pDi9n8-kxQ6tu6POHH6_7&_nc_ohc=JhD974uu_N8AX_Fk4Rf&_nc_ht=scontent.famm3-3.fna&oh=f551cb1f7152adcca1d02719a3a676b2&oe=60C7C050"
+            alt="firas photo"
+          />
+          <p>Firas Diab </p>
         </div>
 
         <div className="our-staff-info">
@@ -17,7 +24,8 @@ export default function OurStaff() {
         </div>
         <div className="our-staff-info">
           <img
-            src={}
+
+            src="https://pbs.twimg.com/profile_images/988824326555267072/OOIjHfN3_400x400.jpg"
             alt="jad photo"
           />
           <p>Jadallah Zaytoon </p>
