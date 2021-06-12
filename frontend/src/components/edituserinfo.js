@@ -89,7 +89,7 @@ const EditUserInfo = () => {
               setPhoneNumber(e.target.value);
             }}
           />{" "}
-          <input value={result.data.email} />
+          <input id="email" value={result.data.email} />
           <input
             placeholder={result.data.gender}
             onChange={(e) => {
@@ -102,6 +102,7 @@ const EditUserInfo = () => {
               setCountry(e.target.value);
             }}
           />
+          <br />
           <button onClick={modifyInfo}>Update</button>
         </div>
       </div>

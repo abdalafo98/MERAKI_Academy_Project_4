@@ -10,7 +10,7 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { AiOutlineHome } from "react-icons/ai";
 import Clock from "react-live-clock";
 import "moment-timezone";
-import Logo from "./../../src/logoyalla.png";
+import Logo from "./../../src/log.png";
 export default function Navigation({ token, setToken }) {
   const [searched, setSearched] = useState("");
   const history = useHistory();
