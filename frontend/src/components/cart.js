@@ -13,6 +13,8 @@ export default function Cart({ token }) {
   const history = useHistory();
   const arr = [];
 
+
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/cart", {
@@ -22,39 +24,50 @@ export default function Cart({ token }) {
       })
       .then((response) => {
         setResult(response.data);
-        localStorage.setItem("cart", JSON.stringify(response));
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  const createOrder = () => {
-    history.push("/payment");
+  const createOrder = ()=>{
+    history.push('/payment')
 
-    const newArr = [];
+    
+    
+  
+    
+    
+    const newArr = []
     for (let i = 0; i < arr.length; i++) {
-      let found = false;
-      for (let b = 0; b < newArr.length; b++) {
-        if (arr[i].product === newArr[b].product) {
-          found = true;
-        }
+    let found = false
+    for (let b = 0; b < newArr.length; b++) {
+      if (arr[i].product === newArr[b].product ){
+        found = true
       }
-      if (!found) {
-        newArr.push({ product: arr[i].product, Quantity: 1 });
-      }
+      
+    }
+    if (!found){
+      newArr.push({product:arr[i].product,Quantity:1})
+    }
+    
     }
 
-    localStorage.setItem("newArr", JSON.stringify(newArr));
-  };
+    localStorage.setItem("newArr", JSON.stringify(newArr));     
+
+    
+  }
+
 
   const Product = (element) => {
     const [price, setPrice] = useState(0);
     let [quantity, setQuantity] = useState(1);
     let [subTotal, setSubTotal] = useState(element.props.price * quantity);
     const [counter, setCounter] = useState(1);
-
-    arr.push({ product: element.props._id, Quantity: quantity });
+    
+      arr.push({product:element.props._id,Quantity: quantity })
+    
+    
 
     return (
       <tr className="product">
@@ -156,9 +169,10 @@ export default function Cart({ token }) {
 
   const totalPrice = result.reduce((acc, element) => acc + element.price, 0);
   console.log(totalPrice);
-  localStorage.setItem("totalPrice", totalPrice + tot);
+  localStorage.setItem("totalPrice",totalPrice+tot)
 
   return (
+    
     <div className="small-container cart-page">
       <h2>My Cart</h2>
       {
@@ -189,13 +203,14 @@ export default function Cart({ token }) {
               <td>*{totalQuantity < 0 ? 0 : totalQuantity}</td>
             </tr>
             <tr>
-              <small onClick={createOrder} className="btn-checkout">
-                Checkout
-              </small>
+              <small onClick = {createOrder} className="btn-checkout">Checkout</small>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
+    
+    
+    
   );
 }

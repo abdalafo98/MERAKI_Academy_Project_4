@@ -74,8 +74,8 @@ axios
   });
 
   return(  <div> 
-    <div> My WishList </div>
-        {result.length !=0 ?  <div className="category">{products}</div>  : <div>You don't have any product </div>}
+    <div className="small-container" > <h2>My WishList</h2> </div>
+        {result.length !=0 ?  <div className="category">{products}</div>  : <div className="small-container"> <h4>You don't have any product </h4> </div>}
         
   </div>   )
 }
