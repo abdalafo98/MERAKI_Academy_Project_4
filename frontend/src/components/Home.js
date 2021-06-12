@@ -5,8 +5,6 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import "./css/homePage.css"
 
-import Splide from "@splidejs/splide";
-
 
 
 export default function Home() {

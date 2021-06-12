@@ -505,13 +505,14 @@ th:last-child {
   max-width: 1000x;
   margin-left: 110px;
   margin-right: 15px;
+  margin-top: 25px;
 }
-
 div.card {
+  height: 100%;
   width: 250px;
-  background-color: #f0f0f0;
+  height: 300px;
+  background-color: #F0F0F0;
   border-radius: 5px;
-  box-shadow: 0 2px 4px #1b1b1b33;
   display: flex;
   flex-direction: row;
   display: inline-block;
@@ -519,62 +520,61 @@ div.card {
   cursor: pointer;
   flex-grow: 1;
   transition: 0.9s;
+  margin-bottom: 100px;
 }
 div.card-image {
   width: 100%;
-  height: 310x;
-  border-radius: 5px 5px 0 0;
-  box-shadow: 2px 2px 2px rgba(126, 126, 126, 0.658);
+  height: 100%;
   transition: 0.9s;
 }
 .nameProduct {
-  text-align: center;
-  color: #f0f0f0;
+  color: #F0F0F0;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: bold;
+  font-family: system-ui;
   margin-bottom: 6px;
-  background-color: #2e5d73;
+  margin-top: 18px;
+  color: black;
   border-radius: 5px;
 }
-
 .PriceProduct {
-  text-align: center;
-  color: #f0f0f0;
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 6px;
-  background-color: rgb(44, 40, 40);
-  border-radius: 5px;
+  color: rgb(66, 64, 64);
+  font-size: 17px;
+  font-weight: bolder;
+
 }
 div.card-image img {
   width: 100%;
-  max-width: 100%;
+  
+  height: 100%;
   height: 310px;
   border-radius: 5px 5px 0 0;
   transition: all 0.3s;
   transition: 0.9s;
 }
-
 .card-description {
   width: 100%;
   height: auto;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
   border-radius: 0 0 5px 5px;
-  padding: 25px;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.658);
   transition: 0.9s;
+  padding-left: 10px;
 }
 div.card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 30px -5px #0d0d0d;
+  box-shadow: 1px 1px #646363;
 }
 .radioStyle {
   margin: auto;
-  margin-top: 20px;
+  margin-top: 60px;
   display: flex;
   flex-direction: row;
   width: 80%;
+  height: 30px;
   justify-content: flex-start;
+}
+.radioStyle select {
+  width: 20%;
+  padding-left: 5px;
 }
 
 /* .error {
@@ -592,14 +592,13 @@ div.card:hover {
   display: flex;
   flex-direction: row;
   text-align: center;
-  color: #f0f0f0;
+  color: #F0F0F0;
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 6px;
-  background-color: #2e5d73;
+  background-color: #2E5D73;
   border-radius: 5px;
 }
-
 .sectionNav {
   padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
@@ -607,46 +606,41 @@ div.card:hover {
   cursor: pointer;
   justify-content: center;
 }
+.react-slideshow-wrapper {
+  width: 40%;
+}
 .sectionNavBody {
   padding: 10px;
-  width: 35%;
+  width: 100%;
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-  margin: auto;
   cursor: pointer;
   justify-content: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: bolder;
 }
-
-/* .slide-container {
-  width: 100%;
-  
-  align-self: center;
-  margin-top: 10px;
-  height: 500px;
-} */
-
 .slide-container {
-  width: 100%;
+  width: 70%;
+  margin: auto;
+  height: 50%;
   margin-top: 20px;
   margin-bottom: 50px;
 }
 .each-slide {
-  height: 800px;
   width: 100%;
 }
-
 .imageSlider {
-  height: 100%;
+  padding: 100px;
+  height: 400px;
   width: 100%;
   border-radius: 10px;
   background-position: center;
   background-size: cover;
 }
+
 
 /*start filter*/
 
@@ -663,12 +657,13 @@ div.card:hover {
 }
 
 .homebody {
-  border: 2px solid black;
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 70%;
   height: 300px;
-  margin-bottom: 50px;
+  margin:auto;
+
+  
 }
 .homefotter {
   display: flex;

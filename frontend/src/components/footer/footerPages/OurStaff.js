@@ -1,6 +1,4 @@
 
-
-import React from "react";
 import "./OurStaff.css";
 import React from 'react'
 export default function OurStaff() {
