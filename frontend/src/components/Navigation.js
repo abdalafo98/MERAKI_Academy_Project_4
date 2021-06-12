@@ -11,7 +11,13 @@ import { AiOutlineHome } from "react-icons/ai";
 import Clock from "react-live-clock";
 import "moment-timezone";
 import Logo from "./../../src/logoyalla.png";
+
+let result = JSON.parse(localStorage.getItem("cart"));
+
 export default function Navigation({ token, setToken }) {
+  const [resultCart, setResultCart] = useState(result);
+  const [cart, setCart] = useState([]);
+  console.log(result);
   const [searched, setSearched] = useState("");
   const history = useHistory();
   const signOut = () => {
@@ -45,7 +51,7 @@ export default function Navigation({ token, setToken }) {
               history.push("/");
             }}
           >
-            <img src={Logo} style={{ width: "120px", height: "100px" }} />
+            <img src={Logo} style={{ width: "140px", height: "130px" }} />
             <h1>YALLA SOUQ</h1>
           </div>{" "}
           <div className="searchS">
@@ -67,15 +73,15 @@ export default function Navigation({ token, setToken }) {
             <li>
               {" "}
               <Link className="link icon-plus-name-navbar" to="/">
-                <AiOutlineHome size={27} color={"white"} />
-                <p>Home</p>
+                <AiOutlineHome size={25} color={"white"} />
+                <p >Home</p>
               </Link>
             </li>
             <li>
               {" "}
               {token ? (
                 <Link className="link icon-plus-name-navbar" to="/favorites">
-                  <MdFavoriteBorder size={27} color={"white"} />
+                  <MdFavoriteBorder size={25} color={"white"} />
                   <p>WishList</p>
                 </Link>
               ) : (
@@ -85,10 +91,17 @@ export default function Navigation({ token, setToken }) {
             <li>
               {" "}
               {token ? (
-                <Link className="link icon-plus-name-navbar" to="/cart">
-                  <FiShoppingCart size={27} color={"white"} />
-                  <p>Cart</p>
-                </Link>
+                <div id="cart-count">
+                  {" "}
+                  {resultCart.data.reduce((acc, element, i) => {
+                    return <p>{i + 1}</p>;
+                  }, 0)}
+                  <Link className="link icon-plus-name-navbar" to="/cart">
+                    <FiShoppingCart size={25} color={"white"} />
+
+                    <p>Cart</p>
+                  </Link>
+                </div>
               ) : (
                 ""
               )}
@@ -96,7 +109,7 @@ export default function Navigation({ token, setToken }) {
             <li>
               {token ? (
                 <Link className="link icon-plus-name-navbar" to="/profile">
-                  <CgProfile size={27} color={"white"} /> <p>profile</p>
+                  <CgProfile size={25} color={"white"} /> <p>profile</p>
                 </Link>
               ) : (
                 ""
@@ -109,7 +122,7 @@ export default function Navigation({ token, setToken }) {
                   className="link icon-plus-name-navbar icon-plus-name-navbar"
                   onClick={signOut}
                 >
-                  <IoMdLogOut size={27} color={"white"} />
+                  <IoMdLogOut size={25} color={"white"} />
                   <p>sign out</p>
                 </a>
               ) : (
@@ -129,7 +142,7 @@ export default function Navigation({ token, setToken }) {
             <li>
               <Clock
                 format={"h:mm:ssa"}
-                style={{ fontSize: "1em" }}
+                style={{ fontSize: "1.2em" }}
                 ticking={true}
               />
             </li>
