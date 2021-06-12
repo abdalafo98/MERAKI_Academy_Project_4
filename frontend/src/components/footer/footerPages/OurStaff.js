@@ -1,5 +1,6 @@
 import React from "react";
 import "./OurStaff.css";
+import Jad from "../../../../src/jad.JPG"
 
 export default function OurStaff() {
   return (
@@ -21,7 +22,7 @@ export default function OurStaff() {
         </div>
         <div className="our-staff-info">
           <img
-            src="https://ca.slack-edge.com/T01SDTUV9NJ-U01SN4F5LBU-668f5b110892-72"
+            src={Jad}
             alt="jad photo"
           />
           <p>Jadallah Zaytoon </p>
