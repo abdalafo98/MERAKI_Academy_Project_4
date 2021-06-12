@@ -8,7 +8,7 @@ export default function ShowRating({ rate }) {
         {[...Array(rate)].map((element, i) => {
           return (
             <label>
-              <FaStar size={25} color={"rgb(231, 231, 9)"} />
+              <FaStar size={18} color={"black"} />
             </label>
           );
         })}

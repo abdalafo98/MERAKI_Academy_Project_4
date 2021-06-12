@@ -47,6 +47,21 @@ nav ul li {
 }
 
 
+#cart-count {
+  margin: auto;
+  text-align: center;
+
+  align-items: center;
+  width: 50%;
+  height: 20px;
+  background-color: white;
+  color: black;
+  font-size: 8px;
+  border-radius: 20px;
+}
+
+
+
 
 .Navigation-child-bottom ul li:hover {
   color: #4c9bbf;
@@ -56,7 +71,7 @@ nav ul li {
   display: inline-block;
   list-style-type: none;
   color: white;
-  margin-left: 180px;
+  margin-left: 230px;
   margin-top: 15px;
 }
 
@@ -89,21 +104,18 @@ nav {
 .link {
   cursor: pointer;
   text-decoration: none;
-  color: rgb(51, 50, 50);
-  font-weight: 900;
+  color: white;
   font-size: 17px;
   padding: 8px 9px;
+}
+.link p {
+  font-size: 15px;
+  margin-top: 5px;
 }
 
 .link:hover {
   cursor: pointer;
   text-decoration: none;
-
-  padding: 8px 9px;
-  border: none;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-  border-radius: 4px;
-  font-weight: bold;
 }
 
 p {
@@ -121,6 +133,11 @@ li:link {
   color: white;
   text-decoration: none;
 }
+.link ul li:hover {
+  border-bottom: 0.5px solid white;
+  margin-bottom: 5px;
+}
+
 header {
   display: flex;
   justify-content: flex-end;
@@ -146,6 +163,10 @@ header {
 }
 .logo h1 {
   margin: auto;
+}
+.logo img {
+  height: 200px;
+  width: 200px;
 }
 
 .logo span {
@@ -246,14 +267,15 @@ header {
 /* This section is for our login  page styling */
 .containerDivLogin {
   box-shadow: black;
+  background-color: rgb(250, 248, 248);
   text-align: center;
-  height: 450px;
-  width: 30%;
+  height: 500px;
+  width: 450px;
   justify-content: center;
   display: flex;
   flex-direction: column;
   margin: auto;
-  margin-top: 40px;
+  margin-top: 60px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 .containerDivLogin h1 {
@@ -363,10 +385,12 @@ header {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 500;
 }
+.cart-page table {
+  background-color: rgb(242, 242, 248);
+}
 table {
   box-shadow: 1px 1px 1px rgba(185, 184, 184, 0.877);
   border-bottom: black;
-
   width: 100%;
   border-collapse: collapse;
 }
@@ -494,13 +518,15 @@ th:last-child {
   max-width: 1000x;
   margin-left: 110px;
   margin-right: 15px;
+  margin-top: 25px;
 }
 
 div.card {
+  max-height: 100%;
   width: 250px;
+  height: 250px;
   background-color: #f0f0f0;
   border-radius: 5px;
-  box-shadow: 0 2px 4px #1b1b1b33;
   display: flex;
   flex-direction: row;
   display: inline-block;
@@ -508,36 +534,32 @@ div.card {
   cursor: pointer;
   flex-grow: 1;
   transition: 0.9s;
+  margin-bottom: 100px;
 }
 div.card-image {
   width: 100%;
   height: 310x;
-  border-radius: 5px 5px 0 0;
-  box-shadow: 2px 2px 2px rgba(126, 126, 126, 0.658);
   transition: 0.9s;
 }
 .nameProduct {
-  text-align: center;
   color: #f0f0f0;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: bold;
+  font-family: system-ui;
   margin-bottom: 6px;
-  background-color: #2e5d73;
+  color: black;
   border-radius: 5px;
 }
 
 .PriceProduct {
-  text-align: center;
-  color: #f0f0f0;
-  font-size: 18px;
+  color: rgb(110, 108, 108);
+  font-size: 12px;
   font-weight: 700;
-  margin-bottom: 6px;
-  background-color: rgb(44, 40, 40);
-  border-radius: 5px;
 }
 div.card-image img {
   width: 100%;
   max-width: 100%;
+  max-height: 100%;
   height: 310px;
   border-radius: 5px 5px 0 0;
   transition: all 0.3s;
@@ -549,21 +571,25 @@ div.card-image img {
   height: auto;
   background-color: #ffffff;
   border-radius: 0 0 5px 5px;
-  padding: 25px;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.658);
   transition: 0.9s;
+  padding-left: 10px;
 }
+
 div.card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 30px -5px #0d0d0d;
+  box-shadow: 1px 1px #646363;
 }
 .radioStyle {
   margin: auto;
-  margin-top: 20px;
+  margin-top: 60px;
   display: flex;
   flex-direction: row;
   width: 80%;
+  height: 30px;
   justify-content: flex-start;
+}
+.radioStyle select {
+  width: 20%;
+  padding-left: 5px;
 }
 
 /* .error {
@@ -596,6 +622,9 @@ div.card:hover {
   cursor: pointer;
   justify-content: center;
 }
+.react-slideshow-wrapper {
+  width: 40%;
+}
 .sectionNavBody {
   padding: 10px;
   width: 35%;
@@ -620,17 +649,19 @@ div.card:hover {
 } */
 
 .slide-container {
-  width: 100%;
+  width: 70%;
+  margin: auto;
+  height: 50%;
   margin-top: 20px;
   margin-bottom: 50px;
 }
 .each-slide {
-  height: 800px;
   width: 100%;
 }
 
 .imageSlider {
-  height: 100%;
+  padding: 100px;
+  height: 400px;
   width: 100%;
   border-radius: 10px;
   background-position: center;
@@ -652,10 +683,10 @@ div.card:hover {
 }
 
 .homebody {
-  border: 2px solid black;
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 70%;
+  margin: auto;
   height: 300px;
   margin-bottom: 50px;
 }
@@ -782,7 +813,7 @@ input[type="radio"] {
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px, rgba(0, 0, 0, 0.24) 0px 1px 1px;
   padding: 8px 7px;
   border: none;
-  border-radius: 3px;
+  border-radius: 1px;
   margin: auto;
   background-color: #2e5d73;
   color: white;
@@ -933,6 +964,7 @@ searchInput:active {
   margin-bottom: 20px;
   gap: 20px;
   padding-bottom: 10px;
+  background-color: rgb(255, 250, 250);
 }
 
 .bottom-margin {
@@ -957,16 +989,16 @@ searchInput:active {
 #add-favorite {
   color: rgb(219, 14, 14);
 
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   margin-right: 30px;
   margin-top: 10px;
 
   cursor: pointer;
 }
 #delete-fav {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   margin-right: 30px;
   margin-top: 10px;
   color: rgb(219, 14, 14);
@@ -984,9 +1016,7 @@ searchInput:active {
 }
 .top-img img {
   width: 400px;
-  height: 475px;
-  box-shadow: rgba(0, 0, 0, 0.12) 1px 1px 1px 1px,
-    rgba(0, 0, 0, 0.24) 1px 1px 1px 1px;
+  height: 400px;
 }
 
 .top-info {
