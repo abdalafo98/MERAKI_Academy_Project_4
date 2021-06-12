@@ -43,7 +43,7 @@ const Profile = () => {
   }, []);
 
   const a = myOrder.map((element, i) => {
-    
+    console.log("order", element);
 
     return (
       <div>
@@ -53,96 +53,98 @@ const Profile = () => {
             <div class="inf">
               <p>
                 {" "}
-                <span className="info-span"> date: </span>
+                <span> date: </span>
                 {element.date}{" "}
               </p>
 
               <p>
                 {" "}
-                <span className="info-span"> Total Price: </span>
+                <span> Total Price: </span>
                 {element.totalPrice}{" "}
               </p>
             </div>
 
             <p class="product-info">
               {" "}
-              <span className="info-span"> Order Info: </span>
+              <span> Order Info: </span>
             </p>
             {element.products.map((ele, i) => {
               return (
                 <div class="info-order">
+                  <p>#{i + 1}</p>
+
                   <div class="img-order">
-                    <p>#{i + 1}</p>
                     <img src={ele.product.img} height={50} width={50} />
                   </div>
 
                   <div class="product-information">
-                    <p>Name Product: {ele.product.name}</p>
-                    <p>price: {ele.product.price} </p>
+                    <p>{ele.product.name}</p>
+                    <p>{ele.product.price} JD </p>
                   </div>
                 </div>
               );
             })}
           </div>
         </div>
+        <hr />
       </div>
     );
   });
 
   return (
-    <div className="profile-container">
-      <div className="profile-pic-Info">
-       <div className="profile-pic">
+    <div className="profile">
+      <div>
         <img
           src={result.gender == "male" ? profileMen : profileFemale}
           height={200}
           width={200}
         />
         <FaUserEdit
-          size={30}
-          color={"Green"}
+          size={35}
+          color={"#131921"}
+          cursor={"pointer"}
           onClick={() => {
             history.push("profile/edit");
           }}
         />
-        </div>
-        <div className="user-info">
-          <p>
-            <span className="info-span"> Full Name: </span>
-            {result.firstName} {result.lastName}
-          </p>
-          <br/>
-          <p>
-            {" "}
-            <span className="info-span">Age: </span>
-            {result.age}
-          </p>
-          <br/>
-          <p>
-            {" "}
-            <span className="info-span">Phone Number: </span>
-            {result.phoneNumber}
-          </p>
-          <br/>
-          <p>
-            {" "}
-            <span className="info-span">Email: </span>
-            {result.email}
-          </p>
-          <br/>
-          <p>
-            {" "}
-            <span className="info-span">Gender:</span> {result.gender}
-          </p>
-          <br/>
-          <p>
-            {" "}
-            <span className="info-span">country:</span> {result.country}
-          </p>
-        </div>
       </div>
-      <div className="user-orders">
-        <p id="your-information">My Orders</p>
+      <div className="information">
+        <p id="your-information">Your Information</p>
+
+        <div className="user-info">
+          <div className="info">
+            <p>
+              <span> Full Name: </span>
+              {result.firstName} {result.lastName}
+            </p>
+            <p>
+              {" "}
+              <span>age: </span>
+              {result.age}
+            </p>
+            <p>
+              {" "}
+              <span>Phone Number: </span>
+              {result.phoneNumber}
+            </p>
+            <p>
+              {" "}
+              <span>Email: </span>
+              {result.email}
+            </p>
+            <p>
+              {" "}
+              <span>Gender:</span> {result.gender}
+            </p>
+            <p>
+              {" "}
+              <span>country:</span> {result.country}
+            </p>
+          </div>
+        </div>
+      </div>{" "}
+      <div className="information scroll">
+        <p id="your-information">Your Orders</p>
         {a}
       </div>
     </div>

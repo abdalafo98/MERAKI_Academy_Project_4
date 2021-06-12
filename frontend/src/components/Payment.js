@@ -13,6 +13,7 @@ export default function Payment() {
   const [expiry, setExpiry] = useState("");
   const [cvc, setCvc] = useState("");
   const [focused, setFocused] = useState("");
+  const [pay, setPay] = useState(false)
 
   console.log("newArr", newArr);
   console.log(typeof totalPrice);
@@ -35,7 +36,7 @@ export default function Payment() {
         }
       )
       .then((result) => {
-        console.log(result);
+        setPay(true)
       })
       .catch((err) => {
         console.log(err);
@@ -111,7 +112,8 @@ export default function Payment() {
           />
         </div>
         <div className = "button">
-          <button onClick={payNow}>Confirm Payment</button>
+          {!pay?<button onClick={payNow}>Confirm Payment</button>:<div>Payment done</div>}
+          
         </div>
       </div>
     </>

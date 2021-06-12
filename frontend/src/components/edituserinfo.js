@@ -45,64 +45,65 @@ const EditUserInfo = () => {
   };
 
   return (
-    <div className="information">
-      <p id="your-information">Your Information</p>
+    <div className="edit-info">
+      <p id="your-information"> Edit Your Profile</p>
 
-      <div className="user-info">
-        <span> first Name: </span>
-        <input
-          placeholder={result.data.firstName + result.data.lastName}
-          onChange={(e) => {
-            setFirstName(e.target.value);
-          }}
-        />{" "}
-        <span> Last Name: </span>
-        <input
-          placeholder={result.data.firstName + result.data.lastName}
-          onChange={(e) => {
-            setLastName(e.target.value);
-          }}
-        />{" "}
-        <span>age: </span>
-        <input
-          placeholder={result.data.age}
-          onChange={(e) => {
-            setAge(e.target.value);
-          }}
-        />{" "}
-        <span>Phone Number: </span>
-        <input
-          placeholder={result.data.phoneNumber}
-          onChange={(e) => {
-            setPhoneNumber(e.target.value);
-          }}
-        />
-        <p>
-          {" "}
+      <div className="user-info1">
+        <div class="info-s">
+          <span> first Name: </span>
+          <br />
+          <span> Last Name: </span>
+          <br />
+          <span>age: </span>
+          <br />
+          <span>Phone Number: </span>
+          <br />
           <span>Email: </span>
+          <br />
+          <span>Gender: </span>
+          <br />
+          <span>country:</span>
+        </div>
+        <div className="input-edit">
+          <input
+            placeholder={result.data.firstName}
+            onChange={(e) => {
+              setFirstName(e.target.value);
+            }}
+          />{" "}
+          <input
+            placeholder={result.data.lastName}
+            onChange={(e) => {
+              setLastName(e.target.value);
+            }}
+          />{" "}
+          <input
+            placeholder={result.data.age}
+            onChange={(e) => {
+              setAge(e.target.value);
+            }}
+          />{" "}
+          <input
+            placeholder={result.data.phoneNumber}
+            onChange={(e) => {
+              setPhoneNumber(e.target.value);
+            }}
+          />{" "}
           <input value={result.data.email} />
-        </p>
-        <p>
-          {" "}
-          <span>Gender:</span>
           <input
             placeholder={result.data.gender}
             onChange={(e) => {
               setGender(e.target.value);
             }}
-          />
-        </p>
-        <p>
-          {" "}
-          <span>country:</span>
+          />{" "}
           <input
             placeholder={result.data.country}
             onChange={(e) => {
               setCountry(e.target.value);
             }}
           />
-        </p>
-        <button onClick={modifyInfo}>Update</button>
+          <button onClick={modifyInfo}>Update</button>
+        </div>
       </div>
     </div>
   );
