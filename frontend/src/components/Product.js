@@ -5,6 +5,8 @@ import { useHistory, useParams } from "react-router-dom";
 import ShowRating from "./ShowRating";
 import { AiFillHeart } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
+import profileFemale from "./../../src/profile-female.png";
+import profileMen from "./../../src/profile-men.png";
 
 export default function Product({ token }) {
   const { id } = useParams();
@@ -19,6 +21,7 @@ export default function Product({ token }) {
   const idProduct = result._id;
   const thisToken = localStorage.getItem("token");
   const thisRole = localStorage.getItem("role");
+  const resultImg = JSON.parse(localStorage.getItem("userInfo"));
   const addComment = () => {
     axios
       .post(
@@ -152,8 +155,17 @@ export default function Product({ token }) {
     allComment = result.comment.map((element, i) => {
       return (
         <div className="bottom-section-comment">
-          <p id="first-name">{element.commenter.firstName}</p>
-          <p>{element.comment}</p>
+          <div className="bottom-section-comment-img">
+            <img
+              src={resultImg.data.gender == "male" ? profileMen : profileFemale}
+              height={60}
+              width={60}
+            />
+          </div>
+          <div className="bottom-section-comment-info">
+            <p id="first-name">{element.commenter.firstName}</p>
+            <p id="comment">{element.comment}</p>
+          </div>
         </div>
       );
     });
