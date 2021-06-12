@@ -109,7 +109,7 @@ const Profile = () => {
         />
       </div>
       <div className="information">
-        <p id="your-information">Your Information</p>
+        <p id="your-information">Your Profile</p>
 
         <div className="user-info">
           <div className="info">

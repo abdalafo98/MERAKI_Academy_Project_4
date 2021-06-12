@@ -3,6 +3,7 @@ import { Switch, Route, Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import ShowRating from "./ShowRating";
 import { AiFillDelete } from "react-icons/ai";
+import deleteIcon from "./../../src/delete.png";
 
 export default function Favorites({ token }) {
   const [result, setResult] = useState([]);
@@ -44,11 +45,14 @@ export default function Favorites({ token }) {
         <div className="rating"></div>
 
         <div className="card-description">
-          <p className="nameProduct">Name:{element.name}</p>
+          <p className="nameProduct">{element.name}</p>
           <ShowRating rate={Math.round(element.averageRating)} />
 
-          <p className="PriceProduct">Price:{element.price}</p>
-          <AiFillDelete
+          <p className="PriceProduct">{element.price} JD</p>
+          <img
+            style={{ marginTop: "10px" }}
+            src={deleteIcon}
+            id="deleteProduct"
             size={27}
             onClick={() => {
               console.log(idProduct);
