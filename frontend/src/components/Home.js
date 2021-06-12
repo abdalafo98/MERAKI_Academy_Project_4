@@ -3,6 +3,7 @@ import axios from "axios";
 import { useHistory, Route, Redirect } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
+import Splide from "@splidejs/splide";
 
 export default function Home() {
   const [slideImages, setslideImages] = useState([]);
@@ -89,6 +90,7 @@ export default function Home() {
           </div>
         </Slide>
       </div>
+
       <div className="homebody">
         <div
           className="sectionNavBody"

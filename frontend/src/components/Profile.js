@@ -47,7 +47,7 @@ const Profile = () => {
 
     return (
       <div>
-        <p id="order-number"># {i + 1} Order</p>
+        <p id="order-number">#{i + 1} Order</p>
         <div className="user-info">
           <div id="order">
             <div class="inf">
