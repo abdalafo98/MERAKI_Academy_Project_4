@@ -3,6 +3,11 @@ import axios from "axios";
 import { useHistory, Route, Redirect } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
+import "./css/homePage.css"
+
+import Splide from "@splidejs/splide";
+
+
 
 export default function Home() {
   const [slideImages, setslideImages] = useState([]);
@@ -48,11 +53,11 @@ export default function Home() {
   return (
     <div>
       <div className="Navigation-child-bottom">
-        <ul>
-          <li onClick={moveToMen}>Men</li>
-          <li onClick={moveToKids}>Kids</li>
-          <li onClick={moveToWomen}>Women</li>
-        </ul>
+        
+          <div className="catigoryBar" onClick={moveToMen}>Men    </div>
+          <div className="catigoryBar" onClick={moveToKids}>Kids  </div>
+          <div className="catigoryBar" onClick={moveToWomen}>Women</div>
+        
       </div>
 
       <div className="slide-container">

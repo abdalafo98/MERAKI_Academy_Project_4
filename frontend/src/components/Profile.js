@@ -43,7 +43,7 @@ const Profile = () => {
   }, []);
 
   const a = myOrder.map((element, i) => {
-    console.log("order", element);
+    
 
     return (
       <div>
@@ -53,20 +53,20 @@ const Profile = () => {
             <div class="inf">
               <p>
                 {" "}
-                <span> date: </span>
+                <span className="info-span"> date: </span>
                 {element.date}{" "}
               </p>
 
               <p>
                 {" "}
-                <span> Total Price: </span>
+                <span className="info-span"> Total Price: </span>
                 {element.totalPrice}{" "}
               </p>
             </div>
 
             <p class="product-info">
               {" "}
-              <span> Order Info: </span>
+              <span className="info-span"> Order Info: </span>
             </p>
             {element.products.map((ele, i) => {
               return (
@@ -90,56 +90,59 @@ const Profile = () => {
   });
 
   return (
-    <div className="profile">
-      <div>
+    <div className="profile-container">
+      <div className="profile-pic-Info">
+       <div className="profile-pic">
         <img
           src={result.gender == "male" ? profileMen : profileFemale}
           height={200}
           width={200}
         />
         <FaUserEdit
-          size={40}
-          color={"black"}
+          size={30}
+          color={"Green"}
           onClick={() => {
             history.push("profile/edit");
           }}
         />
-      </div>
-      <div className="information">
-        <p id="your-information">Your Information</p>
-
+        </div>
         <div className="user-info">
           <p>
-            <span> Full Name: </span>
+            <span className="info-span"> Full Name: </span>
             {result.firstName} {result.lastName}
           </p>
+          <br/>
           <p>
             {" "}
-            <span>age: </span>
+            <span className="info-span">Age: </span>
             {result.age}
           </p>
+          <br/>
           <p>
             {" "}
-            <span>Phone Number: </span>
+            <span className="info-span">Phone Number: </span>
             {result.phoneNumber}
           </p>
+          <br/>
           <p>
             {" "}
-            <span>Email: </span>
+            <span className="info-span">Email: </span>
             {result.email}
           </p>
+          <br/>
           <p>
             {" "}
-            <span>Gender:</span> {result.gender}
+            <span className="info-span">Gender:</span> {result.gender}
           </p>
+          <br/>
           <p>
             {" "}
-            <span>country:</span> {result.country}
+            <span className="info-span">country:</span> {result.country}
           </p>
         </div>
-      </div>{" "}
-      <div className="information scroll">
-        <p id="your-information">Your Orders</p>
+      </div>
+      <div className="user-orders">
+        <p id="your-information">My Orders</p>
         {a}
       </div>
     </div>
